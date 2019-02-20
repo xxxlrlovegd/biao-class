@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CssTest2</title>
+    <style>
+        /* 元素选择器 */
+        div {
+            border: 2px solid pink;
+        }
+
+        span {
+            color: green;
+        }
+
+        p {
+            background-color: antiquewhite;
+        }
+
+        a {
+            font-size: 200%;
+            text-decoration: none;
+        }
+
+        /* 类选择器 */
+        .blue-border {
+            border: solid royalblue;
+        }
+
+        .blue {
+            color: royalblue;
+        }
+
+        /* 混合使用 */
+        div {
+            color: royalblue;
+        }
+
+        .danger {
+            color: darkred;
+        }
+
+        .global {
+            border: white;
+            background-color: whitesmoke;
+        }
+
+        #icon {
+            width: 60px;
+            height: 60px;
+        }
+
+        .global a {
+            font-size: 90%
+        }
+
+        /* 分组选择 */
+        .test1 a,
+        span {
+            border: 1px solid;
+            font-size: 90%;
+            color: black;
+        }
+
+        .a,
+        .c {
+            border: black solid;
+        }
+
+        .b,
+        .c {
+            color: tomato;
+        }
+
+        /* 多条件选择 */
+        a.red {
+            color: tomato;
+        }
+
+        /* 后代选择 */
+        .c1 {
+            color: tomato;
+        }
+
+        .bordered1 {
+            border: solid;
+        }
+
+        .a1 .bordered1 {
+            border-color: tomato;
+        }
+
+        /* 子选择 */
+        ul>* {
+            color: royalblue;
+        }
+
+        ol>* {
+            color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <h3 style="color:violet;">选择器之间有冲突！！！</h3>
+    <header>
+        <div class="global">
+            <nav>
+                <img id="icon" src="../002-html-element/static/388747180096083633.jpg" alt="不怨不悔">
+                <a href="#">Html</a>
+                <a href="#">Css</a>
+                <a href="#">Js</a>
+            </nav>
+        </div>
+    </header>
+    <!-- 元素选择器 -->
+    <div>边框</div>
+    <span>我发绿</span>
+    <p>我火了</p>
+    <a href="#">我天</a>
+    <!-- 类选择器 -->
+    <p class="blue-border">A</p>
+    <p class="blue-border">B</p>
+    <p class="blue">C</p>
+    <p class="blue">D</p>
+    <!-- 混合更好用呦 -->
+    <div>A</div>
+    <div class="danger">B</div>
+    <div>C</div>
+    <div>D
+        <div class="danger">Lr</div>
+    </div>
+    <div class="test1">
+        <!-- 分组选择 -->
+        <a href="#">我是假按钮</a>
+        <button>我是真按钮</button>
+        <span>我是有心按钮</span>
+        <div class="a">A</div>
+        <div class="b">B</div>
+        <div class="c">C</div>
+        <!-- 多条件选择 -->
+        <a href="#" class="red">我是链接</a>
+        <a href="#">我是链接</a>
+        <span class="red">我是假链接</span>
+    </div>
+    <!-- 后代选择 -->
+    <div class="a1 bordered1">A
+        <div class="b1">B</div>
+        <div class="c1">C</div>
+        <div class="c1 bordered1">C</div>
+        <div class="c1">C</div>
+    </div>
+    <!-- 子选择 -->
+    <ul>
+        <li>A</li>
+        <li>B</li>
+        <ol>
+            <li>C1</li>
+            <li>C2</li>
+            <li>C3</li>
+        </ol>
+    </ul>
+    <ol>
+        <li>A</li>
+        <li>B</li>
+        <ul>
+            <li>C1</li>
+            <li>C2</li>
+            <li>C3</li>
+        </ul>
+    </ol>
+</body>
+
+</html>
