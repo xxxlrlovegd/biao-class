@@ -7,28 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        span{
-            background:thistle;
+        span {
+            background: thistle;
         }
-        .d{
+
+        .d {
             display: block;
             margin: 10px;
-            background-color:pink;
+            background-color: pink;
         }
+
         .a {
             position: relative;
             top: 10px;
             background-color: antiquewhite;
         }
+
+        .c {
+            position: absolute;
+            bottom: 10px;
+            background-color: hotpink;
+        }
     </style>
 </head>
 
 <body>
-    <h3>Postion:static;relative(相对于static);absolute(绝对跟着relative走);fixed</h3>
+    <h3>Postion:static;relative(相对于出生点定位);absolute(没有父级相对首屏定位，父级+relative的话相对父级定位);fixed：相对浏览器窗口的位置</h3>
     <span class="d">嘎嘎嘎嘎</span>
     <span class="a">看我</span>
-    <span class="b"> 再看我</span>
+    <span class="b"> 再看我</span><br>
+    <div class="partent" style=" width: 10e;height: 10em;background: gray; position:relative ;margin-top: 20px">
     <span class="c">快快来看我</span>
+    </div>
 </body>
 
 </html>
