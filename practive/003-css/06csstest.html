@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CssTset-Float</title>
+    <style>
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .a {  
+            box-sizing: border-box;
+            width: 50%;
+            padding: 10px;
+            font: caption;
+            border: 5px solid tomato;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 图片环绕 -->
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quae repellat saepe? Dicta distinctio eius illum
+        maiores maxime, possimus quaerat sed suscipit voluptatum. Accusamus adipisci fugit officia pariatur, recusandae
+        rerum?
+        Lorem ipsum dolor <img class="left" src="https://public.biaoyansu.com/logo-sm.png"> sit amet, consectetur
+        adipisicing elit. Iste quae repellat saepe? Dicta distinctio eius illum maiores maxime, possimus quaerat sed
+        suscipit voluptatum. Accusamus adipisci fugit officia pariatur, recusandae rerum?
+        Lorem ipsum dolor <img class="right" src="https://public.biaoyansu.com/logo-sm.png"> sit amet, consectetur
+        adipisicing elit. Iste quae repellat saepe? Dicta distinctio eius illum maiores maxime, possimus quaerat sed
+        suscipit voluptatum. Accusamus adipisci fugit officia pariatur, recusandae rerum?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quae repellat saepe? Dicta distinctio eius illum
+        maiores maxime, possimus quaerat sed suscipit voluptatum. Accusamus adipisci fugit officia pariatur, recusandae
+        rerum?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quae repellat saepe? Dicta distinctio eius illum
+        maiores maxime, possimus quaerat sed suscipit voluptatum. Accusamus adipisci fugit officia pariatur, recusandae
+        rerum?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quae repellat saepe? Dicta distinctio eius illum
+        maiores maxime, possimus quaerat sed suscipit voluptatum. Accusamus adipisci fugit officia pariatur, recusandae
+        rerum?
+    </p>
+    <!-- 我们四个向左走 -->
+    <div class="left">
+        <div>左</div>
+        <div>左</div>
+        <div>左</div>
+        <div>左</div>
+    </div>
+    <!-- 我们四个向右走 -->
+    <div class="right">
+        <div>右</div>
+        <div>右</div>
+        <div>右</div>
+        <div>右</div>
+    </div>
+    <!-- <div>向左浮动，每3个断一次 -->
+    <div class="left">Yo</div>
+    <div class="left">Yo</div>
+    <div class="left">Yo</div>
+    <div class="left clear">Yo</div>
+    <div class="left">Yo</div>
+    <div class="left">Yo</div>
+    <div class="left clear">Yo</div>
+    <div class="left">Yo</div>
+    <div class="left">Yo</div>
+    <!-- 一行两列 均分浮动 -->
+    <div class="clear" >
+        <div class="left a">哈哈</div>
+        <div class="left a">嘻嘻</div>
+    </div>
+
+</body>
+
+</html>
