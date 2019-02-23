@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FloatCssTest</title>
+    <style>
+    *{
+        box-sizing: border-box;
+    }
+    .row::before,.row::after{
+        clear:both;
+    }
+    .col-1,.col-2{
+        float: left;
+    }
+    .col-1{
+        width: 50%;
+        border: solid tan;
+    }
+    .col-2{
+        width: 25%;
+        border: solid tomato;
+    }
+    </style>
+
+</head>
+<body>
+    <h4>一行三列练习</h4>
+    <div class="row">
+        <div class="col-1">xixi</div>
+        <div class="col-2">haha</div>
+        <div class="col-2">xixihaha</div>
+    </div>
+</body>
+</html>
