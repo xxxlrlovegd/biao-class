@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10列栅格</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row::before,
+        .row::after {
+            content: '';
+            clear: both;
+          
+        }
+
+        .col-1 {
+            float: left;
+            width: 10%;
+            border: solid;
+            margin-bottom: 5px;
+        }
+
+        .col-2 {
+            float: left;
+            width: 20%;
+            border: solid;
+            margin-bottom: 5px;
+        }
+
+        .col-3 {
+            float: left;
+            width: 30%;
+            border: solid;
+            margin-bottom: 5px;
+        }
+
+        .col-4 {
+            float: left;
+            width: 40%;
+            border: solid;
+            margin-bottom: 5px;
+        }
+
+        .col-5 {
+            float: left;
+            width: 50%;
+            border: solid;
+            margin-bottom: 5px;
+        }
+
+        .col-6 {
+            float: left;
+            width: 60%;
+            border: solid;
+            margin-bottom: 5px;
+        }
+
+        .col-7 {
+            float: left;
+            width: 70%;
+            border: solid;
+            margin-bottom: 5px;
+        }
+
+        .col-8 {
+            float: left;
+            width: 80%;
+            border: solid;
+            margin-bottom: 5px;
+        }
+
+        .col-9 {
+            float: left;
+            width: 90%;
+            border: solid;
+            margin-bottom: 5px;
+        }
+
+        .col-10 {
+            float: left;
+            width: 100%;
+            border: solid;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>10列栅格</h4>
+    <div class="row">
+        <div class="col-10">XXX</div>
+    </div>
+    <div class="row">
+        <div class="col-5">XXX</div>
+        <div class="col-5">XXX</div>
+    </div>
+    <div class="row">
+        <div class="col-1">XXX</div>
+        <div class="col-1">XXX</div>
+        <div class="col-1">XXX</div>
+        <div class="col-1">XXX</div>
+        <div class="col-1">XXX</div>
+        <div class="col-1">XXX</div>
+        <div class="col-1">XXX</div>
+        <div class="col-1">XXX</div>
+        <div class="col-1">XXX</div>
+        <div class="col-1">XXX</div>
+    </div>
+</body>
+
+</html>
