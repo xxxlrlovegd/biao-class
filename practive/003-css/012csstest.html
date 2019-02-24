@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FloatCss</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row::before,
+        .row::after {
+            clear: both;
+        }
+
+        .col {
+            float: left;
+            padding: 20px;
+            background: rgba(255, 0, 0, 0.2);
+            width: 50%;
+            border: solid tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>二级浮动嵌套</h4>
+    <div class="row">
+        <div class="col">
+            <div class="col">AA</div>
+            <div class="col">BB</div>
+        </div>
+        <div class="col">
+            <div class="col">AA</div>
+            <div class="col">BB</div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
