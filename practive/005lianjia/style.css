@@ -49,3 +49,15 @@
 .col-12{
     width:100%;
 }
+
+body{
+    margin: 0px;
+}
+.global-nav a{
+    text-decoration: none;
+    color: #eee;
+}
+
+.global-nav .right{
+    text-align: right;
+}

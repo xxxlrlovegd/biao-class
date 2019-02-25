@@ -4,15 +4,14 @@
 
 .row::before,
 .row::after {
+    content:'';
     clear: both;
-    
+    display: block;
 }
 
 .col {
     float: left;
-    border: solid;
-    padding: 2px;
-    margin-bottom: 1px;
+    padding: 4px;
 }
 
 .col-1 {
@@ -109,4 +108,24 @@
 
 .col-24 {
     width: 100%;
+}
+body{
+    margin: 0px;
+}
+.global-nav{
+    background-color:#545652;
+}
+.global-nav .right{
+    text-align: right;
+}
+.global-nav a{
+     display: inline-block;
+     text-decoration: none;
+     color:#ccc;
+     font-family:Helvetica,Arial,sans-serif;
+     font-size: 12px;
+      padding: 0.5em 1em; /*根据字体大小添加padding */
+}
+.global-nav a:hover{
+    color: #fff;
 }
