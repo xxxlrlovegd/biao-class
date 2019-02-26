@@ -67,18 +67,26 @@ body{
 }
 
 .search input{
-    height: 2em;
+    height: 2.2em;
     width: 20em;
-    border-radius: 0.3em
+    border-radius: 0.3em;
+    border: 1px solid #eee;
+    outline: 0;
 }
 
 .search button{
-    border-radius: 0.4em;
+    height: 2em;
+    width: 3.5em;
+    border-radius: 0.3em;
     font:16px sans-serif; 
     background:#0084FF;
+    border: 1px solid #ccc;
     color: #eee;
+    outline: 0;
 }
-
+.search input:focus,.search button:focus{
+    border: 1px solid blue;
+}
 .global-nav input::placeholder{
        color:#ccc;
        font-family: "Heiti SC" sans-serif;
