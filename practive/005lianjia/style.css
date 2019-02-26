@@ -52,12 +52,67 @@
 
 body{
     margin: 0px;
+    font: 13px sans-serif;
+    background:plum;
+    
+}
+.global-nav{
+    margin-top: 20px;
 }
 .global-nav a{
+    display: inline-block;
+    padding: .3em .5em;
     text-decoration: none;
     color: #eee;
 }
 
 .global-nav .right{
     text-align: right;
+}
+
+.container{
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#logo{
+    display: inline-block;
+    width: 90px;
+    height: 45px;
+    background-image: url(./static/lianjia-sprite.png);
+    background-position: -8px -12px;
+}
+
+.icon-location{
+    vertical-align: middle;
+    display: inline-block;
+    width: 20px;
+    height: 21px;
+    background-image: url(./static/lianjia-sprite.png);
+    background-position: -183px -15px;
+}
+
+.location{
+    position: relative;
+    bottom: 15px;
+}
+
+.auth{
+    font-size: 80%;
+}
+
+.icon-login{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(./static/lianjia-sprite.png);
+    background-position: -200px -16px;
+    position: relative;
+    top:3.3px;
+    left: 2px;
+}
+
+.login{
+    
 }
