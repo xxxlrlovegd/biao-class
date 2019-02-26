@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    font:10px sans-serif;
 }
 .row::before,.row::after{
     content:'';
@@ -8,7 +9,7 @@
 }
 .col{
     float: left;
-    border: solid papayawhip;
+    border: solid #ccc;
     padding: 2px;
     margin-bottom: 2px;
 }
@@ -49,3 +50,36 @@
 .col-12{
     width:100%;
 }
+
+body{
+    margin: 0px;
+}
+
+.container{
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.global-nav{
+    background: #333;    
+}
+
+.global-nav a{
+     text-decoration: none;
+     font:inherit;
+     color: #bbb;
+     display: inline-block;
+     padding: .5em .6em;
+}
+
+.global-nav a:hover{
+    color:#fff;
+}
+
+.global-nav .right{
+    position: relative;
+     text-align: right;
+     margin-right: auto;
+}
+

@@ -51,3 +51,57 @@
 .col-12{
     width:100%;
 }
+
+body{
+    margin: 0px;
+}
+
+.container{
+    max-width: 1240px;
+    margin:0px auto;
+    padding: 5px;
+}
+
+.global-nav{
+    font:18px sans-serif;
+}
+
+.search input{
+    height: 2em;
+    width: 20em;
+    border-radius: 0.3em
+}
+
+.search button{
+    border-radius: 0.4em;
+    font:16px sans-serif; 
+    background:#0084FF;
+    color: #eee;
+}
+
+.global-nav input::placeholder{
+       color:#ccc;
+       font-family: "Heiti SC" sans-serif;
+       font-size: 17px;
+}
+
+.global-nav a{
+    display: inline-block;
+    text-decoration: none;
+    font: inherit;
+    padding: .2em;
+    color: grey;
+}
+
+.global-nav a:hover{
+    color:slateblue;
+}
+
+.link-group a:first-child{
+    color: #222;
+}
+
+.note img:last-child{
+    width: 30px;
+    height: 30px;
+}
