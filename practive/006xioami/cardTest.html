@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        .row::before,
+        .row::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .col {
+            float: left;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .card {
+            text-align: center;
+            margin-left: 5px;
+            background: #fff;
+            box-shadow: 0 0 3px rgba(0, 0, 0, .2)
+        }
+
+        .card img {
+            max-width: 100%;
+
+        }
+
+        .icon {
+            background: red;
+            width: 80px;
+            height: 20px;
+            position: relative;
+            text-align: center;
+            top: 20px;
+            font-family: sans-serif;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .metu {
+            opacity: 0.5;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        .price span:last-of-type {
+            text-decoration-line: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col col-3">
+            <div class="card">
+                <span class="icon">
+                    加200元
+                </span>
+                <div>
+                    <img src="http://temp.im/500x500" alt="">
+                </div>
+                <div class="title">
+                    <span>小米8 青春版 4GB+64G</span>
+                </div>
+                <div class="desc metu">
+                    <span>潮流镜面渐变色，2400万自拍旗舰</span>
+                </div>
+                <div class="price">
+                    <span>1399元</span>
+                    <span class="metu">1599</span>
+                </div>
+            </div>
+        </div>
+        <div class="col col-3">
+            <div class="card">
+                <span class="icon">
+                    加200元
+                </span>
+                <div>
+                    <img src="http://temp.im/500x500" alt="">
+                </div>
+                <div class="title">
+                    <span>小米8 青春版 4GB+64G</span>
+                </div>
+                <div class="desc metu">
+                    <span>潮流镜面渐变色，2400万自拍旗舰</span>
+                </div>
+                <div class="price">
+                    <span>1399元</span>
+                    <span class="metu">1599</span>
+                </div>
+            </div>
+        </div>
+        <div class="col col-3">
+            <div class="card">
+                <span class="icon">
+                    加200元
+                </span>
+                <div>
+                    <img src="http://temp.im/500x500" alt="">
+                </div>
+                <div class="title">
+                    <span>小米8 青春版 4GB+64G</span>
+                </div>
+                <div class="desc metu">
+                    <span>潮流镜面渐变色，2400万自拍旗舰</span>
+                </div>
+                <div class="price">
+                    <span>1399元</span>
+                    <span class="metu">1599</span>
+                </div>
+            </div>
+        </div>
+        <div class="col col-3">
+            <div class="card">
+                <span class="icon">
+                    加200元
+                </span>
+                <div>
+                    <img src="http://temp.im/500x500" alt="">
+                </div>
+                <div class="title">
+                    <span>小米8 青春版 4GB+64G</span>
+                </div>
+                <div class="desc metu">
+                    <span>潮流镜面渐变色，2400万自拍旗舰</span>
+                </div>
+                <div class="price">
+                    <span>1399元</span>
+                    <span class="metu">1599</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
