@@ -113,7 +113,7 @@ body{
     margin: 0px;
 }
 .global-nav{
-    background-color:#545652;
+    background:#545652;
 }
 .global-nav .right{
     text-align: right;
@@ -128,4 +128,75 @@ body{
 }
 .global-nav a:hover{
     color: #fff;
+}
+.main,.footer{
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.clear{
+    clear: both;
+}
+
+.nav {
+     font-size: 15px;
+     font-family: sans-serif;
+     padding: 10px;
+     background: #e4fbfc repeat-x;
+}
+
+.nav a{
+   text-decoration: none;
+   color: #037b82;
+   font:inherit;
+   margin: 0 auto;
+}
+
+.nav .title-logo{
+    font-weight: bolder;
+    font-size:25px;
+    margin-right: 2em;
+}
+
+.nav .link:hover{
+    cursor: pointer;
+    background: blueviolet;
+    color:#fff;
+}
+
+.nav input{
+    border-radius:.5em;
+    outline: 0;
+    padding:5px 0px;
+    position: relative;
+    top: .4em;
+}
+
+.right{
+    float: right;
+}
+ 
+.matued{
+    opacity: .5;
+}
+
+.content .page a{
+    text-decoration: none;
+    color: #555;
+}
+
+.footer{
+    margin-top: .2em;
+    border-top:1px dashed #bbb;
+}
+.footer span{
+    font-size: 13px;
+    font-family: sans-serif;
+    
+}
+
+.footer a{
+    font-size: 14px;
+    text-decoration: none;
+    color: rgba(0, 0, 255, .7)
 }
