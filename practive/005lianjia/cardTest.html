@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid tomato;
+        }
+
+        .row {
+            margin-right: 1px;
+        }
+
+        .row::before,
+        .row::after {
+            display: block;
+            content: '';
+            clear: both;
+
+        }
+
+        .card {
+            background: #fff;
+            box-shadow: 0 0 3px rgba(0, 0, 0, .2)
+        }
+
+        .col {
+            padding: 0 5px;
+            float: left;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-4 {
+            width: 33.3333333333333333%;
+        }
+
+        .col-8 {
+            width: 66.666666666666666666%;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        .creat {
+            float: right;
+            opacity: 0.5;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .text {
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="col col-4">
+        xxx
+    </div>
+    <div class="col col-8">
+        <div class="row">
+            <div class="col col-3">
+                <div class="card">
+                    <div>
+                        <img src="http://temp.im/600x400" alt="">
+                    </div>
+                    <div>
+                        <div class="title">幸福大道上</div>
+                        <div class="row text">
+                            <span class="price">666666元/平</span>
+                            <span class="creat clear">1994年建</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-3">
+                <div class="card">
+                    <div>
+                        <img src="http://temp.im/600x400" alt="">
+                    </div>
+                    <div>
+                        <div class="title">幸福大道上</div>
+                        <div class="row text">
+                            <span class="price">666666元/平</span>
+                            <span class="creat clear">1994年建</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-3">
+                <div class="card">
+                    <div>
+                        <img src="http://temp.im/600x400" alt="">
+                    </div>
+                    <div>
+                        <div class="title">幸福大道上</div>
+                        <div class="row text">
+                            <span class="price">666666元/平</span>
+                            <span class="creat clear">1994年建</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-3">
+                <div class="card">
+                    <div>
+                        <img src="http://temp.im/600x400" alt="">
+                    </div>
+                    <div>
+                        <div class="title">幸福大道上</div>
+                        <div class="row text">
+                            <span class="price">666666元/平</span>
+                            <span class="creat clear">1994年建</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
