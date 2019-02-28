@@ -124,7 +124,7 @@ body{
      color:#ccc;
      font-family:Helvetica,Arial,sans-serif;
      font-size: 12px;
-      padding: 0.5em 1em; /*根据字体大小添加padding */
+    padding: 0.5em 1em; /*根据字体大小添加padding */
 }
 .global-nav a:hover{
     color: #fff;
@@ -142,7 +142,7 @@ body{
      font-size: 15px;
      font-family: sans-serif;
      padding: 10px;
-     background: #e4fbfc repeat-x;
+     background: #e6fcf9 repeat-x;
 }
 
 .nav a{
@@ -160,7 +160,7 @@ body{
 
 .nav .link:hover{
     cursor: pointer;
-    background: blueviolet;
+    background: rgb(132, 195, 247); 
     color:#fff;
 }
 
@@ -179,16 +179,110 @@ body{
 .matued{
     opacity: .5;
 }
-
+.content .title{
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 500;
+}
 .content .page a{
     text-decoration: none;
     color: #555;
+    font-size: 13px;
+    padding: 10px 0;
+    margin-bottom: 5px;
+} 
+
+/* .select{
+    border: 1px solid;
+} */
+
+.select .likes{
+    background: #fff;
+    width: 65px;
+    height: 153px; 
+}
+.s-title a,.r-info a:first-child{
+    text-decoration: none;
+    font:inherit;
+    color: rgb(135, 153, 207);
+}
+.select .s-meta {
+    margin-top: 5px;
+    padding: 5px 0;
+    background: #fff;
+    width: 640px;
+    height: 26px; 
+    position: relative;
+    top: .19em;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #666;
+}
+
+.select .s-meta a ,.r-content a{
+    text-decoration: none;
+    color: #666;
+}
+
+.s-meta  a:hover,.s-title a:hover ,.r-info a:hover{
+    cursor: pointer;
+    background: rgb(132, 195, 247); 
+    color:#fff;
+}
+
+.s-meta span:last-of-type{
+    padding-left: 2em;
+}
+
+.select .like{
+    width: 50px;
+    height: 50px;
+    padding-top: 8px;
+    padding-left: 5px;
+    background: rgb(241, 204, 135);
+    font-size:12px;
+    text-align: center;
+   
+}
+
+.select .s-card{
+    background: rgb(241, 241, 241);
+}
+.s-content .s-img{
+       margin-right: -110px;
+}
+
+.s-content .s-desc{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+      line-height: 1.62;
+      font-size: 14px;
+}
+
+.recomb{
+    font-size: 15px;
+    font-family: sans-serif;
+}
+
+.recomc{
+    border-top: 1px solid #666;
+}
+
+.r-info{
+    margin-left: -30px;
+}
+
+.r-content{
+    font-size: 13px;
 }
 
 .footer{
     margin-top: .2em;
     border-top:1px dashed #bbb;
 }
+
 .footer span{
     font-size: 13px;
     font-family: sans-serif;
@@ -200,3 +294,4 @@ body{
     text-decoration: none;
     color: rgba(0, 0, 255, .7)
 }
+
