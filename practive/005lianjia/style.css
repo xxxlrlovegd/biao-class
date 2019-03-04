@@ -51,7 +51,7 @@
 
 body{
     margin: 0px;
-    font: 13px sans-serif;
+    font: 15px sans-serif;
     
 }
 
@@ -61,6 +61,7 @@ body{
 
 .head{
     background: url(./static/bannerV2.jpg) no-repeat;
+    height: 400px;;
 }
 
 .align {
@@ -156,4 +157,17 @@ body{
 .slogn a:hover{
     color: #fff;
     font-size: 14px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.main{
+    background: #f8f8f8
+}
+
+.foot{
+    background: #ccc;
 }

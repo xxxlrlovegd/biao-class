@@ -159,7 +159,7 @@ a{
 }
 
 .container{
-    max-width: 1080;
+    max-width: 1080px;
     margin: 0 auto;
 }
 
@@ -180,3 +180,68 @@ button:focus,input:focus{
 .text-right{
     text-align: right;
 }
+
+.nav.page{
+    background: #f0f6f3;
+}
+
+.nav.page .link-group a{
+    color:#037b82;
+    padding: 20px 10px;
+    display: inline-block;
+}
+
+.nav.page .link-group a:hover{
+    color:#065155;
+    font-weight: bold;
+}
+
+.nav.page .search{
+    position: relative;
+    margin-top: 17px;
+}
+
+.nav.page .search input{
+    width: 100%;
+}
+
+.nav.page .search button {
+    background:transparent;
+    border:none;
+    position:absolute;
+    right:1px;
+    top:1px;
+    color:#ccc;
+}
+
+.activity{
+    border-bottom:1px solid #ddd;
+    padding:10px 0;
+}
+
+.activity .like{
+    display:inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    background: #fae9da;
+    color:#ca6445;
+}
+
+.activity .desc{
+  color:#aaa;
+  background:#f8f8f8;
+}
+
+.activity .info{
+    color:#888;
+}
+
+.activity .preview>*{
+    margin:5px 0;
+}
+
+.rec{
+    border-top:1px solid #ddd;
+    padding:10px 0;
+}
+
