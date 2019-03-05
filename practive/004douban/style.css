@@ -129,11 +129,13 @@ body{
 .global-nav a:hover{
     color: #fff;
 }
-.main,.footer{
+.container{
     max-width: 1080px;
     margin: 0 auto;
 }
-
+.bg{
+    background: #e6fcf9 repeat-x;
+}
 .clear{
     clear: both;
 }
@@ -142,7 +144,6 @@ body{
      font-size: 15px;
      font-family: sans-serif;
      padding: 10px;
-     background: #e6fcf9 repeat-x;
 }
 
 .nav a{
@@ -169,7 +170,18 @@ body{
     outline: 0;
     padding:5px 0px;
     position: relative;
-    top: .4em;
+    top: .8em;
+}
+
+.nav button{
+    border: none;
+    outline: 0;
+    color: #777;
+    background: #fff;
+    position: absolute;
+    top: 4.9em;
+    margin-left: -30px;
+    font-weight: bold;
 }
 
 .right{
@@ -179,12 +191,55 @@ body{
 .matued{
     opacity: .5;
 }
-.content .title{
-    font-size: 20px;
+
+.title{
+    font-size: 10px;
     font-family: sans-serif;
-    font-weight: 500;
 }
-.content .page a{
+
+.select{
+    padding: 2px;
+    margin: 10px 0;
+}
+
+.select .like{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    padding-top: 8px;
+    padding-left: 5px;
+    background: rgb(241, 204, 135);
+    font-size:12px;
+    text-align: center;
+    top:27px;
+    left: -5px;;
+   
+}
+
+.select .like span{
+    display: block;
+}
+
+.select .s-info{
+    border-bottom: 1px solid;
+}
+
+.s-title a,.r-info a:first-child{
+    text-decoration: none;
+    font:inherit;
+    color: rgb(135, 153, 207);
+}
+
+.s-content{
+    background: #eee;
+    font-size: 14px;
+   }
+
+.page{
+    text-align: center;
+}
+
+ .page a{
     text-decoration: none;
     color: #555;
     font-size: 13px;
@@ -192,20 +247,7 @@ body{
     margin-bottom: 5px;
 } 
 
-/* .select{
-    border: 1px solid;
-} */
 
-.select .likes{
-    background: #fff;
-    width: 65px;
-    height: 153px; 
-}
-.s-title a,.r-info a:first-child{
-    text-decoration: none;
-    font:inherit;
-    color: rgb(135, 153, 207);
-}
 .select .s-meta {
     margin-top: 5px;
     padding: 5px 0;
@@ -234,53 +276,19 @@ body{
     padding-left: 2em;
 }
 
-.select .like{
-    width: 50px;
-    height: 50px;
-    padding-top: 8px;
-    padding-left: 5px;
-    background: rgb(241, 204, 135);
-    font-size:12px;
-    text-align: center;
-   
-}
-
-.select .s-card{
-    background: rgb(241, 241, 241);
-}
-.s-content .s-img{
-       margin-right: -110px;
-}
-
-.s-content .s-desc{
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 4;
-      overflow: hidden;
-      line-height: 1.62;
-      font-size: 14px;
-}
-
 .recomb{
     font-size: 15px;
     font-family: sans-serif;
+    margin: 10px 0;
+    padding: 2px;
 }
 
 .recomc{
     border-top: 1px solid #666;
 }
 
-.r-info{
-    margin-left: -30px;
-}
-
 .r-content{
     font-size: 13px;
-}
-
-.footer{
-    margin-top: .2em;
-    border-top:1px dashed #bbb;
 }
 
 .footer span{

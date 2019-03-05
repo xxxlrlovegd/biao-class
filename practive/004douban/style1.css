@@ -245,3 +245,6 @@ button:focus,input:focus{
     padding:10px 0;
 }
 
+.footer{
+    border-top: 1px dashed;
+}
