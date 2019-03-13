@@ -48,3 +48,77 @@
 .col-12{
     width:100%;
 }
+
+.right{
+   float: right;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.container{
+    overflow:auto;
+    max-width: 1080px;
+    margin: 0 auto;
+    background: #aaa;
+}
+a{
+    text-decoration: none;
+}
+
+body{
+    margin: 0px;
+    font-family: sans-serif;
+}
+.nav{
+    color:#fff;
+    font-size:13px;
+  
+    /* 此处加margin,虽然加的是子元素，但是母元素也会被撑下来，故用overflow */
+    margin-top: 20px;
+}
+
+.nav a{
+    font:inherit;
+    color:#fff;
+    padding: 2px 5px;
+    display: inline-block;
+}
+
+.nav .auth{
+    font-size: 80%;
+    font-weight: lighter;
+}
+
+.nav .logo{
+    width: 105px;
+    height: 40px;
+    background-image: url(static/lianjia.png);
+    background-position: -21px -379px;
+}
+.location > *{
+   vertical-align: top;
+}
+
+
+.logo,.location{
+    vertical-align: middle;
+}
+.icon-location{
+    display: inline-block;
+    width: 10px;
+    height: 15px;
+    background-image: url(static/lianjia.png);
+    background-position: -189px -18px;
+}
+.location{
+     display: inline-block;
+     padding:3px 5px;
+     border-radius: 15px;
+     font-size: 70%;
+}
