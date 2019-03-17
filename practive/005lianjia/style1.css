@@ -1,124 +1,283 @@
-*{
+* {
     box-sizing: border-box;
 }
-.row::before,.row::after{
-    content:'';
+
+.row::before,
+.row::after {
+    content: '';
     display: block;
-    clear:both;
+    clear: both;
 }
-.col{
+
+.col {
     float: left;
     padding: 2px;
     margin-bottom: 2px;
 }
 
-.col-1{
-    width:8.333333333333333%;
-}
-.col-2{
-    width:16.666666666666666%;
-}
-.col-3{
-    width:25%;
-}
-.col-4{
-    width:33.333333333333333%;
-}
-.col-5{
-    width:41.666666666666666%;
-}
-.col-6{
-    width:50%;
-}
-.col-7{
-    width:58.333333333333333%;
-}
-.col-8{
-    width:66.666666666666666%;
-}
-.col-9{
-    width:75%;
-}
-.col-10{
-    width:83.333333333333333%;
-}
-.col-11{
-    width:91.666666666666666%;
-}
-.col-12{
-    width:100%;
+.col-1 {
+    width: 8.333333333333333%;
 }
 
-.right{
-   float: right;
+.col-2 {
+    width: 16.666666666666666%;
 }
 
-.text-left{
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.333333333333333%;
+}
+
+.col-5 {
+    width: 41.666666666666666%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.333333333333333%;
+}
+
+.col-8 {
+    width: 66.666666666666666%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.333333333333333%;
+}
+
+.col-11 {
+    width: 91.666666666666666%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.right {
+    float: right;
+}
+
+.text-left {
     text-align: left;
 }
 
-.text-right{
+.text-right {
     text-align: right;
 }
 
-.container{
-    overflow:auto;
+.container {
+    overflow: auto;
     max-width: 1080px;
     margin: 0 auto;
-    background: #aaa;
-}
-a{
-    text-decoration: none;
 }
 
-body{
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+body {
     margin: 0px;
     font-family: sans-serif;
 }
-.nav{
-    color:#fff;
-    font-size:13px;
-  
+
+.first-screen {
+    color: #fff;
+    background-image: url(static/bannerV2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.nav {
+    font-size: 13px;
     /* 此处加margin,虽然加的是子元素，但是母元素也会被撑下来，故用overflow */
     margin-top: 20px;
 }
 
-.nav a{
-    font:inherit;
-    color:#fff;
+.nav a {
+    font: inherit;
     padding: 2px 5px;
     display: inline-block;
 }
 
-.nav .auth{
+.nav .auth {
     font-size: 80%;
     font-weight: lighter;
 }
 
-.nav .logo{
+.nav .logo {
     width: 105px;
     height: 40px;
     background-image: url(static/lianjia.png);
     background-position: -21px -379px;
 }
-.location > *{
-   vertical-align: top;
+
+.location>* {
+    vertical-align: top;
 }
 
-
-.logo,.location{
+.logo,
+.location {
     vertical-align: middle;
 }
-.icon-location{
+
+.icon-location {
     display: inline-block;
     width: 10px;
     height: 15px;
     background-image: url(static/lianjia.png);
     background-position: -189px -18px;
 }
-.location{
-     display: inline-block;
-     padding:3px 5px;
-     border-radius: 15px;
-     font-size: 70%;
+
+.location {
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 15px;
+    font-size: 70%;
+}
+
+.centered {
+    margin-top: 65px;
+    text-align: center;
+}
+
+.heading {
+    line-height: 1;
+    margin-bottom: 40px;
+}
+
+.heading h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.sub-heading {
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.search {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+.search .pointer {
+    position: relative;
+    top: 2px;
+    left: 3px;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0 8px 8px 8px;
+    border-color: transparent transparent #fff transparent;
+}
+
+.search .cat {
+    color: rgba(255, 255, 255, .6);
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.search .cat.active {
+    color: #fff;
+}
+
+.search-bar {
+    font-size: 0;
+}
+
+.search-bar input,
+.search-bar button {
+    padding: 10px;
+    border-radius: .3em;
+    color: #444;
+    background: #fff;
+    border: none;
+}
+
+.search-bar input {
+    width: 80%;
+}
+
+.search-bar button {
+    position: relative;
+    width: 20%;
+    top: 1px;
+}
+
+.input-group>* {
+    border-radius: 0;
+    border-right: none;
+}
+
+.input-group>*:first-child {
+    border-radius: .3em 0 0 .3em;
+}
+
+.input-group>*:last-child {
+    border-radius: 0 .3em .3em 0;
+    border-right-width: 0px;
+    color: #fff;
+    background: #00ae66;
+}
+
+.anno {
+    margin: 10px 0px;
+}
+
+.anno>* {
+    color: rgba(255, 255, 255, .5);
+    font-size: 70%;
+    padding: 5px;
+}
+
+.pic .fcol {
+    color: rgba(255, 255, 255, .2);
+}
+
+.pic a span {
+    color: rgba(255, 255, 255, .7)
+}
+
+.main>* {
+    margin: 20px 0;
+}
+
+.support {
+    text-align: center;
+}
+
+.support .pic {
+    padding: 5px 0px;
+}
+
+.support .pic img {
+    max-width: 90px;
+}
+
+.support .detail>* {
+    margin: 5px 0;
+}
+
+.support .title {
+    font-size: 90%;
+}
+
+.support .desc {
+    color: #aaa;
+    font-size: 65%;
 }
