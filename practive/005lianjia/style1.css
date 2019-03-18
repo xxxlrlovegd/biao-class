@@ -405,6 +405,7 @@ body {
 .card.bg {
     position: relative;
     text-align: center;
+    color: #fff;
 }
 
 .card.bg .home-img::after {
@@ -417,8 +418,106 @@ body {
     bottom: 0;
 }
 
-.card .text {
+.card.bg .text {
+    z-index: 1;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 25%;
+    font-size: 105%;
+}
+
+.card.bg .text .price {
+    color: yellow;
+    font-weight: bold;
+}
+
+.slogan {
+    background-image: url(static/truth-bgV2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slogan>* {
+    color: #fff;
+    line-height: 1;
+    padding: 60px 0;
+}
+
+.slogan .right>* {
+    margin-bottom: 10px;
+}
+
+.slogan .title {
+    font-size: 350%;
+    font-weight: bolder;
+}
+
+.slogan .sub-title {
+    font-size: 280%;
+}
+
+.block {
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+}
+
+.slogan .query {
+    position: relative;
+}
+
+.slogan .query button {
+    position: absolute;
+    right: 5px;
+    top: 3px;
+    border: none;
+    color: #666;
+    background: transparent;
+    padding: 5px;
+}
+
+.footer {
+    background: #444;
+    color: #aaa;
+    font-size: 80%
+}
+
+.footer a,
+.footer .anchor {
+    color: inherit;
+    display: inline-block;
+}
+
+.footer .link-group a {
+    color: #fff;
+}
+
+.footer .link-group a,
+.footer .link-group .anchor {
+    display: inline-block;
+    color: inherit;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.footer .container>* {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #555;
+}
+
+.footer .tab-group {
+    margin-bottom: 10px;
+}
+
+.footer .tab {
+    display: inline-block;
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, .2);
+    cursor: pointer;
+}
+
+.footer .meta {
+    margin: 10px 0;
 }
