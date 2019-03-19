@@ -164,7 +164,8 @@
         padding-right: 10px;
     }
     
-    .nav .container a:hover {
+    .nav .container a:hover,
+    .footer .sercive .s-info a:hover {
         color: tomato;
     }
     
@@ -267,7 +268,9 @@
     }
     
     .gcatename .cate-title span,
-    .gcatename .cate-title a {
+    .gcatename .cate-title a,
+    .video .v-title span,
+    .video .v-title a {
         font-size: 20px;
         color: #666;
     }
@@ -276,12 +279,87 @@
         background-color: rgba(250, 246, 246, 0.911);
     }
     
-    .g-card {
-        width: 212px;
-        height: 226px;
-        padding: 0 5px;
-        margin-left: 5px;
-        margin-right: 5px;
+    .g-card,
+    .v-cards {
+        text-align: center;
+        margin-left: 2px;
+        background: #fff;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+    }
+    
+    .g-card>* {
+        font-size: 14px;
+        color: #222;
+        text-align: center;
+        line-height: 1;
+    }
+    
+    .g-card .pic img {
+        max-width: 55%;
+    }
+    
+    .g-card .g-meta {
+        padding-bottom: 10px;
+    }
+    
+    .g-card .g-meta .delprice {
+        text-decoration: line-through;
+        color: tomato;
+    }
+    
+    .video {
+        margin: 20px 0;
+    }
+    
+    .video .v-title {
+        margin-top: 10px;
         margin-bottom: 10px;
-        background: rgba(0, 0, 0, .1);
+    }
+    
+    .video .v-pic img {
+        margin-bottom: 20px;
+    }
+    
+    .video .v-pic span {
+        font-size: 14px;
+        color: black;
+    }
+    
+    .video .v-desc {
+        font-size: 13px;
+        color: #888;
+    }
+    
+    .footer .link-group a {
+        font-size: 20px;
+        color: #666;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        text-align: right;
+    }
+    
+    .footer .sercive {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .footer .sercive .s-title>* {
+        padding: 10px 5px;
+        font-size: 15px;
+        color: #333;
+    }
+    
+    .footer .sercive .s-info>* {
+        padding: 5px;
+    }
+    
+    .footer h3 {
+        font-size: 18px;
+        color: tomato;
+    }
+    
+    .footer .link-groups>* {
+        padding: 10px 5px;
+        font-size: 12px;
+        color: #333;
     }
