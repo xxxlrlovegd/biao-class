@@ -94,150 +94,170 @@
     width: 100%;
 }
 
-.col{
-    float:left
+.col {
+    float: left
 }
-body{
-   margin: 0;   
-   font-family: sans-serif;
+
+body {
+    margin: 0;
+    font-family: sans-serif;
 }
-.row::before,.row::after{
-     display: block;
-     content:'';
-     clear: both;
+
+.row::before,
+.row::after {
+    display: block;
+    content: '';
+    clear: both;
 }
-*{
+
+* {
     box-sizing: border-box;
 }
-.container{
+
+.container {
     max-width: 1080px;
     margin: 0 auto;
 }
-.right{
+
+.right {
     text-align: right;
 }
-a{
+
+a {
     text-decoration: none;
-    color:#aaa;
+    color: #aaa;
 }
 
-.global-nav{
+.global-nav {
     background: #555;
-    font-size:13px;
-   
+    font-size: 13px;
 }
-.global-nav >*{
+
+.global-nav>* {
     padding: 8px 0;
 }
-.global-nav a{
-    font:inherit;
+
+.global-nav a {
+    font: inherit;
 }
 
-.global-nav a:hover{
+.global-nav a:hover {
     color: #fff;
 }
 
-.nav{
-     background:  #f0f6f3;
-     font-size: 16px;
-     padding: 25px;
+.nav {
+    background: #f0f6f3;
+    font-size: 16px;
+    padding: 25px;
 }
 
-.nav a{
-    color:#037b82;
+.nav a {
+    color: #037b82;
     padding-right: 8px;
 }
 
-.nav .title-logo{
-    font-size:25px;
-    padding-right:10px;
+.nav .title-logo {
+    font-size: 25px;
+    padding-right: 10px;
     font-weight: bolder;
 }
 
-.nav .search{
+.nav .search {
     position: relative;
 }
 
-.nav .search >*{
+.nav .search>* {
     outline: 0;
-    padding:5px 0;  
-    border-radius: .2em  
+    padding: 5px 0;
+    border-radius: .2em
 }
 
-.nav .search button{
-     position: absolute;
-     background: #fff;
-     color:#aaa;
-     border:none;
-     right:7px;
-     top:4px;
-     padding: 1px;
+.nav .search button {
+    position: absolute;
+    background: #fff;
+    color: #aaa;
+    border: none;
+    right: 7px;
+    top: 4px;
+    padding: 1px;
 }
-.card .like{
+
+.card .like {
     background: rgb(243, 216, 166);
-    font-size:12px;
+    font-size: 12px;
     text-align: center;
     height: 50px;
     width: 50px;
-    padding:8px;
+    padding: 8px;
     margin-right: 5px;
-    margin-top:10px
+    margin-top: 10px
 }
-.card .like >*{
+
+.card .like>* {
     margin: 0;
 }
-.sinfo{
-    margin:5px 0;
+
+.sinfo {
+    margin: 5px 0;
     border-bottom: 1px solid #eee;
 }
-.sinfo .stitle{
+
+.sinfo .stitle {
     margin-bottom: 5px;
 }
-.sinfo .stitle a{
-    color:#a2d2ee
+
+.sinfo .stitle a {
+    color: #a2d2ee
 }
-.sinfo .stitle a:hover{
-    color:#119cec;
+
+.sinfo .stitle a:hover {
+    color: #119cec;
 }
-.scontent{
-    font-size:13px;
+
+.scontent {
+    font-size: 13px;
     background: #f8f8f8;
 }
 
-.meta{
-    font-size:12px;
+.meta {
+    font-size: 12px;
     margin-bottom: 8px;
 }
-.page{
+
+.page {
     text-align: center;
 }
-.page a{
-    font-size:14px;
+
+.page a {
+    font-size: 14px;
 }
 
-.recom{
-    font-size:15px;
-    margin:0;
-    padding:0;
-    border-bottom:1px solid #eee;
+.recom {
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #eee;
 }
-.recom .rtitle{
-    padding:5px 0;
+
+.recom .rtitle {
+    padding: 5px 0;
     margin-bottom: 5px;
     border-bottom: 1px solid #eee;
 }
-.recom .recotitle a{
-   font-size: 14px; 
-   
+
+.recom .recotitle a {
+    font-size: 14px;
 }
-.recom .rdesc{
-    margin-top:12px;
+
+.recom .rdesc {
+    margin-top: 12px;
     margin-bottom: 8px;
     font-size: 12px;
 }
-.footer{
-    margin-top:5px;
+
+.footer {
+    margin-top: 5px;
     border-top: 1px #ccc dashed;
     font-size: 13px;
-    padding:8px;
+    padding: 8px;
 }

@@ -100,8 +100,6 @@ body {
     background-image: url(static/bannerV2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 3px -37px;
-    ;
 }
 
 .nav {
@@ -366,6 +364,10 @@ body {
     text-decoration: underline;
 }
 
+.card-group .link-group {
+    margin-right: 38px;
+}
+
 .card {
     margin-bottom: 30px;
     margin-right: 20px;
@@ -480,23 +482,23 @@ body {
 .footer {
     background: #444;
     color: #aaa;
-    font-size: 80%
+    font-size: 80%;
 }
 
-.footer a,
-.footer .anchor {
+.footer .container * {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.footer a {
     color: inherit;
     display: inline-block;
-}
-
-.footer .link-group a {
-    color: #fff;
 }
 
 .footer .link-group a,
-.footer .link-group .anchor {
+.footer .anchor {
     display: inline-block;
-    color: inherit;
+    color: #fff;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -511,6 +513,10 @@ body {
     margin-bottom: 10px;
 }
 
+.footer .tab:first-child {
+    color: #fff;
+}
+
 .footer .tab {
     display: inline-block;
     padding: 5px 10px;
@@ -520,4 +526,6 @@ body {
 
 .footer .meta {
     margin: 10px 0;
+    border: none;
+    font-size: 70%;
 }
