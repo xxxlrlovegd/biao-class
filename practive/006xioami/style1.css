@@ -1,76 +1,257 @@
-* {
-    box-sizing: border-box;
-    font: 10px sans-serif;
-}
-
-.row::before,
-.row::after {
-    content: '';
-    display: block;
-    clear: both;
-}
-
-.col {
-    float: left;
-    border: solid #ccc;
-    padding: 2px;
-    margin-bottom: 2px;
-}
-
-.col-1 {
-    width: 8.333333333333333%;
-}
-
-.col-2 {
-    width: 16.666666666666666%;
-}
-
-.col-3 {
-    width: 25%;
-}
-
-.col-4 {
-    width: 33.333333333333333%;
-}
-
-.col-5 {
-    width: 41.666666666666666%;
-}
-
-.col-6 {
-    width: 50%;
-}
-
-.col-7 {
-    width: 58.333333333333333%;
-}
-
-.col-8 {
-    width: 66.666666666666666%;
-}
-
-.col-9 {
-    width: 75%;
-}
-
-.col-10 {
-    width: 83.333333333333333%;
-}
-
-.col-11 {
-    width: 91.666666666666666%;
-}
-
-.col-12 {
-    width: 100%;
-}
-
-body {
-    margin: 0px;
-}
-
-.container {
-    max-width: 1080px;
-    margin-left: auto;
-    margin-right: auto;
-}
+      * {
+          box-sizing: border-box;
+          font: 10px sans-serif;
+      }
+      
+      .row::before,
+      .row::after {
+          content: '';
+          display: block;
+          clear: both;
+      }
+      
+      .col {
+          float: left;
+          padding: 2px;
+          margin-bottom: 2px;
+      }
+      
+      .col-1 {
+          width: 8.333333333333333%;
+      }
+      
+      .col-2 {
+          width: 16.666666666666666%;
+      }
+      
+      .col-3 {
+          width: 25%;
+      }
+      
+      .col-4 {
+          width: 33.333333333333333%;
+      }
+      
+      .col-5 {
+          width: 41.666666666666666%;
+      }
+      
+      .col-6 {
+          width: 50%;
+      }
+      
+      .col-7 {
+          width: 58.333333333333333%;
+      }
+      
+      .col-8 {
+          width: 66.666666666666666%;
+      }
+      
+      .col-9 {
+          width: 75%;
+      }
+      
+      .col-10 {
+          width: 83.333333333333333%;
+      }
+      
+      .col-11 {
+          width: 91.666666666666666%;
+      }
+      
+      .col-12 {
+          width: 100%;
+      }
+      
+      .text-left {
+          text-align: left;
+      }
+      
+      .text-right {
+          text-align: right;
+      }
+      
+      .left {
+          float: left;
+      }
+      
+      .right {
+          float: right;
+      }
+      
+      a {
+          text-decoration: none;
+          font-size: 10px;
+          color: #aaa;
+      }
+      
+      body {
+          margin: 0px;
+          font-size: 10px;
+      }
+      
+      .container {
+          max-width: 1080px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+      
+      .global-nav {
+          background: #333;
+          color: #ccc;
+      }
+      
+      .global-nav a {
+          display: inline-block;
+          padding: 5px;
+          color: inherit;
+      }
+      
+      .global-nav a:hover {
+          color: #fff;
+      }
+      
+      .global-nav .lighter {
+          background: #666;
+          padding: .7em;
+      }
+      
+      .first-screen>* {
+          margin-bottom: 20px;
+      }
+      
+      .nav.page {
+          margin: 0;
+      }
+      
+      .nav .logo {
+          background-color: #ff6700;
+          background-image: url(static/mi-logo.png);
+          height: 40px;
+          width: 40px;
+          background-position: center;
+          background-size: 80%;
+          margin-top: 20px;
+          margin-right: 100px;
+      }
+      
+      .nav .link-group>* {
+          display: inline-block;
+          padding: 30px 15px;
+          color: #444;
+          font-size: 1.5em;
+      }
+      
+      .nav .search {
+          position: relative;
+          margin-top: 21px;
+      }
+      
+      .nav .search .search-input>* {
+          padding: 8px;
+          font-size: 1.3em;
+          outline: 0;
+      }
+      
+      .nav .search input {
+          border: 1px solid #aaa;
+          width: 240px;
+          border-radius: .2em 0 0 .2em;
+      }
+      
+      .nav .search .rec-group {
+          position: absolute;
+          right: 47px;
+          top: 12px;
+          border: none;
+          color: #777;
+      }
+      
+      .nav .search .rec {
+          background: #eee;
+          padding: 2px 5px;
+      }
+      
+      .nav .search button {
+          position: relative;
+          right: 3px;
+          background-color: #fff;
+          color: #777;
+          border: 1px solid #aaa;
+          border-left: none;
+          border-radius: 0 .2em .2em 0;
+      }
+      
+      .search .serch-input {
+          font-size: 0px;
+      }
+      
+      .search .serch-input * {
+          font-size: 10px;
+      }
+      
+      .slider .container {
+          background-image: url(static/xmad.jpg);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+      
+      .slider .cat-group {
+          background: rgba(0, 0, 0, .4);
+          padding: 15px 0;
+      }
+      
+      .slider .cat {
+          display: block;
+          padding: 15px 20px;
+          color: #fff;
+          font-size: 14px;
+      }
+      
+      .slider .cat:hover {
+          background: tomato;
+      }
+      
+      .slider .navigator {
+          position: relative;
+      }
+      
+      .slider .navigator>* {
+          background: url(static/icon-slides.png);
+          position: absolute;
+          width: 28px;
+          height: 49px;
+          top: 233px;
+          color: #aaa;
+      }
+      
+      .slider .navigator .prev {
+          left: -2px;
+          background-position: 75px -80px;
+      }
+      
+      .slider .navigator .next {
+          right: -1px;
+          background-position: -129px -80px;
+      }
+      
+      .slider .navigator .prev:hover,
+      .slider .navigator .next:hover {
+          background-color: #888;
+      }
+      
+      .top-promo img {
+          width: 98%;
+          height: 155px;
+      }
+      
+      .shortcuts {
+          background: #60574f;
+          color: #fff;
+      }
+      
+      .shortcuts>* {
+          padding: 29px 12px;
+      }

@@ -214,7 +214,7 @@
     
     .adcate .cate>* {
         display: block;
-        padding: 12px;
+        padding: 12px 0;
         font-size: 15px;
         color: #fff;
     }
