@@ -1,0 +1,78 @@
+<!-- 响应式布局 -->
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+    
+    .row::before,
+    .row::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    
+    .col {
+        float: left;
+        display: inline-block;
+        width: 25%;
+    }
+    
+    img {
+        max-width: 98%;
+    }
+    
+    .card {
+        margin: 10px;
+        background: pink;
+    }
+    
+    .card>* {
+        padding: 5px;
+    }
+</style>
+<style media="screen and (max-width:850px)">
+    .col {
+        width: 50%;
+    }
+    
+    .card {
+        background: rgb(250, 250, 115);
+    }
+</style>
+<style media="screen and (max-width:600px)">
+    .col {
+        width: 100%;
+    }
+    
+    .card {
+        background: #fff;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .8);
+    }
+</style>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <img src="static/p1.jpg" alt="">
+            <p>要更努力鸭</p>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <img src="static/p1.jpg" alt="">
+            <p>要好好生活鸭</p>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <img src="static/p1.jpg" alt="">
+            <p>要好好吃饭鸭</p>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <img src="static/p1.jpg" alt="">
+            <p>要好好对待自己鸭</p>
+        </div>
+    </div>
+</div>
