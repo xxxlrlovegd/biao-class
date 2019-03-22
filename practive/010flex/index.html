@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FlexTest</title>
+    <style>
+        pre {
+            font-size: 150%;
+            font-weight: bold;
+        }
+        
+        .parent {
+            display: flex;
+            /* 对齐方式 */
+            justify-content: flex-end;
+            /* 交叉对齐方式 */
+            /* align-items: flex-start; */
+            border: solid;
+        }
+        
+        .child {
+            /* 扩张容器 */
+            flex-grow: 1;
+            border: solid tomato;
+            padding: 20px;
+        }
+        
+        .row {
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+        
+        .row-reverse {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+        
+        .column {
+            flex-direction: column;
+        }
+        
+        .column-reverse {
+            flex-direction: column-reverse;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>Row</pre>
+    <div class="parent row">
+        <div class="child">Item1</div>
+        <div class="child">Item2</div>
+        <div class="child">Item3</div>
+    </div>
+    <pre>Row-reverse</pre>
+    <div class="parent row-reverse">
+        <div class="child">Item1</div>
+        <div class="child">Item2</div>
+        <div class="child">Item3</div>
+    </div>
+    <pre>Column</pre>
+    <div class="parent column">
+        <div class="child">Item1</div>
+        <div class="child">Item2</div>
+        <div class="child">Item3</div>
+    </div>
+    <pre>Column-reverse</pre>
+    <div class="parent column-reverse">
+        <div class="child">Item1</div>
+        <div class="child">Item2</div>
+        <div class="child">Item3</div>
+    </div>
+</body>
+
+</html>
