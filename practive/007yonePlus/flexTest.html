@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一加手机官网 - 一加6T 全速旗舰，一触即发</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .text-red {
+            color: red;
+            margin-left: 2px;
+        }
+        
+        .parent,
+        .cards {
+            display: flex;
+            align-items: center;
+        }
+        
+        .child,
+        .card {
+            padding: 5px;
+            flex-grow: 1;
+            vertical-align: bottom;
+        }
+        
+        .link-group {
+            flex-grow: 3;
+            text-align: center;
+        }
+        
+        .link-group a {
+            padding-right: 20px;
+        }
+        
+        .user-info {
+            flex-grow: 2;
+            text-align: right;
+        }
+        
+        .card {
+            margin-right: 35px;
+            box-shadow: 0 0 3px rgba(0, 0, 0, .2)
+        }
+        
+        .card img {
+            margin-bottom: 10px;
+        }
+        
+        .card div {
+            font-size: 13px;
+            padding: 3px;
+        }
+        
+        .card div:last-child {
+            font-size: 12px;
+            opacity: .7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="child logo">
+            <a href=""><img src="static/oneplus.ico" alt=""></a>
+        </div>
+        <div class="child link-group">
+            <a href="#">
+                OnePlus6
+                <sup class="text-red">New</sup>
+            </a>
+            <a href="#">商城</a>
+            <a href="#">品牌</a>
+            <a href="#">服务</a>
+            <a href="#">博客</a>
+            <a href="#">论坛</a>
+        </div>
+        <div class="child user-info">
+            <a href="#" title="登录"><img src="./static/1.png" alt="登录" class="icon1"></a>
+            <a href="#" title="购物"><img src="./static/2.png" alt="购物" class="icon2"></a>
+            <a href="#" title="搜索"><img src="./static/3.png" alt="搜索" class="icon3"></a>
+        </div>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <img src="static/card1.jpg" alt="">
+            <div> 博客</div>
+            <div> OnePlus6 Android9.0正式版现已推送</div>
+        </div>
+        <div class="card">
+            <img src="static/card2.jpg" alt="">
+            <div>新闻</div>
+            <div>OnePlus6T .来了</div>
+        </div>
+        <div class="card">
+            <img src="static/card3.jpg" alt="">
+            <div>技巧</div>
+            <div>OnePlus6使用技巧</div>
+        </div>
+    </div>
+</body>
+
+</html>
