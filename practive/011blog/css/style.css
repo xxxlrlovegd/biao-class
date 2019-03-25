@@ -139,6 +139,26 @@ a {
     text-align: center;
 }
 
-.nav .container {
-    background: pink;
+.nav {
+    font-size: 1.6em;
+    color: #555;
+    font-weight: bold;
+    background-color: #eee;
+}
+
+.nav .container>* {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.nav a {
+    color: inherit;
+    padding: 20px 10px;
+}
+
+.nav img {
+    height: 48px;
+    width: 48px;
+    border-radius: 48px;
+    padding: 10px;
 }
