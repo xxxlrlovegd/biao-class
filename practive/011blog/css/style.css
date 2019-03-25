@@ -106,7 +106,7 @@ a {
 }
 
 .headimg {
-    margin-top: 80px;
+    margin-top: 40px;
     margin-bottom: 30px;
 }
 
@@ -143,22 +143,40 @@ a {
     font-size: 1.6em;
     color: #555;
     font-weight: bold;
-    background-color: #eee;
+    background: pink;
 }
 
 .nav .container>* {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    vertical-align: middle;
 }
 
 .nav a {
     color: inherit;
-    padding: 20px 10px;
+    padding: 0 10px;
+}
+
+.nav a:hover {
+    color: #aaa;
 }
 
 .nav img {
-    height: 48px;
-    width: 48px;
-    border-radius: 48px;
-    padding: 10px;
+    height: 22px;
+    width: 22px;
+    border-radius: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.mtitle {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+    color: rgb(250, 182, 57);
+    font-weight: bold;
+}
+
+.footer {
+    margin: 10px 0;
 }
