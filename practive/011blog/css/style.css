@@ -116,11 +116,14 @@ a {
     border-radius: 100px;
 }
 
-.desc {
+.desc,
+.other .desc {
     margin-bottom: 30px;
 }
 
-.desc>* {
+.desc>*,
+.other .author,
+.other .desc {
     font-size: 1.3em;
 }
 
@@ -132,6 +135,11 @@ a {
     padding: 10px;
 }
 
+.about .link-group a:hover {
+    color: black;
+    font-weight: bold;
+}
+
 .about .other img {
     margin-top: 20px;
     height: 120px;
@@ -140,10 +148,10 @@ a {
 }
 
 .nav {
-    font-size: 1.6em;
+    font-size: 2.3em;
     color: #555;
     font-weight: bold;
-    background: pink;
+    border-bottom: 1px dashed #eee
 }
 
 .nav .container>* {
@@ -152,18 +160,41 @@ a {
     vertical-align: middle;
 }
 
-.nav a {
+.nav a,
+.project-recoms .title a,
+.art .title a {
     color: inherit;
-    padding: 0 10px;
 }
 
-.nav a:hover {
-    color: #aaa;
+.nav a {
+    padding-right: 20px;
+}
+
+.nav a::after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    left: .7em;
+    width: 1px;
+    height: 15px;
+    background: #bbb;
+}
+
+.nav a:last-child::after {
+    background: #fff;
+}
+
+.nav .link-group a::after {
+    top: 1px;
+}
+
+.nav .icon-group a::after {
+    bottom: 4px;
 }
 
 .nav img {
-    height: 22px;
-    width: 22px;
+    height: 28px;
+    width: 28px;
     border-radius: 18px;
     margin-left: 10px;
     margin-right: 10px;
@@ -171,12 +202,88 @@ a {
 
 .mtitle {
     margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-size: 2em;
     color: rgb(250, 182, 57);
     font-weight: bold;
 }
 
+.project-recoms>* {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.project-recoms .pimg img,
+.other img {
+    width: 80px;
+}
+
+.project-recoms .title a,
+.art .title a,
+.other .title a {
+    font-size: 1.6em;
+}
+
+.nav a:hover,
+.project-recoms .title a:hover,
+.art .title a:hover,
+.other .title a:hover {
+    color: palevioletred;
+}
+
+.artice-recoms .art>* {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.art {
+    margin: 15px 0;
+}
+
+.art .other>* {
+    font-size: 1.3em;
+    color: #777;
+    padding-right: 5px;
+}
+
+.art .content {
+    padding-top: 10px;
+    display: flex;
+}
+
+.art .content img {
+    padding-top: 5px;
+}
+
+.art .desc {
+    font-size: 1.5em;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.other>* {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.other img {
+    width: 84px;
+}
+
+.other .title {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.other .title a {
+    color: rgb(223, 124, 223)
+}
+
 .footer {
     margin: 10px 0;
+    font-size: 14px;
 }
