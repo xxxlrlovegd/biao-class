@@ -225,7 +225,8 @@ a {
 
 .project-recoms .title a,
 .art .title a,
-.other .title a {
+.other .title a,
+.footer .title {
     font-size: 1.6em;
 }
 
@@ -290,4 +291,15 @@ a {
 .footer {
     margin: 10px 0;
     font-size: 14px;
+    border-top: 1px dashed #eee;
+}
+
+.footer .title {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.footer .desc {
+    font-size: .8em;
+    padding: 3px 0;
 }
