@@ -1,0 +1,99 @@
+.col-mid-1 {
+    width: 8.333333333333333%;
+}
+
+.col-mid-2 {
+    width: 16.666666666666666%;
+}
+
+.col-mid-3 {
+    width: 25%;
+}
+
+.col-mid-4 {
+    width: 33.333333333333333%;
+}
+
+.col-mid-5 {
+    width: 41.666666666666666%;
+}
+
+.col-mid-6 {
+    width: 50%;
+}
+
+.col-mid-7 {
+    width: 58.333333333333333%;
+}
+
+.col-mid-8 {
+    width: 66.666666666666666%;
+}
+
+.col-mid-9 {
+    width: 75%;
+}
+
+.col-mid-10 {
+    width: 83.333333333333333%;
+}
+
+.col-mid-11 {
+    width: 91.666666666666666%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+body {
+    background: pink;
+}
+
+.headimg {
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+.headimg img,
+.about .other img {
+    height: 80px;
+    width: 80px;
+}
+
+.about .desc {
+    display: none;
+}
+
+.about .link-group>* {
+    font-size: 1.4em;
+}
+
+.nav {
+    font-size: 1.8em;
+}
+
+.nav a {
+    padding-right: 10px;
+}
+
+.nav img {
+    height: 18px;
+    width: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.nav a::after {
+    display: none;
+}
+
+.bg {
+    background-image: url(../img/filled.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nav .icon-group>* {
+    display: none;
+}

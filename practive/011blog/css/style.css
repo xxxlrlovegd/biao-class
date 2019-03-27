@@ -110,9 +110,13 @@ a {
     margin-bottom: 30px;
 }
 
-.headimg img {
+.headimg img,
+.about .other img {
     height: 120px;
     width: 120px;
+}
+
+.headimg img {
     border-radius: 100px;
 }
 
@@ -142,12 +146,11 @@ a {
 .about .link-group a:hover {
     color: black;
     font-weight: bold;
+    background: pink;
 }
 
 .about .other img {
     margin-top: 20px;
-    height: 120px;
-    width: 120px;
     text-align: center;
 }
 
@@ -233,7 +236,8 @@ a {
 .nav a:hover,
 .project-recoms .title a:hover,
 .art .title a:hover,
-.other .title a:hover {
+.other .title a:hover,
+.footer .title {
     color: palevioletred;
 }
 
