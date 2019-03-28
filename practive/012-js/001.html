@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JsTest</title>
+</head>
+
+<body>
+    <script>
+        ;
+        (function() {
+            'use script'
+            // 测试打印
+            console.log("11111");
+            // 定义变量
+            let name, nickname;
+            name = "Yo,I'm Lr";
+            nickname = name;
+            console.log("name：", name, "nickname", nickname)
+                //简写并定义变量
+            let a = 1,
+                b = 2
+            c = a + b;
+            console.log("a=", a, "b=", b, "c=", c)
+                // 常量
+            const A = 1;
+            A = 2
+            console.log("再打印之前此处会报错，常量不能改变值", A)
+                //
+        })();
+    </script>
+</body>
+
+</html>
