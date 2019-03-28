@@ -8,6 +8,7 @@ body {
     font-family: sans-serif;
 }
 
+.wook-show>*,
 .text-left {
     text-align: left;
 }
@@ -26,6 +27,10 @@ body {
 
 .left {
     float: left;
+}
+
+.bl {
+    border-left: 1px solid #eee;
 }
 
 a {
@@ -187,8 +192,11 @@ a {
     background: #bbb;
 }
 
+#menu-checkbox,
+#menu-checkbox1,
+.nav label,
 .nav a:last-child::after {
-    background: #fff;
+    display: none;
 }
 
 .nav .link-group a::after {

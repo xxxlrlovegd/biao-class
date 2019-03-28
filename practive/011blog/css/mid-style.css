@@ -42,12 +42,8 @@
     width: 91.666666666666666%;
 }
 
-.col-12 {
+.col-mid-12 {
     width: 100%;
-}
-
-body {
-    background: pink;
 }
 
 .headimg {
@@ -61,7 +57,7 @@ body {
     width: 80px;
 }
 
-.about .desc {
+#menu-checkbox {
     display: none;
 }
 
@@ -69,31 +65,17 @@ body {
     font-size: 1.4em;
 }
 
-.nav {
-    font-size: 1.8em;
-}
-
 .nav a {
-    padding-right: 10px;
+    padding-right: 15px;
 }
 
 .nav img {
-    height: 18px;
-    width: 18px;
+    height: 24px;
+    width: 24px;
     margin-left: 2px;
     margin-right: 2px;
 }
 
-.nav a::after {
-    display: none;
-}
-
-.bg {
-    background-image: url(../img/filled.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.nav .icon-group>* {
-    display: none;
+.nav .text-right {
+    text-align: left;
 }

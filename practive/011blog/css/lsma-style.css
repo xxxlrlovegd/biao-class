@@ -1,3 +1,87 @@
-body {
-    background: yellow;
+.col-lsma-1 {
+    width: 8.333333333333333%;
+}
+
+.col-lsma-2 {
+    width: 16.666666666666666%;
+}
+
+.col-lsma-3 {
+    width: 25%;
+}
+
+.col-lsma-4 {
+    width: 33.333333333333333%;
+}
+
+.col-lsma-5 {
+    width: 41.666666666666666%;
+}
+
+.col-lsma-6 {
+    width: 50%;
+}
+
+.col-lsma-7 {
+    width: 58.333333333333333%;
+}
+
+.col-lsma-8 {
+    width: 66.666666666666666%;
+}
+
+.col-lsma-9 {
+    width: 75%;
+}
+
+.col-lsma-10 {
+    width: 83.333333333333333%;
+}
+
+.col-lsma-11 {
+    width: 91.666666666666666%;
+}
+
+.col-lsma-12 {
+    width: 100%;
+}
+
+.nav .link-group,
+.nav .icon-group,
+#menu-checkbox {
+    display: none;
+}
+
+#menu-checkbox1:checked~.link-group,
+#menu-checkbox1:checked~.icon-group {
+    display: block;
+}
+
+.headimg img,
+.about .other img {
+    height: 60px;
+    width: 60px;
+}
+
+.nav label {
+    display: block;
+}
+
+.nav label>* {
+    text-align: right;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    font-size: 1.4em;
+}
+
+.nav .link-group a {
+    display: block;
+}
+
+.nav .link-group a::after {
+    display: none;
+}
+
+.nav {
+    border: none;
 }

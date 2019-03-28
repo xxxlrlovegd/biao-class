@@ -7,17 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Xxxlglovegd Blog</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mid-style.css" media="screen and (max-width:1216px)">
-    <link rel="stylesheet" href="css/sma-style.css" media="screen and (max-width:750px)">
-    <link rel="stylesheet" href="css/lsma-style.css" media="screen and (max-width:340px)">
+    <link rel="stylesheet" href="css/mid-style.css" media="screen and (max-width:1337px)">
+    <link rel="stylesheet" href="css/sma-style.css" media="screen and (max-width:1120px)">
+    <link rel="stylesheet" href="css/lsma-style.css" media="screen and (max-width:710px)">
 </head>
 
 <body>
     <div class="row ">
-        <div class="col col-2 about">
+        <div class="col col-2 about col-lsma-3">
+            <label for="menu-checkbox">
             <div class="headimg">
-                <img src="img/headimg.jpg" alt="">
-            </div>
+                <img src="img/headimg.jpg" alt="" title="了解我">
+            </div> 
+            </label>
+            <input id="menu-checkbox" type="checkbox">
             <div class="desc">
                 <p>一颗爱吃喝玩的90后程序韭菜</p>
                 <p>两只脚跨入后端，一只脚迈进前端</p>
@@ -34,17 +37,23 @@
                 <p>实现首次握手</p>
             </div>
         </div>
-        <div class="col col-8" style="border-left: 1px solid #eee;">
+        <div class="col col-8 col-lsma-9 bl">
             <div class="nav">
                 <div class="row container">
-                    <div class="col col-9 col-mid-11 link-group">
-                        <a href="index.html">个人首页</a>
-                        <a href="artshow.html">作品展示</a>
-                        <a href="">文章分享</a>
-                        <a href="">评论选录</a>
-                        <a href="personalhole.html">个人树洞</a>
+                    <label for="menu-checkbox1">
+                       <div><img src="./img/list.png" alt=""></div>
+                   </label>
+                    <input id="menu-checkbox1" type="checkbox">
+                    <div class="col col-9 col-mid-12 link-group">
+                        <div class="col col-lsma-6">
+                            <a href="index.html">个人首页</a>
+                            <a href="artshow.html">作品展示</a>
+                            <a href="">文章分享</a>
+                            <a href="">评论选录</a>
+                            <a href="personalhole.html">个人树洞</a>
+                        </div>
                     </div>
-                    <div class="col col-3 col-mid-1 icon-group text-right bg">
+                    <div class="col col-3 col-mid-12 icon-group text-right bg">
                         <a href=""><img src="img/wb.png" alt="微博"></a>
                         <a href=""><img src="img/wx1.png" alt="微信"></a>
                         <a href="https://github.com/xxxlrlovegd" target="_blank"><img src="img/github.png" alt="github"></a>

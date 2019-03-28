@@ -1,3 +1,25 @@
-body {
-    background: #eee;
+.bl {
+    border: none;
+}
+
+.headimg {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.about .desc,
+.about .link-group>*,
+.about .other {
+    display: block;
+}
+
+#menu-checkbox:checked~.desc,
+#menu-checkbox:checked~.link-group>*,
+#menu-checkbox:checked~.other,
+#menu-checkbox {
+    display: none;
+}
+
+.nav {
+    font-size: 1.8em;
 }
