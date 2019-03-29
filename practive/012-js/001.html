@@ -12,7 +12,7 @@
     <script>
         ;
         (function() {
-            'use script'
+            'use strict'
             // 测试打印
             console.log("11111");
             // 定义变量
@@ -23,13 +23,123 @@
                 //简写并定义变量
             let a = 1,
                 b = 2
-            c = a + b;
+            let c = a + b;
             console.log("a=", a, "b=", b, "c=", c)
                 // 常量
             const A = 1;
-            A = 2
+            // A = 2
             console.log("再打印之前此处会报错，常量不能改变值", A)
-                //
+                //定义变量，之和为10，并打印
+            let e, d, sum;
+            e = 5;
+            d = 5;
+            sum = e + d;
+            console.log("sum：", sum)
+            let arr = [
+                1,
+                2,
+                666,
+            ];
+            console.log("arr:", arr[2]);
+            let arr1 = [
+                1,
+                2, [666],
+            ];
+            console.log("arr1", arr1[2][0]);
+            let arr2 = [
+                [
+                    [1, 5],
+                    ['whh', 666],
+                ],
+            ];
+            console.log("arr2", arr2[0][1][1])
+            let arr3 = [
+                [
+                    [100, 'Emmm'],
+                    [
+                        2, 'yo', [666],
+                    ],
+                ],
+            ];
+            console.log("arr3", arr3[0][1][2][0]);
+            let obj = {
+                a: 1,
+                b: 2,
+                c: 666,
+            };
+            console.log("obj", obj.c);
+            let obj1 = {
+                a: 1,
+                b: {
+                    yo: {
+                        em: '6',
+                        ha: 666,
+                    },
+                },
+            };
+            console.log("obj1", obj1.b.yo.ha);
+            let obj2 = {
+                a: 1,
+                b: {
+                    yo: [
+                        2,
+                        'La', {
+                            muhaha: '~',
+                            a: 666,
+                        }
+                    ],
+                },
+            };
+            console.log("obj2", obj2.b.yo[2].a);
+            let obj3 = {
+                a: 1,
+                b: {
+                    x: [
+                        2, {
+                            ya: [666]
+                        },
+                    ],
+                },
+            };
+            console.log("obj3", obj3.b.x[1].ya[0]);
+            let obj4 = {
+                a: [3, 5],
+                b: ['Yo', 1],
+            };
+            console.log(obj4.a.length, obj4.b.length);
+            let obj5 = {
+                a: {
+                    foo: 2
+                },
+                yo: [3, 5],
+                b: {
+                    la: {
+                        name: 'Wood',
+                        x: [5, 'a', 'c'],
+                        muhaha: ['Bob', 'Huahua'],
+                        length: 100,
+                    },
+                },
+            };
+            console.log("obj5", obj5.yo.length, obj5.b.la.x.length, obj5.b.la.muhaha.length);
+            let obj6 = {
+                la: 'Ha',
+                v: 2,
+                p: [2, 5],
+                b: {
+                    a: {
+                        name: 'White',
+                        yo: [5, 'a', 'c'],
+                        length: 100,
+                        map: true,
+                    },
+                },
+            };
+            console.log("obj6", obj6.la, obj6.b.a.name);
+            // 运算 操作符+ - * / % == === != !== > < in检查对象元素是否存在
+            //&& ||    通常习惯把开销小的放在前面，因为运算从左到右开始如果判断结果为true即后面的运算不进行判断
+            //continue跳过当前循环；break相当于结束循环
+
         })();
     </script>
 </body>

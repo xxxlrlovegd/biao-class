@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loop Test</title>
+</head>
+
+<body>
+    <script>
+        ;
+        (function() {
+            'user strict'
+            console.log("test")
+                //for and while testing
+            let arr = [
+                '王花花',
+                '刘备备',
+                '李拴蛋',
+                '赵可爽',
+            ]
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] == '李拴蛋') {
+                    break;
+                }
+                console.log("arr", arr[i]);
+            }
+            console.log("==================");
+            let arr1 = [
+                '王花花',
+                '刘备备',
+                '李拴蛋',
+                '赵可爽',
+            ]
+            for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i] == '李拴蛋') {
+                    continue;
+                }
+                console.log("arr1", arr1[i]);
+            }
+            console.log("==================");
+            let arr2 = [
+                '王花花',
+                '李拴蛋',
+                '赵可爽',
+            ]
+            let str = "";
+            for (let i = 0; i < arr2.length; i++) {
+                str += arr2[i];
+            }
+            console.log("str", str);
+            console.log("==================");
+            let str1 = "";
+            for (let i = 0; i < arr2.length; i++) {
+                if (i == arr2.length - 1) {
+                    str1 += arr2[i];
+                } else {
+                    str1 += arr2[i] + ',';
+                }
+            }
+            console.log("str1", str1);
+            console.log("==================");
+            let arr3 = [1, 4, 6, 9, 10];
+            let sum = 0;
+            for (let i = 0; i < arr3.length; i++) {
+                sum += arr3[i];
+            }
+            console.log("sum", sum);
+            console.log("==================");
+            let sum1 = 0;
+            let str3 = "";
+            let arr4 = ['Yo', 'Em', 1, 'La', 4, 8, 'Ha', 11, 5, true];
+            var newarr = []
+            for (let i = 0; i < arr4.length; i++) {
+                if (typeof arr4[i] === "number") {
+                    sum1 += arr4[i];
+                } else if (typeof arr4[i] === "string") {
+                    str3 += arr4[i] + " ";
+                } else {
+                    newarr.push(arr4[i]);
+                }
+            }
+            console.log("sum1", sum1);
+            console.log("str3", str3);
+            console.log("arr4", newarr)
+            console.log("==================");
+            let arr5 = [1, 3, 2, 7, 6];
+            let sum2 = 0;
+            let res = [];
+            for (let i = 0; i < arr5.length; i++) {
+                if (arr5[i] % 2 == 0) {
+                    sum2 += arr5[i];
+                } else {
+                    res.push(arr5[i]);
+                }
+            };
+            console.log("sum2", sum2);
+            console.log("res", res);
+            console.log("==================");
+            let arr6 = ['a1', 'a2', ['b1', 'b2', ['c1', 'c2', 'c3'], 'b3'], 'a3'];
+            let leve1 = "第一级:";
+            let leve2 = "第二级:"
+            let leve3 = "第三级:"
+            for (let i = 0; i < arr6.length; i++) {
+                if (typeof arr6[i] != "object") {
+                    leve1 += " " + arr6[i] + " ";
+                } else {
+                    for (let j = 0; j < arr6[i].length; j++) {
+                        if (typeof arr6[i][j] != "object") {
+                            leve2 += " " + arr6[i][j] + " ";
+                        } else {
+                            for (let k = 0; k < arr6[i][j].length; k++) {
+                                leve3 += " " + arr6[i][j][k] + " ";
+                            }
+                        }
+                    }
+                }
+            }
+            console.log("leve1", leve1);
+            console.log("leve2", leve2);
+            console.log("leve3", leve3);
+            console.log("==================");
+            let arr7 = [{
+                name: '王花花',
+                salary: 100,
+            }, {
+                name: '李拴蛋',
+                salary: 200,
+            }, {
+                name: '牛备备',
+                salary: 300,
+            }, ];
+            let newarr1 = [];
+            for (let i = 0; i < arr7.length; i++) {
+                if (arr7[i].salary > 100) {
+                    newarr1.push(arr7[i].name)
+                }
+            };
+            console.log("newarr1", newarr1);
+            console.log("==================");
+            let arr8 = [{
+                name: '王花花'
+            }, {
+                name: '王拴蛋'
+            }, {
+                name: '牛备备'
+            }, ];
+            let newarr2 = [];
+            for (let i = 0; i < arr8.length; i++) {
+                if (arr8[i].name.startsWith('王')) {
+                    newarr2.push(arr8[i].name);
+                }
+            }
+            console.log("newarr2", newarr2)
+        })();
+        //break打断父级循环
+        lable1: for (let i = 0; i < 10; i++) {
+            console.log("i:", i)
+            for (let j = 0; j < 10; j++) {
+                console.log("        j:", j);
+                break lable1;
+            }
+        }
+    </script>
+</body>
+
+</html>
