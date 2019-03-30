@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function CallBack Testing</title>
+</head>
+
+<body>
+    <script>
+        ;
+        (function() {
+            function eachNumber(arr, fn) {
+                for (let i = 0; i < arr.length; i++) {
+                    fn(arr[i]);
+                }
+            };
+            let newarr1 = [];
+            let newarr2 = [];
+            let sum = 0;
+            eachNumber([1, 2, 3, 4], function(it) {
+                console.log("it=", it)
+                sum += it
+                if (it % 2 == 0) {
+                    newarr1.push(it);
+                } else {
+                    newarr2.push(it);
+                }
+
+            });
+            console.log("newarr1=", newarr1, "newarr2=", newarr2);
+            console.log("sum=", sum);
+            let max;
+            let min;
+
+            function maxAndMin(arr, fn, fn1) {
+                lable: for (let i = 0; i < arr.length; i++) {
+                    for (let j = i + 1; j < arr.length; j++) {
+                        if (arr[j] < arr[i]) {
+                            fn(arr[i]);
+                            break lable;
+                        }
+                        if (arr[j] > arr[i]) {
+                            arr[il]
+                            fn1(arr[i]);
+                            break;
+                        }
+                    }
+                }
+            };
+            console.log("我靠，我的脑回路~min and max")
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function CallBack</title>
+</head>
+
+<body>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            console.log("call back回调函数是函数里面传函数！");
+            console.log("简单例子")
+
+            function all(fn1, fn2) {
+                fn1();
+                fn2();
+            };
+
+            function a() {
+                console.log("今天吃了什么？");
+            };
+
+            function b() {
+                console.log("早午吃了豆制凉菜，撑到现在~可能是量太大的事儿");
+            };
+            all(a, b);
+            console.log("应用例子")
+            let list = [
+                '王花花',
+                '刘备备',
+                '李拴蛋',
+                '赵可爽',
+            ];
+            let str = "";
+
+            function iterator(arr, fn) {
+                var flag = false;
+                for (let i = 0; i < arr.length; i++) {
+                    if (i == arr.length - 1) {
+                        flag = true;
+                    }
+                    fn(flag, arr[i]);
+                }
+            }
+            //此处用了匿名函数这个骚操作
+            iterator(list, function(flag, it) {
+                str += it + ' ';
+            })
+            console.log("str:", str);
+            let list1 = [
+                'Whh',
+                'Lbb',
+                'Lsd',
+                'Zks',
+            ];
+            let str1 = "";
+
+            function joinArr(flag, it) {
+                if (!flag)
+                    str1 += it + ","
+                else
+                    str1 += it
+            }
+            iterator(list1, joinArr);
+            console.log("str1:", str1);
+            console.log("===我靠，超级喜欢这个儿回调函数！！")
+            console.log("官方回调例子！")
+            let str2 = "";
+            list.forEach(function(it) {
+                console.log("forEach里面也是循环的数组只不过是用c写的！！", it)
+                str2 += it + " ";
+            })
+            console.log("str2:超级无敌nice", str2);
+        })();
+    </script>
+</body>
+
+</html>

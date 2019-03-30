@@ -124,11 +124,64 @@
         sumEven([5, 2, 3]);
         console.log("===============");
         //生成新的数组
-        function yoMaker(arrlen, arr = []) {
+        function yoMaker(arrlen) {
+            let newarr1 = [];
             for (let i = 0; i < arrlen; i++) {
-                arr.push()
+                newarr1.push('yo');
             }
+            console.log("newarr", newarr1)
         }
+        console.log("===============");
+        yoMaker(2);
+        console.log("===============");
+        yoMaker(4);
+        //生成新数组，条件递增数字
+        function arrayMaker(len) {
+            let newarr = [];
+            for (let i = 0; i < len; i++) {
+                newarr.push(i + 1);
+            }
+            console.log("newarr", newarr);
+        }
+        console.log("===============");
+        arrayMaker(2);
+        console.log("===============");
+        arrayMaker(4);
+        //生成新数组，条件存入偶数
+        function evenMaker(len) {
+            let newarr = [];
+            for (let i = 0; i < len; i++) {
+                if (i % 2 == 0)
+                    newarr.push(i);
+            }
+            console.log("newarr", newarr);
+        }
+        console.log("===============");
+        evenMaker(4);
+        console.log("===============");
+        evenMaker(8);
+        //根据输入的数据返回结果
+        let list1 = [
+            'abb',
+            'bcc',
+            'cdd',
+            'daa',
+        ];
+
+        function search(arr, str) {
+            let newarr = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i].includes(str)) {
+                    newarr.push(arr[i]);
+                }
+            }
+            console.log("newarr", newarr);
+        }
+        console.log("===============");
+        search(list1, 'a');
+        search(list1, 'b');
+        search(list1, 'ab');
+        console.log("===============");
     </script>
 </body>
 
