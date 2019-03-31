@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function CallBack</title>
+</head>
+
+<body>
+    <script>
+        ;
+        (
+            function() {
+                'use strict'
+                console.log("回调函数练习")
+                    //基础函数
+                function eachNumber(arr, fn) {
+                    for (let i = 0; i < arr.length; i++) {
+                        fn(arr[i]);
+                    }
+                };
+
+                function evenNumber(arr) {
+                    let result = [];
+                    eachNumber(arr, function(item) {
+                        if (!(item % 2))
+                            result.push(item);
+
+                    })
+                    return result;
+                };
+                console.log("偶数组", evenNumber([1, 2, 3, 4]));
+
+                function oddNumber(arr) {
+                    let result = [];
+                    eachNumber(arr, function(item) {
+                        if (item % 2)
+                            result.push(item);
+
+                    })
+                    return result;
+                };
+                console.log("奇数组", oddNumber([1, 2, 3, 4]));
+
+                function sum(arr) {
+                    let sum = 0;
+                    // eachNumber(arr, function(it) {
+                    //         sum += it;
+                    //     })
+                    // eachNumber(arr, it => {
+                    //         sum += it;
+                    //     })
+                    // eachNumber(arr, (it) => {
+                    //     sum += it
+                    // });
+                    //以上es5,es6函数写法
+                    //es6简写 如果参数只有一个，并且函数只执行一条语句，则可简写成如下所示的语句
+                    eachNumber(arr, it => sum += it);
+                    return sum;
+                };
+                console.log("数组里求和", sum([1, 2, 3, 4]));
+
+                function max(arr) {
+                    let max = 0;
+                    eachNumber(arr, it => {
+                        if (max < it) {
+                            max = it
+                        }
+                    })
+                    return max;
+                }
+                console.log("数组里求最大", max([2, 5, 1, 2, 8, 3, 4]));
+
+                function min(arr) {
+                    let min = 0;
+                    eachNumber(arr, it => {
+                        if (min == 0) {
+                            min = it
+                        } else {
+                            if (min > it) {
+                                min = it
+                            }
+                        }
+                    })
+                    return min;
+                }
+                console.log("数组里求最小", min([2, 5, 1, -8, 2, 8, 3, 4, -1]));
+
+                function getSearch(arr, str) {
+                    let result = [];
+                    eachNumber(arr, it => {
+                        if (it.indexOf(str) != -1) {
+                            result.push(it)
+                        }
+                    });
+                    return result;
+                };
+                console.log("数组中含有yo的数据数组", getSearch(['a', 'yo', 'yoo'], 'yo'));
+                console.log("数组中含有背背的数据数组", getSearch(['背背山', '六六坡', '背背路', "佳背背"], '背背'));
+
+                function exclude(arr, str) {
+                    let result = [];
+                    eachNumber(arr, it => {
+                        if (it.indexOf(str) == -1) {
+                            result.push(it)
+                        }
+                    });
+                    return result;
+                };
+                console.log("数组中不含有yo的数据数组", exclude(['a', 'yo', 'yoo'], 'yo'));
+                console.log("数组中不含有背背的数据数组", exclude(['背背山', '六六坡', '背背路', "佳背背", "王背背 ", "背哈背"], '背背'));
+
+                function shortStr(arr, l) {
+                    let result = [];
+                    eachNumber(arr, it => {
+                        if (it.length == l) {
+                            result.push(it);
+                        }
+                    });
+                    return result;
+                };
+                console.log("数组中长度相同的数据数组", shortStr(['a', 'yo', 'yoo', "l", "lu", "r", "rui"], 1));
+
+                function join(arr) {
+                    let str = "";
+                    eachNumber(arr, it => str += it);
+                    return str;
+                };
+                console.log("连接数组的数据", join(["lu", "rui", "-", "g", "d"]));
+
+
+            })();
+    </script>
+</body>
+
+</html

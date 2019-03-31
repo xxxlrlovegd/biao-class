@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ad-board</title>
+    <style>
+         :root {
+            font-family: sans-serif;
+            font-size: 15px;
+        }
+        
+        .board {
+            display: inline-block;
+            font-size: 2rem;
+            background: black;
+            color: red;
+            padding: 5px;
+            line-height: 1;
+            opacity: 1;
+        }
+        
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="board">
+        <span class="inner">修手机 贴膜</span>
+    </div>
+    <script>
+        const board = document.querySelector('.board');
+        const inner = board.querySelector('.inner');
+        setInterval(
+            () => {
+                //此时文字和背景一起闪；
+                //board.hidden = !board.hidden;
+                //只想让文子闪，可以用innerText
+                //方法一：文字闪但是撑不起来了；
+                // if (board.innerText)
+                //     board.innerText = "";
+                // else
+                //     board.innerText = ' 修手机 贴膜';
+                //方法2：隐藏span,文字闪但是撑不起来了；
+                //inner.hidden = !inner.hidden;
+                //方法3：修改span的不透明度,此处有坑！！js read style-js读css样式和写的接口方法不一样！！！
+                console.log(getComputedStyle(inner).opacity)
+                if (getComputedStyle(inner).opacity == '1')
+                    inner.style.opacity = 0;
+                else
+                    inner.style.opacity = 1;
+            }, 500
+        )
+    </script>
+</body>
+
+</html>
