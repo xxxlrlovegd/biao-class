@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ad board</title>
+    <style>
+         :root {
+            font-size: 18px;
+            font-family: sans-serif;
+        }
+        
+        .board {
+            display: inline-block;
+            padding: 10px;
+            font-size: 2rem;
+            background: black;
+            color: red;
+            border: 5px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="board">
+        <span class="inner"></span>
+    </div>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            const board = document.querySelector('.board');
+            const inner = board.querySelector('.inner');
+            let list = ['炸鸡', '可乐', '红烧肉', '地三鲜', '茄汁面', '麻辣肠'];
+            let count = 0;
+            inner.innerText = list[count];
+            init();
+
+            function init() {
+                setStartFlash();
+            };
+
+            function setStartFlash() {
+                setInterval(() => {
+                    toggleText(
+                        () => {
+                            board.style.borderColor = 'transparent';
+                        },
+                        () => {
+                            board.style.borderColor = 'inherit';
+                            count++;
+                            if (count > list.length - 1) {
+                                count = 0;
+                                inner.innerText = list[count];
+                            }
+                            inner.innerText = list[count];
+                        })
+                }, 500);
+            };
+
+            function visible() {
+                return getComputedStyle(inner).opacity == '1';
+            };
+
+            function toggleText(hide, show) {
+                if (visible()) {
+                    inner.style.opacity = 0;
+                    hide();
+                } else {
+                    inner.style.opacity = 1;
+                    show();
+                }
+            };
+        })();
+    </script>
+</body>
+
+</html>
