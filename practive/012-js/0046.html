@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ad board</title>
+    <style>
+         :root {
+            font-size: 18px;
+            font-family: sans-serif;
+        }
+        
+        .board {
+            display: inline-block;
+            padding: 10px;
+            font-size: 2rem;
+            background: black;
+            color: red;
+            border: 5px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="board">
+        <span class="inner"></span>
+    </div>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            const board = document.querySelector('.board');
+            const inner = board.querySelector('.inner');
+            let count = 0;
+            let list = ["红烧肉", "地三鲜", "麻婆豆腐", "米饭", "西瓜"]
+            inner.innerText = list[count];
+            setInterval(() => {
+                if (getComputedStyle(inner).opacity == '1') {
+                    inner.style.opacity = 0;
+                    board.style.borderColor = 'transparent';
+                } else {
+                    count++;
+                    if (count >= list.length) {
+                        count = 0;
+                    }
+                    inner.innerText = list[count]
+                    inner.style.opacity = 1;
+                    board.style.borderColor = 'inherit';
+                }
+            }, 500);
+        })();
+    </script>
+</body>
+
+</html>
