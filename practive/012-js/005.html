@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Slide</title>
     <style>
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -19,6 +24,8 @@
         .item {
             position: absolute;
             display: block;
+            opacity: 0;
+            transition: all .5s;
         }
     </style>
 </head>
@@ -41,14 +48,51 @@
             ;
             (function() {
                 'use strict'
+                const slide = document.querySelector('.slide');
+                const item = slide.querySelectorAll('.item');
+                let count = 0;
+                let lastIndex = item.length - 1;
                 init();
 
                 function init() {
-
+                    show(item[count])
+                    setStartFlash();
                 };
-                setInterval(() => {
-                    console.log('脑瓜仁疼')
-                }, 1000);
+
+                function setStartFlash() {
+                    setInterval(() => {
+                        flip();
+                    }, 2000);
+                };
+
+                function flip() {
+                    ++count;
+                    if (count >= item.length)
+                        count = 0;
+                    let prev = getPrev();
+                    let next = item[count];
+                    hide(prev);
+                    show(next);
+                };
+
+                function getPrev() {
+                    if (count == 0)
+                        return item[lastIndex];
+                    else
+                        return item[count - 1];
+                };
+
+                function hide(el) {
+                    if (!el)
+                        return;
+                    el.style.opacity = 0;
+                };
+
+                function show(el) {
+                    if (!el)
+                        return;
+                    el.style.opacity = 1;
+                };
             })();
         </script>
     </div>
