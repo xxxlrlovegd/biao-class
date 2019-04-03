@@ -34,68 +34,68 @@
     <div class="container">
         <div class="slide">
             <a href="" class="item">
-                <img src="http://dummyimage.com/300x120?text=A" alt="">
+                <img src="img/1000x500-A.png" alt="">
             </a>
             <a href="" class="item">
-                <img src="http://dummyimage.com/300x120?text=B" alt="">
+                <img src="img/1000x500-B.png" alt="">
             </a>
             <a href="" class="item">
-                <img src="http://dummyimage.com/300x120?text=C" alt="">
+                <img src="img/1000x500-C.png" alt="">
             </a>
-
         </div>
-        <script>
-            ;
-            (function() {
-                'use strict'
-                const slide = document.querySelector('.slide');
-                const item = slide.querySelectorAll('.item');
-                let count = 0;
-                let lastIndex = item.length - 1;
-                init();
-
-                function init() {
-                    show(item[count])
-                    setStartFlash();
-                };
-
-                function setStartFlash() {
-                    setInterval(() => {
-                        flip();
-                    }, 2000);
-                };
-
-                function flip() {
-                    ++count;
-                    if (count >= item.length)
-                        count = 0;
-                    let prev = getPrev();
-                    let next = item[count];
-                    hide(prev);
-                    show(next);
-                };
-
-                function getPrev() {
-                    if (count == 0)
-                        return item[lastIndex];
-                    else
-                        return item[count - 1];
-                };
-
-                function hide(el) {
-                    if (!el)
-                        return;
-                    el.style.opacity = 0;
-                };
-
-                function show(el) {
-                    if (!el)
-                        return;
-                    el.style.opacity = 1;
-                };
-            })();
-        </script>
     </div>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            const slide = document.querySelector('.slide');
+            const item = slide.querySelectorAll('.item');
+            let count = 0;
+            let lastIndex = item.length - 1;
+            init();
+
+            function init() {
+                show(item[count])
+                setStartFlash();
+            };
+
+            function setStartFlash() {
+                setInterval(() => {
+                    flip();
+                }, 2000);
+            };
+
+            function flip() {
+                ++count;
+                if (count >= item.length)
+                    count = 0;
+                let prev = getPrev();
+                let next = item[count];
+                hide(prev);
+                show(next);
+            };
+
+            function getPrev() {
+                if (count == 0)
+                    return item[lastIndex];
+                else
+                    return item[count - 1];
+            };
+
+            function hide(el) {
+                if (!el)
+                    return;
+                el.style.opacity = 0;
+            };
+
+            function show(el) {
+                if (!el)
+                    return;
+                el.style.opacity = 1;
+            };
+        })();
+    </script>
+
 </body>
 
 </html>

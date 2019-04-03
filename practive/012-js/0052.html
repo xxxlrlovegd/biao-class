@@ -9,7 +9,7 @@
     <style>
         img {
             max-width: 100%;
-            display: inline-block;
+            display: block;
         }
         
         .container {
@@ -20,15 +20,15 @@
         
         .slide {
             position: relative;
+            height: 290px;
+            overflow: hidden;
         }
         
         .item {
-            background: pink;
             position: absolute;
-            transition: all .3;
-            padding: 10px;
-            left: 0;
-            z-index: 1;
+            display: block;
+            transition: all .5s;
+            width: 100%;
         }
     </style>
 </head>
@@ -37,13 +37,13 @@
     <div class="container">
         <div class="slide">
             <a href="" class="item">
-                <img src="http://dummyimage.com/300x120?text=A" alt="">
+                <img src="img/1000x500-A.png" alt="">
             </a>
             <a href="" class="item">
-                <img src="http://dummyimage.com/300x120?text=B" alt="">
+                <img src="img/1000x500-B.png" alt="">
             </a>
             <a href="" class="item">
-                <img src="http://dummyimage.com/300x120?text=C" alt="">
+                <img src="img/1000x500-C.png" alt="">
             </a>
         </div>
     </div>
@@ -54,6 +54,7 @@
             const slide = document.querySelector('.slide');
             const item = slide.querySelectorAll('.item');
             let count = 0;
+            let lastIndex = item.length - 1;
             init();
 
             function init() {
@@ -61,8 +62,57 @@
             };
 
             function setStartFlash() {
-                setInterval(() => {}, 1500)
+                slider()
+                sliderZ()
+                setInterval(() => {
+                    indexCurrent()
+                    slider()
+                    sliderZ()
+                }, 3000)
             };
+
+            function slider() {
+                let prev = getPrev(count);
+                let current = getCurrent(count);
+                let next = getNext(count);
+                prev.style.left = -prev.offsetWidth + 'px';
+                current.style.left = 0;
+                next.style.left = next.offsetWidth + 'px'
+            }
+
+            function sliderZ() {
+                let prev = getPrev(count);
+                let current = getCurrent(count);
+                let next = getNext(count);
+                prev.style.zIndex = 1;
+                current.style.zIndex = 2;
+                next.style.zIndex = 0;
+            }
+
+            function indexCurrent() {
+                ++count;
+                if (count > lastIndex) {
+                    count = 0;
+                }
+            }
+
+            function getPrev(i) {
+                if (i != 0) {
+                    return item[i - 1]
+                } else
+                    return item[lastIndex]
+            }
+
+            function getCurrent(i) {
+                return item[i];
+            }
+
+            function getNext(i) {
+                if (i != lastIndex)
+                    return item[i + 1]
+                else
+                    return item[0]
+            }
         })();
     </script>
 </body>
