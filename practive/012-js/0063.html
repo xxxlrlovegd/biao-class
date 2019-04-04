@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom Test</title>
+    <style>
+         :root {
+            font-family: sans-serif;
+            font-size: 15px;
+        }
+        
+        .content {
+            color: #fff;
+            width: 450px;
+            background: black;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h3 class="title">小黑板</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae commodi debitis ex illum ipsum labore minus quo sint, tempore. Aliquam atque cum cumque esse eum magni nostrum quasi vel!
+        </p>
+    </div>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            let content = document.querySelector('.content');
+            let a = document.querySelector('.a')
+            let flag = true;
+            window.addEventListener('keyup', (event) => {
+                if (event.key == 'q') {
+                    flag ?
+                        content.style.display = 'none' : content.style.display = 'block';
+                    flag = !flag
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

@@ -57,17 +57,21 @@
             let parmconfig = {
                 model: 'slide',
             }
-            init();
+            init(parmconfig);
 
-            function init() {
-                setStartFlash();
+            function init(param) {
+                //assign对象合并方法;
+                let newconfig = Object.assign({}, config, param)
+                setStartFlash(newconfig);
             };
 
-            function setStartFlash() {
-                flode();
+            function setStartFlash(param) {
+                param.model == 'flode' ?
+                    flode() : slider();
                 setInterval(() => {
                     itemIndex();
-                    flode();
+                    param.model == 'flode' ?
+                        flode() : slider();
                 }, 1000);
             };
 

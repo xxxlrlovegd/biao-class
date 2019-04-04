@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom Test</title>
+    <style>
+        .toggle {
+            background: #fff;
+            padding: 10px;
+            margin: 5px;
+        }
+        
+        .item {
+            display: none;
+        }
+        
+        .item a {
+            text-decoration: none;
+            background: #666;
+            color: #fff;
+            width: 65px;
+            display: block;
+            padding: 10px;
+        }
+        
+        .item a:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="toggle">戳我戳我</button>
+    <div class="item">
+        <a href="" class="link-group">关于我</a>
+        <a href="" class="link-group">了解我</a>
+        <a href="" class="link-group">帮助我</a>
+        <a href="" class="link-group">救救我</a>
+    </div>
+    <script>
+        let toggle = document.querySelector('.toggle');
+        let item = document.querySelector('.item');
+        console.dir(toggle)
+        console.dir(toggle.addEventListener)
+        console.dir(item)
+        toggle.addEventListener('mouseenter', () => {
+            item.style.display = 'block';
+        })
+        toggle.addEventListener('mouseleave', () => {
+            item.style.display = 'none';
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom Test 冒泡与捕获</title>
+    <style>
+        body {
+            border: 1px solid tomato;
+            width: 1828px;
+            height: 1000px;
+        }
+        
+        .toggle {
+            padding: 8px;
+            margin: 5px;
+            background: #fff;
+            border: 0;
+            display: block;
+        }
+        
+        .item {
+            display: inline-block
+        }
+        
+        .item a {
+            width: 65px;
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background: #555;
+        }
+        
+        .item a:hover {
+            background: black;
+        }
+        
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="toggle">查看更多</button>
+    <div class="item " hidden>
+        <a href="#" class="link-group">关于我</a>
+        <a href="#" class="link-group">了解我</a>
+        <a href="#" class="link-group">哈哈我</a>
+        <a href="#" class="link-group">嘻嘻我</a>
+    </div>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            const toggle = document.querySelector('.toggle')
+            const item = document.querySelector('.item')
+            const body = document.querySelector('body')
+                // toggle.addEventListener('click', (e) => {
+                //     console.log(e)
+                //     item.hidden = !item.hidden;
+                // }, false)
+            body.addEventListener('click', (e) => {
+                console.log(e)
+                if (e.target == body)
+                    item.hidden = false;
+                item.hidden = !item.hidden;
+            })
+        })();
+    </script>
+</body>
+
+</html>

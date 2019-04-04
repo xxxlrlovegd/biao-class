@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom Test</title>
+    <style>
+        .toggle {
+            padding: 8px;
+            margin: 5px;
+            background: #fff;
+            border: 0;
+        }
+        
+        .item {
+            display: none;
+        }
+        
+        .item a {
+            width: 65px;
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background: #555;
+        }
+        
+        .item a:hover {
+            background: black;
+        }
+        
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="toggle">查看更多</button>
+    <div class="item ">
+        <a href="" class="link-group">关于我</a>
+        <a href="" class="link-group">了解我</a>
+        <a href="" class="link-group">哈哈我</a>
+        <a href="" class="link-group">嘻嘻我</a>
+    </div>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            let toggle = document.querySelector('.toggle');
+            let item = document.querySelector('.item');
+            let flag = true;
+            toggle.addEventListener('click', () => {
+                // item.hidden = !item.hidden;
+                flag ?
+                    item.style.display = 'block' :
+                    item.style.display = 'none';
+                flag = !flag;
+            })
+        })();
+    </script>
+</body>
+
+</html>
