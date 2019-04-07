@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Popup Test</title>
+    <style>
+        .biao-popup {
+            position: fixed;
+            padding: 10px;
+            border: 4px solid;
+            background: #fff;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .biao-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            ;
+        }
+        
+        img {
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="triggle">收藏</button>
+    <div class="popup">
+        <img src="../002-html-element/static/388747180096083633.jpg" alt="">
+        <div>是否确认收藏？</div>
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing
+        elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore
+        maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus
+        necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus
+        nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam
+        sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio
+        perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos
+        recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis
+        tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem,
+        voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem
+        ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing
+        elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur
+        corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates.
+    </div>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            let triggle, popup, mask, cancel;
+            init('#triggle', ".popup");
+
+            function init(param1, param2) {
+                initTriggle(param1)
+                initPopup(param2)
+                creatMask()
+                creatConfimButton()
+                creatCancelButton()
+                bindOpen()
+                bindClose()
+                popupButton()
+            };
+
+            function initTriggle(param) {
+                triggle = document.querySelector(param);
+            };
+
+            function initPopup(param) {
+                popup = document.querySelector(param);
+                popup.hidden = true;
+                popup.classList.add('biao-popup');
+            };
+
+            function creatMask() {
+                mask = document.createElement('div');
+                mask.classList.add('biao-mask')
+                mask.hidden = true;
+                document.body.appendChild(mask);
+            };
+
+            function creatConfimButton() {
+                confirm = document.createElement('button');
+                confirm.classList.add('confirm');
+                confirm.innerText = '确定';
+                confirm.style.margin = '5px';
+                popup.appendChild(confirm);
+            };
+
+            function creatCancelButton() {
+                cancel = document.createElement('button');
+                cancel.classList.add('cancel');
+                cancel.innerText = '取消'
+                popup.appendChild(cancel);
+            };
+
+            function popupVisible(show) {
+                mask.hidden = popup.hidden = !show
+            }
+
+            function bindOpen() {
+                triggle.addEventListener('click', () => {
+                    popupVisible(popup.hidden)
+                    popupLocation()
+                });
+            };
+
+            function popupLocation() {
+                popup.style.top = (window.innerHeight / 2 - popup.offsetHeight / 2) + 'px';
+                popup.style.left = (window.innerWidth / 2 - popup.offsetWidth / 2) + 'px';
+            }
+
+            function bindClose() {
+                mask.addEventListener('click', () => {
+                    popupVisible(popup.hidden)
+                });
+            };
+
+            function popupButton() {
+                cancel.addEventListener('click', () => {
+                    popupVisible(popup.hidden);
+                });
+                confirm.addEventListener('click', () => {
+                    alert('你今天真是可爱，所以要更努力鸭！');
+                    popupVisible(popup.hidden);
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>
