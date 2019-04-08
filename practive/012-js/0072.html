@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Poup Test</title>
+    <style>
+        .lr-popup {
+            position: fixed;
+            padding: 15px;
+            border: 4px solid;
+            box-shadow: 0 3px 1px rgba(0, 0, 0, .2);
+            background: #fff;
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .lr-mask {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .6)
+        }
+        
+        img {
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="triggle">收藏</button>
+    <div class="popup">
+        <img src="../002-html-element/static/388747180096083633.jpg" alt="">
+        <div>是否确认收藏?</div>
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing
+        elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore
+        maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus
+        necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus
+        nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam
+        sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio
+        perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos
+        recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis
+        tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem,
+        voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem
+        ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing
+        elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur
+        corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus
+        necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus
+        nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam
+        sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel?
+        Dolores eos est itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est
+        itaque, laborum numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum
+        numquam obcaecati vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore maiores nam natus necessitatibus nihil quasi quibusdam sit tempora, vel? Dolores eos est itaque, laborum numquam obcaecati
+        vitae voluptate voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem,
+        voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem
+        ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing
+        elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur
+        corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore
+        ducimus eaque ex id, ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id,
+        ipsa itaque modi nisi, odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur corporis debitis dolore ducimus eaque ex id, ipsa itaque modi nisi,
+        odit optio perspiciatis quos recusandae reiciendis tempore vel voluptatem, voluptates.
+    </div>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            let triggle, popup, mask, confim, cancel, newconfig;
+            let defaultconfig = {
+                position: 'center',
+                yoffset: 0,
+                xoffset: 0,
+                on: 'click',
+                keyToHide: 'Escape'
+            }
+            let useConfig = {
+                yoffset: -20
+            }
+            init('.triggle', '.popup', useConfig);
+
+            function init(param1, param2, param3) {
+                newconfig = loadConfig(param3)
+                initTriggle(param1);
+                initPopup(param2);
+                creatMask();
+                bindOpen();
+                bindClose();
+                creatConfirm();
+                creatCancel();
+                popupButton();
+                popupShortWay();
+            };
+            //加载用户配置
+            function loadConfig(parm) {
+                return Object.assign({}, defaultconfig, parm)
+            }
+            //初始化按钮事件
+            function initTriggle(param) {
+                triggle = document.querySelector(param);
+            }
+            // 初始化弹框事件
+            function initPopup(param) {
+                popup = document.querySelector(param);
+                popup.hidden = true;
+                popup.classList.add('lr-popup');
+            };
+            //创建遮罩层
+            function creatMask() {
+                mask = document.createElement('div');
+                mask.classList.add('lr-mask');
+                document.body.appendChild(mask);
+                mask.hidden = true;
+            };
+            // 弹窗打开位置
+            function popupLocation(position, yoffset, xoffset) {
+                // 用switch并不灵活,因为case只能有一个条件
+                // switch (position) {
+                //     case "top-left" :
+                //         popup.style.top = 0;
+                //         popup.style.left = 0;
+                //         break;
+                //     default:
+                //         popup.style.top = (window.innerHeight / 2 - popup.offsetHeight / 2) + 'px';
+                //         popup.style.left = (window.innerWidth / 2 - popup.offsetWidth / 2) + 'px';
+                //         break;
+                // };
+                let style = popup.style;
+                let Width = window.innerWidth;
+                let Height = window.innerHeight;
+                let popupHeight = popup.offsetHeight;
+                let popupWidth = popup.offsetWidth;
+                //居中
+                if (position == "center") {
+                    style.top = (Height / 2 - popupHeight / 2 + yoffset) + 'px';
+                    style.left = (Width / 2 - popupWidth / 2 + xoffset) + 'px';
+                    // 上中
+                } else if (position == "top" || position == "top-center" || position == "center-top") {
+                    style.top = yoffset + 'px';
+                    style.left = (Width / 2 - popupWidth / 2 + xoffset) + 'px';
+                    //下中
+                } else if (position == "bottom" || position == "bottom-center" || position == "center-bottom") {
+                    style.bottom = yoffset + 'px';
+                    style.left = (Width / 2 - popupWidth / 2 + xoffset) + 'px';
+                    // 左中
+                } else if (position == "left" || position == "left-center" || position == "center-left") {
+                    style.top = (Height / 2 - popupHeight / 2 + yoffset) + 'px';
+                    style.left = xoffset + 'px';
+                    // 右中
+                } else if (position == "right" || position == "right-center" || position == "center-right") {
+                    style.top = (Height / 2 - popupHeight / 2 + yoffset) + 'px';
+                    style.right = xoffset + 'px';
+                    // 左上
+                } else if (position == "left-top" || position == "top-left") {
+                    style.top = yoffset + 'px';
+                    style.left = xoffset + 'px';
+                    // 左下
+                } else if (position == "left-bottom" || position == "bottom-left") {
+                    style.bottom = yoffset + 'px';
+                    style.left = xoffset + 'px';
+                    // 右上
+                } else if (position == "right-top" || position == "top-right") {
+                    style.top = yoffset + 'px';
+                    style.right = xoffset + 'px';
+                    // 右下
+                } else if (position == "right-bottom" || position == "bottom-right") {
+                    style.bottom = yoffset + 'px';
+                    style.right = xoffset + 'px';
+                }
+            }
+            // 弹窗打开事件
+            function bindOpen() {
+                triggle.addEventListener(newconfig.on, () => {
+                    popup.hidden = mask.hidden = false;
+                    //弹窗定位位置
+                    popupLocation(newconfig.position, newconfig.yoffset, newconfig.xoffset);
+                });
+            }
+            // 弹窗关闭事件
+            function bindClose() {
+                mask.addEventListener(newconfig.on, () => {
+                    popup.hidden = mask.hidden = true;
+                });
+            }
+            //创建弹窗确定按钮
+            function creatConfirm() {
+                confim = document.createElement('button');
+                confim.innerText = '确定';
+                confim.style.padding = confim.style.margin = '5px';
+                popup.appendChild(confim);
+            };
+            //创建弹窗取消按钮
+            function creatCancel() {
+                cancel = document.createElement('button');
+                cancel.innerText = '取消';
+                cancel.style.padding = cancel.style.margin = '5px';
+                popup.appendChild(cancel);
+            };
+            //弹窗中按钮确定与取消事件
+            function popupButton() {
+                // 点击确认后弹出提示信息后弹窗关闭
+                confim.addEventListener(newconfig.on, () => {
+                    alert('你今天真好看！');
+                    popup.hidden = mask.hidden = true;
+                });
+                // 点击取消弹窗关闭
+                cancel.addEventListener(newconfig.on, () => {
+                    popup.hidden = mask.hidden = true;
+                });
+            };
+            //弹窗关闭快捷键方式
+            function popupShortWay() {
+                window.addEventListener('keyup', (e) => {
+                    if (e.key == newconfig.keyToHide)
+                        popup.hidden = mask.hidden = true;
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>
