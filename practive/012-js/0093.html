@@ -31,10 +31,10 @@
 <body>
     <div>花名册</div>
     <div>
-        <button max=100 min=0>全部</button>
-        <button max=100 min=80>只看学霸</button>
-        <button max=79 min=60>只看学酥</button>
-        <button max=59 min=0>只看学沫</button>
+        <button data-max="100" data-min="0">全部</button>
+        <button data-max="100" data-min="80">只看学霸</button>
+        <button data-max="79" data-min="60">只看学酥</button>
+        <button data-max="59" data-min="0">只看学沫</button>
     </div>
     <table>
         <thead>
@@ -67,11 +67,22 @@
                 sex: 'female',
                 score: 92,
             }]
+            let tbody = document.querySelector('tbody')
             init();
 
             function init() {
+                render()
+                bandEvent();
+            };
+
+            function render(range) {
+                tbody.innerHTML = '';
                 useList.forEach((item, index) => {
-                    let tbody = document.querySelector('tbody')
+                    if (range) {
+                        let inRange = item.score < +range.max && item.score > range.min;
+                        if (!inRange)
+                            return;
+                    }
                     let tr = document.createElement('tr');
                     tr.innerHTML = `
                     <td>${item.name}</td>
@@ -86,12 +97,17 @@
                         tr.remove();
                     })
                 });
-                bandEvent();
-            };
+            }
 
             function bandEvent() {
-                let button = document.querySelectorAll('button')
-                console.log(button[0].dataset.max)
+                let button = document.querySelectorAll('button');
+                let ranges;
+                button.forEach(e => {
+                    e.addEventListener("click", () => {
+                        ranges = e.dataset
+                        render(ranges)
+                    })
+                })
             };
         })();
     </script>
