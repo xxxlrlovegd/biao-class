@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dropdown Test</title>
+    <style>
+        .lr-ele {
+            border: 2px solid;
+            padding: 5px;
+        }
+        
+        a {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            let dropList = [{
+                name: 'a',
+                link: 'https: //baidu.com'
+            }, {
+                name: 'b',
+                link: '#'
+            }, {
+                name: 'c',
+                link: '#'
+            }, {
+                name: 'd',
+                link: '#'
+            }, ];
+            let divele, div;
+            init();
+
+            function init() {
+                divele = document.createElement('div');
+                divele.classList.add('lr-ele');
+                document.body.append(divele)
+                div = document.querySelector('.lr-ele')
+                setInterval(() => {
+                    dropList.push({
+                        name: 'e',
+                        link: '#'
+                    })
+                    render()
+                }, 2500)
+
+            };
+
+            function render() {
+                div.innerHTML = '';
+                dropList.forEach(i => {
+                    let a = document.createElement('a');
+                    a.href = i.link;
+                    a.innerText = i.name;
+                    divele.append(a)
+                })
+            }
+        })();
+    </script>
+</body>
+
+</html>

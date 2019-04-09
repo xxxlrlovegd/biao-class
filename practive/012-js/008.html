@@ -6,20 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Popout Test</title>
+    <style>
+        .popout {
+            position: fixed;
+            display: inline-block;
+            background: #fff;
+            border: 2px solid;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+            padding: 5px;
+        }
+        
+        [hidden] {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
     <button data-popout="Xi xi xi">戳我！</button>
     <button data-popout="Ha ha ha">点我！</button>
+    <button data-popout="XI x2i x2i">看我！</button>
     <script>
         ;
         (function() {
             'use strict'
-            // let popouts = document.querySelectorAll('button');
-            // console.dir(popouts.forEach)
-            // popouts.addEventListener('click', event => {
-            //     console.dir(event)
-            // })
+            let triggers = new Set();
+            let lastTrigger;
+            init()
+
+            function init() {
+                bandEvent()
+            };
+
+            function bandEvent() {
+                document.addEventListener('click', e => {
+                    let el = e.target;
+                    console.log(el)
+                    let content = el.dataset.popout
+                    if (content) {
+                        lastTrigger && hide(lastTrigger);
+                        lastTrigger = el;
+                        show(el, content);
+                        triggers.add(el);
+                        console.log(triggers)
+
+                    } else {
+                        hideAll()
+                    }
+
+                });
+            };
+
+            function show(button, content) {
+                if (!button.$popout) {
+                    //创建贴士标签
+                    let popout = document.createElement('div')
+                    popout.classList.add('popout');
+                    //设置贴士内容
+                    popout.innerText = content;
+                    //自定义代理属性并赋值
+                    button.$popout = popout
+                        //   console.log("button.$popout", button.$popout)
+                    document.body.appendChild(popout)
+                    reposition(button);
+                } else {
+                    button.$popout.hidden = false;
+
+                }
+            };
+
+            function hide(button) {
+                button.$popout.hidden = true;
+            }
+
+            function hideAll() {
+                triggers.forEach(button => {
+                    button.$popout.hidden = true
+                })
+            };
+
+            function reposition(param) {
+                let p = param.$popout;
+                let buttonPosition = param.getBoundingClientRect();
+                p.style.left = buttonPosition.left + 'px';
+                p.style.top = buttonPosition.top + param.offsetHeight + 5 + 'px';
+            };
         })();
     </script>
 </body>

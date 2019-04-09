@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dropdown Test</title>
+    <style>
+         :root {
+            font-family: sans-serif;
+            font-size: 18px;
+        }
+        
+        table {
+            border: 1px solid;
+            border-collapse: collapse;
+            margin: 10px 0;
+            width: 100%;
+        }
+        
+        th,
+        tr,
+        td {
+            border: 1px solid;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>花名册</div>
+    <div>
+        <button max=100 min=0>全部</button>
+        <button max=100 min=80>只看学霸</button>
+        <button max=79 min=60>只看学酥</button>
+        <button max=59 min=0>只看学沫</button>
+    </div>
+    <table>
+        <thead>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>成绩</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            let useList = [{
+                name: 'zs',
+                sex: 'female',
+                score: 74,
+            }, {
+                name: 'ls',
+                sex: 'male',
+                score: 88,
+            }, {
+                name: 'wemz',
+                sex: 'female',
+                score: 45,
+            }, {
+                name: 'lt',
+                sex: 'female',
+                score: 92,
+            }]
+            init();
+
+            function init() {
+                useList.forEach((item, index) => {
+                    let tbody = document.querySelector('tbody')
+                    let tr = document.createElement('tr');
+                    tr.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.sex}</td>
+                    <td>${item.score}</td>
+                    <td><button id='del'>删除</button></td>
+                    `
+                    tbody.append(tr);
+                    let del = tr.querySelector('#del');
+                    del.addEventListener('click', () => {
+                        useList.splice(index, 1);
+                        tr.remove();
+                    })
+                });
+                bandEvent();
+            };
+
+            function bandEvent() {
+                let button = document.querySelectorAll('button')
+                console.log(button[0].dataset.max)
+            };
+        })();
+    </script>
+</body>
+
+</html>

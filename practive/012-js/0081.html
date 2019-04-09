@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Popout Test</title>
+    <style>
+        .popout {
+            display: inline-block;
+            position: fixed;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .3)
+        }
+        
+        [hidden] {
+            display: none !important;
+        }
+        
+        button {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <button data-popout="我是no1。。。">戳我</button>
+    <button data-popout="我是no2。。。">看我</button>
+    <button data-popout="我是no3。。。">点我</button>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            init();
+            let triggle = new Set();
+            let lastpopout;
+
+            function init() {
+                bandEvents();
+            };
+
+            function bandEvents() {
+                document.addEventListener('click', e => {
+                    let el = e.target;
+                    let content = el.dataset.popout;
+                    if (content) {
+                        if (lastpopout)
+                            lastpopout.$popout.hidden = true;
+                        lastpopout = el;
+                        if (!el.$popout) {
+                            let popout = document.createElement('div');
+                            popout.innerText = content
+                            popout.classList.add('popout')
+                            document.body.appendChild(popout)
+                            el.$popout = popout
+                            triggle.add(el)
+                            popout.style.left = (el.getBoundingClientRect().left) + 'px'
+                            popout.style.top = (el.getBoundingClientRect().top + popout.offsetHeight) + 'px';
+                        } else {
+                            el.$popout.hidden = false;
+                        }
+
+
+                    } else {
+                        triggle.forEach(button => {
+                            button.$popout.hidden = true;
+                        })
+                    }
+                });
+            };
+        })();
+    </script>
+</body>
+
+</html>

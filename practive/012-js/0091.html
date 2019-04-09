@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dropdown Test</title>
+    <style>
+         :root {
+            font-family: sans-serif;
+            font-size: 18px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            border: 1px solid;
+            padding: 15px;
+        }
+        
+        button {
+            text-align: center;
+            border: none;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>花名册但是数据是写在table里的，并不灵活</div>
+    <table>
+        <thead>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>sss</td>
+                <td>222</td>
+                <td>4444</td>
+                <td>
+                    <button id="del">删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            let del = document.querySelector('#del');
+            del.addEventListener('click', () => {
+                let tbody = document.querySelector('tbody')
+                let tr = tbody.querySelector('tr')
+                tr.innerHTML = ''
+                    // tr.remove()
+            })
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dropdown Test</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        th,
+        td {
+            border: 1px solid;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>花名册是灵活的</div>
+    <table>
+        <thead>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            let useList = [{
+                name: 'zhangsan',
+                age: 18,
+                sex: 'male',
+            }, {
+                name: 'lisi',
+                age: 18,
+                sex: 'female',
+            }, {
+                name: 'wangermazi',
+                age: 18,
+                sex: 'male',
+            }]
+            init()
+
+            function init() {
+                useList.forEach((item, index) => {
+                    let tr = document.createElement('tr');
+                    let tbody = document.querySelector('tbody');
+                    tr.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.age}</td>
+                    <td>${item.sex}</td>
+                    <td><button id='del'>删除</button></td>
+                    `
+                    tbody.append(tr);
+                    let del = tr.querySelector('#del');
+                    let td = document.querySelectorAll('td')
+                    console.log("+++++", del)
+                    del.addEventListener('click', () => {
+                        useList.splice(index, 1)
+                        tr.remove()
+                    })
+                })
+
+            };
+        })();
+    </script>
+</body>
+
+</html>
