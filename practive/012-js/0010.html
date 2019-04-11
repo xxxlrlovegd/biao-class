@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form bandData</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        
+        input[type=checkbox],
+        input[type=radio] {
+            width: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" name='name' placeholder="请输入姓名">
+        <input type="text" name='password' placeholder="请输入密码">
+        <input type="text" name="age" placeholder="请输入年龄">
+        <input type="text" name='sex' placeholder="请输入性别">
+        <button type="submit">提交</button>
+    </form>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            let data = {};
+            let whh = {
+                name: 'whh',
+                age: 18,
+                sex: 'female',
+            }
+            init();
+
+            function init() {
+                let form = document.querySelector('form');
+                //表单动态取值
+                let inputs = form.querySelectorAll('[name]');
+                inputs.forEach(input => {
+                    data[input.name] = input.value;
+                });
+                //表单动态存值
+                for (let item in whh) {
+                    let input = form.querySelector(`[name=${item}]`)
+                    input.value = whh[item]
+                }
+            };
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Table databand</title>
+    <style>
+         :root {
+            font-family: sans-serif;
+            font-size: 18px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%
+        }
+        
+        th,
+        tr,
+        td {
+            padding: 10px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <button data-max="100" data-min="0">全部</button>
+    <button data-max="100" data-min="80">只看学霸</button>
+    <button data-max="79" data-min="60">只看学酥</button>
+    <button data-max="59" data-min="0">只看学渣</button>
+    <table>
+        <thead>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>成绩</th>
+            <th>操作</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        'use strict'
+
+        let useList = [{
+            name: 'zs',
+            sex: 'female',
+            score: 65,
+        }, {
+            name: 'ls',
+            sex: 'male',
+            score: 85,
+        }, {
+            name: 'we',
+            sex: 'female',
+            score: 95,
+        }, {
+            name: 'our',
+            sex: 'male',
+            score: 45,
+        }, {
+            name: 'water',
+            sex: 'female',
+            score: 75,
+        }, {
+            name: 'fuirt',
+            sex: 'male',
+            score: 79,
+        }, ];
+        let tbody = document.querySelector('tbody')
+
+        init()
+
+        function init() {
+            render();
+            bindEvent();
+        }
+
+        function render(range) {
+            tbody.innerHTML = '';
+            useList.forEach((item, index) => {
+                if (range) {
+                    let inrange = item.score < range.max && item.score > range.min;
+                    if (!inrange)
+                        return;
+                }
+                let tr = document.createElement('tr')
+                tr.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.sex}</td>
+                <td>${item.score}</td>
+                <td><button class="del">删除</button></td>
+                `
+                tbody.append(tr)
+
+                let del = tr.querySelector('.del');
+                del.addEventListener('click', () => {
+                    useList.splice(index, 1)
+                    tr.remove();
+                })
+            })
+        };
+
+        function bindEvent() {
+            let but = document.querySelectorAll('button');
+            but.forEach((button) => {
+                button.addEventListener('click', () => {
+                    //修改bug,按钮属性有max值时才进行查看（因为选中的时所以按钮包括表格的删除按钮，互相有影响）
+                    if (button.dataset.max)
+                        render(button.dataset)
+                })
+
+            })
+        };
+    </script>
+</body>
+
+</html>
