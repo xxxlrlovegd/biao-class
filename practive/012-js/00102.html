@@ -6,10 +6,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form bandData</title>
+    <style>
+        input {
+            width: 100%;
+            padding: 5px 0;
+            margin-bottom: 10px;
+        }
+        
+        input[type='radio'],
+        input[type='checkbox'] {
+            width: auto;
+            border: solid
+        }
+    </style>
 </head>
 
 <body>
-    ssss
+    <form action="#" id="a">
+        <input type="text" name="name" value="whh">
+        <input type="number" name="age" value="18">
+        <label for="sex">
+            男<input type="radio" name="sex" value="male" checked>
+            女<input type="radio" name="sex" value="female" >
+        </label>
+        <input type="email" name="email" value="123456@qq.com">
+        <label for="haobit">
+            吃<input type="checkbox" name="haobit"  value="eat" checked>
+            喝<input type="checkbox" name="haobit" value="drink" >
+            玩<input type="checkbox" name="haobit" value="play" checked>
+        </label>
+        <input type="week" name="yo" id="" value="1988-W02">
+    </form>
+    <hr style="border: solid pink 5px">
+    <form action="#" id="b">
+        <input type="text" name="name">
+        <input type="number" name="age">
+        <label for="sex">
+                男<input type="radio" name="sex" value="male">
+                女<input type="radio" name="sex" value="female" >
+            </label>
+        <input type="email" name="email">
+        <label for="haobit">
+                吃<input type="checkbox" name="haobit" value="eat">
+                喝<input type="checkbox" name="haobit" value="drink">
+                玩<input type="checkbox" name="haobit" value="play">
+            </label>
+    </form>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            let arr = {};
+            let user = {
+                name: 'hlj',
+                age: 18,
+                sex: 'female',
+                email: '888888@qq.com',
+                haobit: ['drink', 'eat']
+            };
+            console.log(getData(document.querySelector('#a'), arr));
+            setData(document.querySelector("#b"), user);
+            // 表单取值
+            function getData(form, data) {
+                let inputs = form.querySelectorAll('[name]')
+                inputs.forEach(input => {
+                    console.log(input)
+                    switch (input.type) {
+                        case "number":
+                            data[input.name] = parseFloat(input.value);
+                            break;
+                        case "radio":
+                            if (!input.checked)
+                                return
+                            data[input.name] = input.value
+                            break;
+                        case "checkbox":
+                            if (!Array.isArray(data[input.name])) {
+                                data[input.name] = [];
+                            }
+                            if (input.checked)
+                                data[input.name].push(input.value)
+                            break;
+                        case "date":
+                        case "week":
+                            data[input.name] = input.valueAsDate
+                            break;
+                        default:
+                            data[input.name] = input.value
+                            break;
+                    }
+                });
+                return data
+            };
+
+            // 表单存值
+            function setData(form, data) {
+                for (let key in data) {
+                    let input = form.querySelector(`[name='${key}']`)
+                    switch (input.type) {
+
+                        case 'radio':
+                            let radio = form.querySelector(`[type='radio'][name='${key}'][value='${data[key]}']`)
+                            console.log(radio)
+                            if (radio)
+                                radio.checked = true
+                            break;
+                        case 'checkbox':
+                            if (Array.isArray(data[key])) {
+                                data[key].forEach(i => {
+                                    let checkbox = form.querySelector(`[type='checkbox'][name='${key}'][value='${i}']`)
+                                    if (checkbox)
+                                        checkbox.checked = true
+                                })
+                            }
+                            break;
+                        default:
+                            input.value = data[key]
+                            break;
+                            console.log("==========");
+                    };
+
+                }
+            };
+        })();
+    </script>
 </body>
 
 </html>
