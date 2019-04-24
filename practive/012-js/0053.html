@@ -52,10 +52,10 @@
             let lastindex = item.length - 1;
             let config = {
                 model: 'flode',
-                inteval: 1500,
+                interval: 1500,
             }
             let parmconfig = {
-                model: 'slide',
+                // model: 'slide',
             }
             init(parmconfig);
 
@@ -72,7 +72,7 @@
                     itemIndex();
                     param.model == 'flode' ?
                         flode() : slider();
-                }, 1000);
+                }, param.interval);
             };
 
             function itemIndex() {
