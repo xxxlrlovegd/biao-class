@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lrBoard</title>
+    <style>
+         :root {
+            font-family: sans-serif;
+            font-size: 18px;
+        }
+        
+        .a,
+        .a1,
+        .a2 {
+            background-color: black;
+            display: inline-block;
+            border: 5px solid red;
+            font-size: 2rem;
+            padding: 10px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a">
+        <span class="b"></span>
+    </div>
+</body>
+<script src="../lrBoard.js"></script>
+<script>
+    lrBoard.init('.a', '.b', {
+        list: ["红烧排骨", "麻辣香锅", "地三鲜", "鳗鱼饭"]
+    });
+</script>
+
+</html>

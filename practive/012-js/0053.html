@@ -29,7 +29,6 @@
             display: block;
             width: 100%;
             transition: all .5s;
-            opacity: 1;
         }
     </style>
 </head>
@@ -46,32 +45,47 @@
         ;
         (function() {
             'use strict'
+            //轮播容器
             const slide = document.querySelector('.slide');
+            //轮播中每一页
             const item = slide.querySelectorAll('.item');
+            //默认从第一页开始
             let count = 0;
+            //记录最后一页索引,方便后面调用
             let lastindex = item.length - 1;
+            //默认设置
             let config = {
-                model: 'flode',
-                interval: 1500,
-            }
+                    model: 'flode',
+                    interval: 1000,
+                }
+                //自定义设置
             let parmconfig = {
-                // model: 'slide',
-            }
+                    model: 'slide',
+                }
+                // 一切的开始
             init(parmconfig);
 
             function init(param) {
                 //assign对象合并方法;
-                let newconfig = Object.assign({}, config, param)
-                setStartFlash(newconfig);
+                config = Object.assign({}, config, param)
+                setStartFlash(config);
             };
 
             function setStartFlash(param) {
-                param.model == 'flode' ?
-                    flode() : slider();
+                if (param.model == 'flode') {
+                    hideAll();
+                    flode();
+                } else {
+                    slider();
+                }
                 setInterval(() => {
                     itemIndex();
-                    param.model == 'flode' ?
-                        flode() : slider();
+                    if (param.model == 'flode') {
+                        hideAll();
+                        flode();
+                    } else {
+                        slider();
+                    }
                 }, param.interval);
             };
 
@@ -94,14 +108,17 @@
                 next.style.zIndex = 0;
             };
 
+            function hideAll() {
+                item.forEach(el => {
+                    el.style.opacity = 0;
+                })
+            }
+
             function flode() {
                 let prev = getPrev();
                 let current = getCurrent();
-                if (getComputedStyle(current).opacity == 1) {
-                    prev.style.opacity = 0;
-                } else {
-                    current.style.opacity = 1;
-                }
+                prev.style.opacity = 0;
+                current.style.opacity = 1;
             };
 
             function getPrev() {
