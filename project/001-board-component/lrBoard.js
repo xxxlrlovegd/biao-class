@@ -5,7 +5,7 @@
         init
     };
     // 全局变量,方便调用
-    let board, inner, list, count, config;
+    let config, count;
     // 默认配置
     let defaultConfig = {
             list: ['test1', 'test2', 'test3'],
@@ -20,9 +20,9 @@
          */
     function init(boardSelector, innerSelector, adlist) {
         //选中广告容器
-        board = document.querySelector(boardSelector);
+        const board = document.querySelector(boardSelector);
         //选中广告容器子级
-        inner = board.querySelector(innerSelector);
+        const inner = board.querySelector(innerSelector);
         // 加载用户配置
         loadConfig(adlist);
         //广告索引默认从0开始
@@ -38,7 +38,6 @@
      */
     function loadConfig(adlist) {
         config = Object.assign({}, defaultConfig, adlist)
-        console.log("+++++", config)
     };
     /**
      * 广告闪烁,实质为定时
@@ -69,11 +68,11 @@
     // 切换广告内容
     function toggleText(hide, show) {
         if (visible()) {
-            hide();
             inner.style.opacity = 0;
+            hide();
         } else {
-            show();
             inner.style.opacity = 1;
+            show();
         }
     }
 })();

@@ -1,0 +1,23 @@
+.lr-trigger {
+    display: block;
+    margin: 10px;
+}
+
+.lr-dropdown {
+    margin-left: 10px;
+    display: inline-block;
+    background: #666;
+    color: #fff;
+}
+
+.lr-dropdown a {
+    color: inherit;
+    display: block;
+    min-width: 100px;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+[hidden] {
+    display: none !important;
+}

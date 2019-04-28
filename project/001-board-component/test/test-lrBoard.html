@@ -13,8 +13,7 @@
         }
         
         .a,
-        .a1,
-        .a2 {
+        .b1 {
             background-color: black;
             display: inline-block;
             border: 5px solid red;
@@ -29,11 +28,19 @@
     <div class="a">
         <span class="b"></span>
     </div>
+
 </body>
+<div class="b1">
+    <span class="c"></span>
+</div>
 <script src="../lrBoard.js"></script>
 <script>
     lrBoard.init('.a', '.b', {
         list: ["红烧排骨", "麻辣香锅", "地三鲜", "鳗鱼饭"]
+    });
+    lrBoard.init('.b1', '.c', {
+        list: ["红烧排骨", "麻辣香锅", "地三鲜", "鳗鱼饭"],
+
     });
 </script>
 
