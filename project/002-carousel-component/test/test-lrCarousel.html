@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../lrCarousel.css">
     <title>lrCarousel Test</title>
     <style>
         img {
@@ -16,21 +17,6 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-        }
-        
-        .slider,
-        .slider188 {
-            position: relative;
-            overflow: hidden;
-            height: 290px;
-        }
-        
-        .item,
-        .item188 {
-            position: absolute;
-            display: block;
-            transition: all .5s;
-            width: 100%;
         }
     </style>
 </head>
@@ -49,12 +35,26 @@
             </a>
         </div>
     </div>
+    <div class="container">
+        <div class="slider1">
+            <a class="item1" href="#">
+                <img src="http://public.biaoyansu.com/frontend/43/A.png" alt="A">
+            </a>
+            <a class="item1" href="#">
+                <img src="http://public.biaoyansu.com/frontend/43/B.png" alt="B">
+            </a>
+            <a class="item1" href="#">
+                <img src="http://public.biaoyansu.com/frontend/43/C.png" alt="C">
+            </a>
+        </div>
+    </div>
 </body>
 <script src="../lrCarousel.js"></script>
 <script>
     lrCarousel.init('.slider', '.item', {
         mode: 'slide'
     });
+    lrCarousel.init('.slider1', '.item1');
 </script>
 
 </html>

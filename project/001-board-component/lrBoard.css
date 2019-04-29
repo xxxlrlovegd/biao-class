@@ -1,0 +1,8 @@
+.lr-board {
+    background-color: black;
+    display: inline-block;
+    border: 5px solid red;
+    font-size: 2rem;
+    padding: 10px;
+    color: red;
+}
