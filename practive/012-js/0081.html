@@ -45,7 +45,9 @@
             function bandEvents() {
                 document.addEventListener('click', e => {
                     let el = e.target;
+                    console.log("=========target", el)
                     let content = el.dataset.popout;
+                    console.log(el, el.dataset, "content+++++", content)
                     if (content) {
                         if (lastpopout)
                             lastpopout.$popout.hidden = true;

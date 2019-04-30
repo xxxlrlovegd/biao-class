@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="../lrTable.css">
+
+<table class="test"></table>
+<table class="test1"></table>
+
+<script src="../lrTable.js"></script>
+<script>
+    let s = {
+        name: '序号',
+        good: '商品',
+        price: '价格',
+        location: '产地',
+    };
+    let goodlist = [{
+        name: '1',
+        good: '旺仔牛奶',
+        price: '8',
+        location: 'taiwan',
+    }, {
+        name: '2',
+        good: '樱桃乐事薯片',
+        price: '8',
+        location: 'china',
+    }, {
+        name: '3',
+        good: '拌乐多辣鱼片',
+        price: '12',
+        location: 'shawadika',
+    }, {
+        name: '4',
+        good: '零度可乐',
+        price: '2.8',
+        location: 'Amarican',
+    }, ]
+    lrTable.init('.test', s, goodlist);
+    let s1 = {
+        name: '姓名',
+        sex: '性别',
+        score: '分数',
+        class: '班级',
+    };
+    let useList = [{
+        name: 'zs',
+        sex: 'female',
+        score: 65,
+    }, {
+        name: 'ls',
+        sex: 'male',
+        score: 85,
+    }, {
+        name: 'we',
+        sex: 'female',
+        score: 95,
+    }, {
+        name: 'our',
+        sex: 'male',
+        score: 45,
+    }, {
+        name: 'water',
+        sex: 'female',
+        score: 75,
+    }, {
+        name: 'fuirt',
+        sex: 'male',
+        score: 79,
+    }, ];
+    lrTable.init('.test1', s1, useList);
+</script>

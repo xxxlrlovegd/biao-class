@@ -103,9 +103,5 @@
                 }
             };
         }, config.interval);
-
-        function newFunction() {
-            return 'lr-item';
-        }
     };
 })();
