@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="C:\Users\dell\Desktop\biao-class\project\007-table-component\lrTable.css">
+<table class="test"></table>
+<script src="../lrCustomTable.js"></script>
+<script>
+    let title = {
+        name: '序号',
+        good: '商品名称',
+        price: '商品价格',
+        location: '产地'
+    }
+    let goodlist = [{
+        name: '1',
+        good: '旺仔牛奶',
+        price: '8',
+        location: 'taiwan',
+    }, {
+        name: '2',
+        good: '樱桃乐事薯片',
+        price: '8',
+        location: 'china',
+    }, {
+        name: '3',
+        good: '拌乐多辣鱼片',
+        price: '12',
+        location: 'shawadika',
+    }, {
+        name: '4',
+        good: '零度可乐',
+        price: '2.8',
+        location: 'Amarican',
+    }, ]
+    let opt = {
+        delete: {
+            name: '删除',
+            event: 'click',
+            action(tr, i) {
+                goodlist[i] = null
+                    // 删行元素
+                tr.remove();
+                console.log(goodlist)
+            }
+        },
+        get: {
+            name: '查看',
+            event: 'click',
+            action(tr, i) {
+                alert(goodlist[i].good)
+            }
+        },
+        a: {
+            name: 'yo!呀',
+            event: 'click',
+            action(tr, i) {
+                alert(goodlist[i].good)
+            }
+        },
+        b: {
+            name: 'hello!!哈',
+            event: 'click',
+            action(tr, i) {
+                alert(goodlist[i].good)
+            }
+        },
+    };
+    lrCustomTable.init(".test", title, goodlist, opt)
+</script>
