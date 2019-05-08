@@ -54,6 +54,7 @@
             let trs = tb.querySelectorAll('tr')
             if (options) {
                 trs.forEach((tr, i) => {
+                    console.log("i:", i)
                     for (let ops in options) {
                         //必须在页面元素加载之后，才能监听到事件；
                         tr.querySelector("." + ops).addEventListener(options[ops].event, (e) => {

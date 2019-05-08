@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证valid</title>
+    <style>
+         :root {
+            font-family: sans-serif;
+            font-family: 15px;
+        }
+        
+        .container {
+            max-width: 50em;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10em;
+        }
+        
+        input,
+        button {
+            width: 100%;
+            font: inherit;
+            margin-bottom: .5em;
+            padding: .5em;
+            border: 1px solid;
+        }
+        
+        button {
+            background: black;
+            color: #fff;
+        }
+        
+        .errorClass {
+            color: #cc2200;
+            font-size: .8em;
+        }
+        
+        [hidden] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>注册</h1>
+        <form action="#" novalidate>
+            <input type="text" name="username" placeholder="请输入姓名" value="whh">
+            <input type="email" name="email" placeholder="请输入邮箱" value="whh@123.com">
+            <input type="text" name="phone" placeholder="请输入手机号" value="18123456789">
+            <input type="password" name="password" placeholder="请输入密码" value="123456">
+            <div class="errorClass"></div>
+            <button>提交</button>
+        </form>
+    </div>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            // 用户名验证规则3到12间
+            function isUsername(str) {
+                if (!betweenLength(str, 3, 12)) {
+                    return false;
+                }
+                return true
+            };
+            // 邮箱验证规则，推荐正则（此次是深得表单验证思想）
+            function isEmail(str) {
+                if (str.indexOf('@') == -1) {
+                    return false;
+                }
+                return true;
+            };
+            // 电话验证规则
+            function isPhone(str) {
+                if ((str.length != 11 && str.length != 13 && str.length != 14) || !str.startsWith('1')) {
+                    return false;
+                }
+                return true;
+            };
+            // 密码验证规则
+            function isPassword(str) {
+                if (!betweenLength(str, 6, 64)) {
+                    return false;
+                }
+                return true;
+            };
+            // 验证基础
+            function between(num, min, max) {
+                return num >= min && num <= max
+            }
+
+            function betweenLength(str, min, max) {
+                return between(str.length, min, max);
+            }
+            //选中表单
+            let form = document.querySelector('form');
+            let inputs = form.querySelectorAll('input');
+            //存放表单数据
+            let data = {};
+            //存放错误信息
+            let error = {
+                username: [],
+                email: [],
+                phone: [],
+                password: [],
+            };
+            /******一切的开始********/
+            init();
+
+            function init() {
+                bindEvents();
+            };
+
+            function bindEvents() {
+                form.addEventListener('submit', (e) => {
+                    // 取消事件默认动作
+                    e.preventDefault();
+                    //将表单数据存入data中
+                    data.username = form.querySelector('[name=username]').value;
+                    data.email = form.querySelector('[name=email]').value;
+                    data.phone = form.querySelector('[name=phone]').value;
+                    data.password = form.querySelector('[name=password]').value;
+                    // 表单数据验证，有则提示错误信息
+                    vildation(data) ? hideError() : showError();
+                });
+            };
+            /**
+             * 验证表单数据
+             * @param {Object} 表单验证数据
+             * @return {Boolean} 是否有错误
+             */
+            function vildation(data) {
+                // 默认无错误
+                let valid = true;
+                //每次将错误初始化，放在重复错误信息
+                error = {
+                    username: [],
+                    email: [],
+                    phone: [],
+                    password: [],
+                };
+                if (!isUsername(data.username)) {
+                    valid = false;
+                    error.username.push("用户名格式错误!")
+                };
+                if (!isEmail(data.email)) {
+                    valid = false;
+                    error.email.push("邮箱格式错误!")
+                };
+                if (!isPhone(data.phone)) {
+                    valid = false;
+                    error.phone.push("手机号格式错误!")
+                };
+                if (!isPassword(data.password)) {
+                    valid = false;
+                    error.password.push("密码格式错误!")
+                };
+                return valid
+            };
+
+            let errorhtml = form.querySelector('.errorClass')
+
+            function hideError() {
+                for (let i in error) {
+                    if (error[i].length == 0) errorhtml.hidden = true
+                }
+            };
+
+            function showError() {
+                errorhtml.innerHTML = ''
+                errorhtml.hidden = false
+                for (let i in error) {
+                    error[i].forEach(e => {
+                        console.log(i)
+                        let input = form.querySelector(`[name=${i}]`)
+                        console.log(input)
+                        errorhtml.innerHTML += `<p>${e}</p>`
+                    })
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
