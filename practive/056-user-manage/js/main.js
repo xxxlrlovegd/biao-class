@@ -55,6 +55,7 @@
         //循环表格数据
         userList.forEach((user, index) => {
             // 如果userList没有数据（数据都被删除）直接返回，不在增加视图
+            console.log(user)
             if (!user) {
                 return
             }
@@ -82,8 +83,11 @@
                         }
                     })
                     isUpdate = true;
-                };
-                if (e.target.className == "delete") {
+                } else if (e.target.className == "delete") {
+                    isUpdate = false;
+                    inputs.forEach(input => {
+                        input.value = ""
+                    })
                     userList[index] = null
                     tr.remove()
                     console.log("user", userList)
