@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/vue2.5.js"></script>
+    <link rel="stylesheet" href="./zTree_v3/css/zTreeStyle/zTreeStyle.css">
+    <script src="./zTree_v3/js/jquery.ztree.core.js"></script>
+    <script src="./zTree_v3/js/jquery.ztree.excheck.js"></script>
+    <script src="./zTree_v3/js/jquery.ztree.exedit.js"></script>
+    <title>Document</title>
+    <style>
+        .ztree li span.button.add {
+            margin-left: 2px;
+            margin-right: -1px;
+            background-position: -144px 0;
+            vertical-align: top;
+            *vertical-align: middle
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <h2>树测试啊啊啊啊</h2>
+        <ul id="treeDemo" class="ztree"></ul>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '.app',
+        data: {
+            setting: {
+                view: {
+                    addHoverDom: this.addHoverDom,
+                    removeHoverDom: this.removeHoverDom,
+                    selectedMulti: false
+                },
+                edit: {
+                    enable: true,
+                    editNameSelectAll: true,
+                    showRemoveBtn: this.showRemoveBtn,
+                    showRenameBtn: this.showRenameBtn
+                },
+                data: {
+                    simpleData: {
+                        enable: true,
+                        idKey: "id", //节点的id,注意此处要对应你后台传过来的节点的属性名id
+                        pIdKey: "pId", //节点的pId,注意此处要对应你后台传过来的节点的属性名pId
+                        rootPId: 0 //根节点的pId = 0
+                    }
+                },
+                callback: {
+                    beforeDrag: this.beforeDrag,
+                    beforeEditName: this.beforeEditName,
+                    beforeRemove: this.beforeRemove,
+                    beforeRename: this.beforeRename,
+                    onRemove: this.onRemove,
+                    onRename: this.onRename
+                },
+            },
+            log: 'dark',
+            className: 'dark',
+            zNodes: [{
+                id: 1,
+                pId: 0,
+                name: "父节点 1",
+                open: true
+            }, {
+                id: 11,
+                pId: 1,
+                name: "叶子节点 1-1"
+            }, {
+                id: 12,
+                pId: 1,
+                name: "叶子节点 1-2"
+            }, {
+                id: 13,
+                pId: 1,
+                name: "叶子节点 1-3"
+            }, {
+                id: 2,
+                pId: 0,
+                name: "父节点 2",
+                open: true
+            }, {
+                id: 21,
+                pId: 2,
+                name: "叶子节点 2-1"
+            }, {
+                id: 22,
+                pId: 2,
+                name: "叶子节点 2-2"
+            }, {
+                id: 23,
+                pId: 2,
+                name: "叶子节点 2-3"
+            }, {
+                id: 3,
+                pId: 0,
+                name: "父节点 3",
+                open: true
+            }, {
+                id: 31,
+                pId: 3,
+                name: "叶子节点 3-1"
+            }, {
+                id: 32,
+                pId: 3,
+                name: "叶子节点 3-2"
+            }, {
+                id: 33,
+                pId: 3,
+                name: "叶子节点 3-3"
+            }],
+            newCount: 1
+        },
+        mounted() {
+            $.fn.zTree.init($("#treeDemo"), this.setting, this.zNodes);
+
+        },
+        methods: {
+            beforeDrag(treeId, treeNodes) {
+                return false;
+            },
+            beforeEditName(treeId, treeNode) {
+                this.className = (this.className === "dark" ? "" : "dark");
+                this.showLog("[ " + this.getTime() + " beforeEditName ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
+                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                zTree.selectNode(treeNode);
+                setTimeout(function() {
+                    if (confirm("进入节点 -- " + treeNode.name + " 的编辑状态吗？")) {
+                        setTimeout(function() {
+                            zTree.editName(treeNode);
+                        }, 0);
+                    }
+                }, 0);
+                return false;
+            },
+            beforeRemove(treeId, treeNode) {
+                this.className = (this.className === "dark" ? "" : "dark");
+                this.showLog("[ " + this.getTime() + " beforeRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
+                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                zTree.selectNode(treeNode);
+                return confirm("确认删除 节点 -- " + treeNode.name + " 吗？");
+            },
+            onRemove(e, treeId, treeNode) {
+                this.showLog("[ " + this.getTime() + " onRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
+            },
+            beforeRename(treeId, treeNode, newName, isCancel) {
+                this.className = (this.className === "dark" ? "" : "dark");
+                this.showLog((isCancel ? "<span style='color:red'>" : "") + "[ " + this.getTime() + " beforeRename ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name + (isCancel ? "</span>" : ""));
+                if (newName.length == 0) {
+                    setTimeout(function() {
+                        var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                        zTree.cancelEditName();
+                        alert("节点名称不能为空.");
+                    }, 0);
+                    return false;
+                }
+                return true;
+            },
+            onRename(e, treeId, treeNode, isCancel) {
+                this.showLog((isCancel ? "<span style='color:red'>" : "") + "[ " + this.getTime() + " onRename ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name + (isCancel ? "</span>" : ""));
+            },
+            showRemoveBtn(treeId, treeNode) {
+                return !treeNode.isFirstNode;
+            },
+            showRenameBtn(treeId, treeNode) {
+                return !treeNode.isLastNode;
+            },
+            showLog(str) {
+                if (!this.log) this.log = $("#log");
+                this.log.append("<li class='" + this.className + "'>" + str + "</li>");
+                if (this.log.children("li").length > 8) {
+                    this.log.get(0).removeChild(this.log.children("li")[0]);
+                }
+            },
+            getTime() {
+                var now = new Date(),
+                    h = now.getHours(),
+                    m = now.getMinutes(),
+                    s = now.getSeconds(),
+                    ms = now.getMilliseconds();
+                return (h + ":" + m + ":" + s + " " + ms);
+            },
+            addHoverDom(treeId, treeNode) {
+                console.log("======5555")
+                var sObj = $("#" + treeNode.tId + "_span");
+                if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
+                var addStr = "<span class='button add' id='addBtn_" + treeNode.tId +
+                    "' title='add node' onfocus='this.blur();'></span>";
+                sObj.after(addStr);
+                var btn = $("#addBtn_" + treeNode.tId);
+                if (btn) btn.bind("click", function() {
+                    var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                    zTree.addNodes(treeNode, {
+                        id: (100 + this.newCount),
+                        pId: treeNode.id,
+                        name: "new node" + (this.newCount++)
+                    });
+                    return false;
+                });
+            },
+
+            removeHoverDom(treeId, treeNode) {
+                $("#addBtn_" + treeNode.tId).unbind().remove();
+            },
+            selectAll() {
+                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                zTree.setting.edit.editNameSelectAll = $("#selectAll").attr("checked");
+            },
+        }
+    });
+</script>
+
+</html>

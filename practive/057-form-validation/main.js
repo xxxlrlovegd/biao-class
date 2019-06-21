@@ -84,6 +84,7 @@
     function parseRules(str) {
         let rule = {};
         let ruleArr = str.split("|")
+        let newarr = [];
         ruleArr.forEach(e => {
             console.log(e)
             let key = e.split(":")[0]
@@ -94,13 +95,21 @@
 
             }
             rule[key] = comparison
+            newarr.push(rule)
         });
+        return newarr
     };
     parseRules('numeral | between: 0')
         // 批量多条验证
     function applyRules(value, rules) {
-        rules.forEach((key, rule) => {
-            let a = is[key](value, rule)
+        parseRules(rules).forEach((rule) => {
+            rule.forEach(item => {
+                let a = is[item](value, rule[item])
+                console.log(a)
+                debugger
+                throw 'hahaha'
+            })
         });
     }
+    applyRules(5, 'numeral | between: 0')
 })();
