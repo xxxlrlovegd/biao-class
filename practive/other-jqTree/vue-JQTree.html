@@ -13,6 +13,14 @@
     <script src="./zTree_v3/js/jquery.ztree.exedit.js"></script>
     <title>Document</title>
     <style>
+        .ztree li span {
+            display: inline-block;
+            max-width: 98px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
         .ztree li span.button.add {
             margin-left: 2px;
             margin-right: -1px;
@@ -30,36 +38,66 @@
     </div>
 </body>
 <script>
+    function beforeDrag(treeId, treeNodes) {
+        return false;
+    };
+
+    function showRemoveBtn(treeId, treeNode) {
+        if (treeNode.noRemoveBtn != undefined && treeNode.noRemoveBtn) {
+            return false;
+        } else {
+            return true;
+        }
+    };
+
+    function showRenameBtn(treeId, treeNode) {
+        //获取节点所配置的noEditBtn属性值
+        if (treeNode.noEditBtn != undefined && treeNode.noEditBtn) {
+            return false;
+        } else {
+            return true;
+        }
+    };
     var app = new Vue({
         el: '.app',
         data: {
             setting: {
                 view: {
-                    addHoverDom: this.addHoverDom,
-                    removeHoverDom: this.removeHoverDom,
+                    addHoverDom: function(treeId, treeNode) {
+                        app.addHoverDom(treeId, treeNode);
+                    },
+                    removeHoverDom: function(treeId, treeNode) {
+                        app.removeHoverDom(treeId, treeNode);
+                    },
                     selectedMulti: false
                 },
                 edit: {
                     enable: true,
-                    editNameSelectAll: true,
                     showRemoveBtn: this.showRemoveBtn,
-                    showRenameBtn: this.showRenameBtn
+                    showRenameBtn: this.showRenameBtn,
+                    removeTitle: "删除",
+                    renameTitle: "修改"
+
                 },
                 data: {
                     simpleData: {
                         enable: true,
-                        idKey: "id", //节点的id,注意此处要对应你后台传过来的节点的属性名id
-                        pIdKey: "pId", //节点的pId,注意此处要对应你后台传过来的节点的属性名pId
-                        rootPId: 0 //根节点的pId = 0
+                        // idKey: "id", //节点的id,注意此处要对应你后台传过来的节点的属性名id
+                        // pIdKey: "pId", //节点的pId,注意此处要对应你后台传过来的节点的属性名pId
+                        // rootPId: 0 //根节点的pId = 0
                     }
                 },
                 callback: {
-                    beforeDrag: this.beforeDrag,
-                    beforeEditName: this.beforeEditName,
-                    beforeRemove: this.beforeRemove,
-                    beforeRename: this.beforeRename,
-                    onRemove: this.onRemove,
-                    onRename: this.onRename
+                    // false停止拖拽
+                    beforeDrag: beforeDrag,
+                    //删除前回调
+                    beforeRemove: function(treeId, treeNode) {
+                        app.beforeRemove(treeId, treeNode);
+                    },
+                    onRemove: function(event, treeId, treeNode) {
+                        app.onRemove(event, treeId, treeNode);
+                    },
+
                 },
             },
             log: 'dark',
@@ -68,11 +106,14 @@
                 id: 1,
                 pId: 0,
                 name: "父节点 1",
-                open: true
+                open: true,
+                noRemoveBtn: true,
+                noEditBtn: true,
+                showRemoveBtn: true
             }, {
                 id: 11,
                 pId: 1,
-                name: "叶子节点 1-1"
+                name: "叶子节点叶子节点叶子节点叶子节点叶子节点叶子节点叶子节点叶子节点 1-1"
             }, {
                 id: 12,
                 pId: 1,
@@ -120,15 +161,10 @@
         },
         mounted() {
             $.fn.zTree.init($("#treeDemo"), this.setting, this.zNodes);
-
         },
         methods: {
-            beforeDrag(treeId, treeNodes) {
-                return false;
-            },
             beforeEditName(treeId, treeNode) {
                 this.className = (this.className === "dark" ? "" : "dark");
-                this.showLog("[ " + this.getTime() + " beforeEditName ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
                 var zTree = $.fn.zTree.getZTreeObj("treeDemo");
                 zTree.selectNode(treeNode);
                 setTimeout(function() {
@@ -142,17 +178,15 @@
             },
             beforeRemove(treeId, treeNode) {
                 this.className = (this.className === "dark" ? "" : "dark");
-                this.showLog("[ " + this.getTime() + " beforeRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
                 var zTree = $.fn.zTree.getZTreeObj("treeDemo");
                 zTree.selectNode(treeNode);
                 return confirm("确认删除 节点 -- " + treeNode.name + " 吗？");
             },
             onRemove(e, treeId, treeNode) {
-                this.showLog("[ " + this.getTime() + " onRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
+                console.log("onRemove")
             },
             beforeRename(treeId, treeNode, newName, isCancel) {
                 this.className = (this.className === "dark" ? "" : "dark");
-                this.showLog((isCancel ? "<span style='color:red'>" : "") + "[ " + this.getTime() + " beforeRename ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name + (isCancel ? "</span>" : ""));
                 if (newName.length == 0) {
                     setTimeout(function() {
                         var zTree = $.fn.zTree.getZTreeObj("treeDemo");
@@ -164,48 +198,22 @@
                 return true;
             },
             onRename(e, treeId, treeNode, isCancel) {
-                this.showLog((isCancel ? "<span style='color:red'>" : "") + "[ " + this.getTime() + " onRename ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name + (isCancel ? "</span>" : ""));
-            },
-            showRemoveBtn(treeId, treeNode) {
-                return !treeNode.isFirstNode;
-            },
-            showRenameBtn(treeId, treeNode) {
-                return !treeNode.isLastNode;
-            },
-            showLog(str) {
-                if (!this.log) this.log = $("#log");
-                this.log.append("<li class='" + this.className + "'>" + str + "</li>");
-                if (this.log.children("li").length > 8) {
-                    this.log.get(0).removeChild(this.log.children("li")[0]);
-                }
-            },
-            getTime() {
-                var now = new Date(),
-                    h = now.getHours(),
-                    m = now.getMinutes(),
-                    s = now.getSeconds(),
-                    ms = now.getMilliseconds();
-                return (h + ":" + m + ":" + s + " " + ms);
-            },
-            addHoverDom(treeId, treeNode) {
-                console.log("======5555")
-                var sObj = $("#" + treeNode.tId + "_span");
-                if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
-                var addStr = "<span class='button add' id='addBtn_" + treeNode.tId +
-                    "' title='add node' onfocus='this.blur();'></span>";
-                sObj.after(addStr);
-                var btn = $("#addBtn_" + treeNode.tId);
-                if (btn) btn.bind("click", function() {
-                    var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-                    zTree.addNodes(treeNode, {
-                        id: (100 + this.newCount),
-                        pId: treeNode.id,
-                        name: "new node" + (this.newCount++)
-                    });
-                    return false;
-                });
+                console.log("onRename")
             },
 
+            addHoverDom(treeId, treeNode) {
+                if (treeNode.showRemoveBtn != undefined && treeNode.showRemoveBtn) {
+                    var sObj = $("#" + treeNode.tId + "_span");
+                    if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
+                    var addStr = "<span class='button add' id='addBtn_" + treeNode.tId +
+                        "' title='add node' onfocus='this.blur();'></span>";
+                    sObj.after(addStr);
+                    var btn = $("#addBtn_" + treeNode.tId);
+                    if (btn) btn.bind("click", function() {
+                        alert("此处调用添加的模态框")
+                    });
+                }
+            },
             removeHoverDom(treeId, treeNode) {
                 $("#addBtn_" + treeNode.tId).unbind().remove();
             },
