@@ -7,15 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>用户管理</title>
     <link rel="stylesheet" href="./css/main.css">
+    <style>
+        .error {
+            color: red;
+            font-size: .8rem;
+            margin-left: 5px;
+        }
+        
+        [disabled] {
+            opacity: .8;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <h2>添加用户</h2>
         <form action="">
-            <input type="text" name="username" placeholder="username">
-            <input type="email" name="email" placeholder="email">
-            <input type="number" name="iq" placeholder="IQ">
+            <input data-rule="username" type="text" name="username" placeholder="username">
+            <input data-rule="email" name="email" placeholder="email">
+            <input data-rule="numeral|positive" type="number" name="iq" placeholder="IQ">
             <button type="submit">提交</button>
         </form>
         <table>
@@ -32,6 +44,10 @@
         </table>
     </div>
     <script src="./js/main.js"></script>
+    <script src="../057~059-form-validation/lrValidrules.js"></script>
+    <script>
+        validrules.boot('form');
+    </script>
 </body>
 
 </html>

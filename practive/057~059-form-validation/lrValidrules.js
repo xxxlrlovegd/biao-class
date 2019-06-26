@@ -45,9 +45,9 @@
     function bindInputKeyup(input) {
         input.addEventListener('keyup', e => {
             //对表单中的莫个输入框进行验证时提交按钮可触发
-            let submit = document.querySelector('[type=submit]')
-            submit.disabled = false
-                //error错误信息
+            // let submit = document.querySelector('[type=submit]')
+            // submit.disabled = false
+            //error错误信息
             let errors = validateInput(input)
                 //将错误信息渲染出来
             showInputError(input, errors)
@@ -211,13 +211,13 @@
         },
         //是否正数
         positive(value) {
-            if (is.numeral(value)) return value > 0
-            throw '不可小于0';
+            if (value < 0)
+                throw '不可小于0';
         },
         // 是否负数
         nositive(value) {
-            if (is.numeral(value)) return value < 0
-            throw '不可大于0';
+            if (value > 0)
+                throw '不可大于0';
         },
         // 是否开头
         startWith(value, stand) {
@@ -269,13 +269,16 @@
      * @param {*Array} errors 
      */
     function showInputError(input, errors) {
+        let submit = document.querySelector('[type=submit]')
         if (!errors.length) {
             // 如果没有错误信息则隐藏错误信息
             if (input.$errorContainer)
                 input.$errorContainer.hidden = true;
+            submit.disabled = false
             return
         }
-        //输入框后面同级元素只读
+        submit.disabled = true
+            //输入框后面同级元素只读
         if (!input.nextElementSibling || !input.nextElementSibling.classList.contains('error')) {
             //缓存到input元素中方便使用
             let ec = input.$errorContainer = document.createElement('div');
