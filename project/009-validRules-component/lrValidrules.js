@@ -296,10 +296,10 @@
         }
         submit.disabled = true
             //输入框后面同级元素只读
-        if (!input.nextElementSibling || !input.nextElementSibling.classList.contains('error')) {
+        if (!input.nextElementSibling || !input.nextElementSibling.classList.contains('lr-error')) {
             //缓存到input元素中方便使用
             let ec = input.$errorContainer = document.createElement('div');
-            ec.classList.add('error');
+            ec.classList.add('lr-error');
             input.insertAdjacentElement('afterend', ec)
         }
         let html = '';

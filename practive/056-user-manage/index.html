@@ -25,9 +25,9 @@
     <div class="container">
         <h2>添加用户</h2>
         <form action="">
-            <input data-rule="username" type="text" name="username" placeholder="username">
-            <input data-rule="email" name="email" placeholder="email">
-            <input data-rule="numeral|positive" type="number" name="iq" placeholder="IQ">
+            <input data-rule="empty|username" type="text" name="username" placeholder="username">
+            <input data-rule="empty|email" name="email" placeholder="email">
+            <input data-rule="empty|numeral|positive" type="number" name="iq" placeholder="IQ">
             <button type="submit">提交</button>
         </form>
         <table>

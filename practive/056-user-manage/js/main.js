@@ -25,6 +25,7 @@
     let isUpdate = false;
     //更新数据下标
     let updateIndex;
+    let addFlag = true;
     /*****一切的开始****** */
     init();
 
@@ -38,14 +39,25 @@
             e.preventDefault();
             let data = {};
             inputs.forEach(input => {
-                data[input.name] = input.value;
+                if (input.value) {
+                    data[input.name] = input.value;
+                    addFlag = true
+                } else {
+                    addFlag = false
+                }
             })
-            if (!isUpdate)
-                userList.push(data);
-            else
-                userList[updateIndex] = data;
-            render();
-            form.reset();
+            console.log("data", data)
+            if (Object.keys(data).length != 0) {
+                console.log("cosmfdsfd3rsfd")
+                if (!isUpdate)
+                    userList.push(data);
+                else
+                    userList[updateIndex] = data;
+            }
+            if (addFlag) {
+                render();
+            }
+            // location.reload();
         })
     };
     //表格数据渲染
@@ -56,10 +68,11 @@
         userList.forEach((user, index) => {
             // 如果userList没有数据（数据都被删除）直接返回，不在增加视图
             console.log(user)
-            if (!user) {
+            if (!user || user.length == 0 || user == {}) {
                 return
             }
-            //创建表格单元行元素
+            console.log("111===========")
+                //创建表格单元行元素
             let tr = document.createElement('tr');
             tr.innerHTML = ``;
             for (let i in user) {
