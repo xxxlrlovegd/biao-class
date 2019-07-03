@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>echarts Test</title>
+    <script src="echarts.js"></script>
+</head>
+
+<body>
+    <div id="main" style="width: 600px;height:400px"></div>
+</body>
+<script>
+    ;
+    (function() {
+        'use strict'
+        /***初始化echarts一切绘图的开始(选中dom) ***/
+        echarts.init(document.getElementById('main')).setOption({
+            // title: {
+            //     text: '入坑中。。。'
+            // },
+            //悬浮在图表上展示具体数据
+            tooltip: {},
+            lengend: {},
+            dataset: {
+                source: [
+                    ['doSomething', 'day', 'night', 'test', "testt"],
+                    ['Daming', 12, 8, 2, 4],
+                    ['Amy', 14, 6, 4, 3],
+                    ['Lingling', 10, 10, 2, 5],
+                    ['Davil', 18, 2, 6, 7],
+                ]
+            },
+            //x轴(配置必填)
+            xAxis: {
+                type: 'category'
+            },
+            // y轴(配置必填)
+            yAxis: {},
+            //系列(配置必填)bar树状图，pie饼状图
+            series: [{
+                type: 'bar'
+            }, {
+                type: 'bar'
+            }, {
+                type: 'bar'
+            }, {
+                type: 'bar'
+            }],
+        })
+    })();
+</script>
+
+</html>
