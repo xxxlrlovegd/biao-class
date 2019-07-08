@@ -25,3 +25,16 @@ v-model（语法糖  :value='绑定value的值' @input='方法接收value值'）
 prop=======$emit
 $attrs======$listeners
 bus中央空调
+
+3生命周期
+4keep-alive
+ $nextTcik(callback)
+5自定义指令
+全局定义
+Vue.directive('指令名',{
+    bind: function (el,binding) {},
+    inserted: function () {},
+    update: function () {},
+    componentUpdated: function () {},
+    unbind: function () {}
+})

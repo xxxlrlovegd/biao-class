@@ -46,9 +46,7 @@
                     addFlag = false
                 }
             })
-            console.log("data", data)
             if (Object.keys(data).length != 0) {
-                console.log("cosmfdsfd3rsfd")
                 if (!isUpdate)
                     userList.push(data);
                 else
@@ -57,7 +55,6 @@
             if (addFlag) {
                 render();
             }
-            // location.reload();
         })
     };
     //表格数据渲染
@@ -67,12 +64,10 @@
         //循环表格数据
         userList.forEach((user, index) => {
             // 如果userList没有数据（数据都被删除）直接返回，不在增加视图
-            console.log(user)
             if (!user || user.length == 0 || user == {}) {
                 return
             }
-            console.log("111===========")
-                //创建表格单元行元素
+            //创建表格单元行元素
             let tr = document.createElement('tr');
             tr.innerHTML = ``;
             for (let i in user) {
@@ -103,7 +98,6 @@
                     })
                     userList[index] = null
                     tr.remove()
-                    console.log("user", userList)
                 };
             });
             tbody.appendChild(tr)
