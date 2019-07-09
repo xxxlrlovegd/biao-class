@@ -27,6 +27,7 @@
      **/
     function render(container, datalist) {
         let items = container.querySelector('.option')
+        items.innerHTML = ''
         datalist.forEach(e => {
             let item = document.createElement('div')
             item.innerHTML = e.name
@@ -47,7 +48,11 @@
                 return data.name.includes(keyword)
             })
             render(container, filtered)
-            console.log(filtered)
         })
     }
+    /**
+     * 点击下拉数据
+     * @param {HTMLELEMENT} 所在位置选择器
+     * @param {}
+     */
 })();
