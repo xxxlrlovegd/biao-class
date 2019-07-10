@@ -8,7 +8,7 @@
     <title>SelectCompentTest</title>
     <style>
         .container {
-            max-width: 1024px;
+            max-width: 968px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -45,6 +45,10 @@
     <div class="container">
 
     </div>
+    <div>ahahah</div>
+    <div class="test1"></div>
+    <br>
+    <div class="test2"></div>
 </body>
 <script src="lrSearch.js"></script>
 <script src="main.js"></script>
@@ -70,6 +74,47 @@
     }, {
         'id': 7,
         'name': '稻京糕'
+    }])
+
+    search.init('.test1', [{
+        'id': 1,
+        'usename': '张三'
+    }, {
+        'id': 2,
+        'usename': '李四'
+    }, {
+        'id': 3,
+        'usename': '王二'
+    }, {
+        'id': 4,
+        'usename': '张柳'
+    }, {
+        'id': 5,
+        'usename': '刘四'
+    }], {
+        display: 'usename',
+        onSelect: (it) => {
+            console.log("数据展示==", it)
+        }
+    })
+    search.init('.test2', [{
+        'id': 1,
+        'name': '水果'
+    }, {
+        'id': 2,
+        'name': '蔬菜'
+    }, {
+        'id': 3,
+        'name': '海鲜'
+    }, {
+        'id': 4,
+        'name': '干料'
+    }, {
+        'id': 5,
+        'name': '豆制品'
+    }, {
+        'id': 6,
+        'name': '进口果蔬'
     }])
 </script>
 
