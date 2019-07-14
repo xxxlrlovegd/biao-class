@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索功能组件</title>
+</head>
+
+<body>
+    <div class="main"></div>
+    <div class="movie"></div>
+</body>
+<link rel="stylesheet" href="../lrSearch.css">
+<script src="../lrSearch.js"></script>
+<script>
+    ;
+    (function() {
+        'use strict'
+        search.init(".main", [{
+            'id': 1,
+            'usename': 'lx'
+        }, {
+            'id': 2,
+            'usename': 'yxy'
+        }, {
+            'id': 3,
+            'usename': 'demo'
+        }], {
+            display: 'usename',
+            onSelect: (it) => {
+                console.log("最喜欢亲爱的热爱的谁？", it);
+            }
+        })
+    })();;
+    (function() {
+        'use strict'
+        search.init(".movie", [{
+            'id': 1,
+            'name': '极限职业'
+        }, {
+            'id': 2,
+            'name': '升级'
+        }, {
+            'id': 3,
+            'name': '人世间'
+        }, {
+            'id': 4,
+            'name': '梅尔罗斯'
+        }], {
+            onSelect: (it) => {
+                console.log("现哥推荐====", it);
+            }
+        })
+    })();
+</script>
+
+</html>

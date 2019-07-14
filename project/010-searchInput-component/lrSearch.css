@@ -1,0 +1,25 @@
+.lr-input,
+.lr-option {
+    max-width: 400px;
+}
+
+.lr-input {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 2px solid;
+}
+
+.lr-option {
+    border: 1px solid;
+    width: 100%;
+}
+
+.lr-option>* {
+    padding: .5rem;
+}
+
+.lr-option>*:hover {
+    background-color: black;
+    color: #fff;
+}

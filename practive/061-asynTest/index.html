@@ -1,0 +1,19 @@
+<!-- 异步请求方式 -->
+<script>
+    ;
+    (function() {
+        'use strict'
+        // 1Es5 XHLHttpRequest
+        let http = new XMLHttpRequest();
+        http.open('get', 'https://api.github.com/search/users?q=xxxlr');
+        http.send();
+
+        http.addEventListener('load', () => {
+                let data = JSON.parse(http.responseText);
+                console.log(data);
+
+            })
+            // 2Es6 fetch
+        fetch()
+    })();
+</script>
