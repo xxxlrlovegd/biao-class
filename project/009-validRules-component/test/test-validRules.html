@@ -75,8 +75,8 @@
     <script src="../../006-form-component/lrForm.js"></script>
     <script>
         /****验证点击提交后输入框数据没有清空，此处还需要完善****/
-        validrules.boot('#test');
-        validrules.boot('form');
+        lrValidrules.boot('#test');
+        lrValidrules.boot('form');
         let data;
         let submit = document.querySelector('[type=submit]');
         submit.addEventListener('click', e => {

@@ -1,7 +1,7 @@
 ;
 (function() {
     'use strict'
-    window.search = {
+    window.lrSearch = {
         init
     };
     let defaultConfig = {

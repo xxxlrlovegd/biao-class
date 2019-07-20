@@ -1,19 +1,50 @@
-<!-- 异步请求方式 -->
+<!-- 异步请求方式，与服务器做通信 -->
+<!-- <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script> -->
+<script src="rq.js"></script>
 <script>
     ;
     (function() {
         'use strict'
         // 1Es5 XHLHttpRequest
-        let http = new XMLHttpRequest();
-        http.open('get', 'https://api.github.com/search/users?q=xxxlr');
-        http.send();
+        // let http = new XMLHttpRequest();
+        // http.open('get', 'https://api.github.com/search/users?q=xxxlr');
+        // http.send();
 
-        http.addEventListener('load', () => {
-                let data = JSON.parse(http.responseText);
-                console.log(data);
+        // http.addEventListener('load', () => {
+        //         let data = JSON.parse(http.responseText);
+        //         console.log(data);
 
-            })
-            // 2Es6 fetch
-        fetch()
+        //     })
+        //     // 2使用Es6 fetch(默认是get请求)
+        // fetch('https://api.github.com/search/users?q=xxxlr')
+        //     .then((response) => {
+        //         console.log("1")
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        // 2jQuery发送异步请求 
+        // $.get('https://api.github.com/search/users?q=xxxlr')
+        //     .then(data => {
+        //         console.log(data)
+        //     });
+        // $.ajax({
+        //         method: 'get',
+        //         url: 'https://api.github.com/search/users?q=xxxlr'
+        //     })
+        //     .then(data => {
+        //         console.log("data", data)
+        //     })
+        // 3Axios专门做异步请求的库(做了浏览器的兼容，做请求是认真且专一，强大)
+        // axios
+        //     .get('https://api.github.com/search/users?q=xxxlr')
+        //     .then(data => {
+        //         console.log(data);
+        //     });
+        lrRq.get('https://api.github.com/search/users?q=xxxlr', data => {
+            console.log("test=", data)
+        })
     })();
 </script>

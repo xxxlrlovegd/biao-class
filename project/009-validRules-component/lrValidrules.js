@@ -9,7 +9,7 @@
 (function() {
     'use strict'
     //暴露接口
-    window.validrules = {
+    window.lrValidrules = {
             boot,
         }
         /*****一切的开始******/
