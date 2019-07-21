@@ -18,11 +18,22 @@
 <body>
     <div class="container">
         <h3>Github 用户搜索</h3>
-        <div id="search"></div>
+        <div id="main"></div>
     </div>
-    <script src="../../project/010-searchInput-component/lrSearch.css"></script>
+    <link href="../../project/010-searchInput-component/lrSearch.css">
     <script src="../../project/010-searchInput-component/lrSearch.js"></script>
-    lrSearch('#search')
+    <script src="../../project/011-lrRq/lrRq.js"></script>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            let items = []
+            lrRq.get('https://api.github.com/search/users?q=x', data => {
+                items = data.items
+            })
+            lrSearch.init('#main', items)
+        })();
+    </script>
 </body>
 
 </html>
