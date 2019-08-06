@@ -1,0 +1,19 @@
+{
+    "name": "test1",
+    "version": "1.0.0",
+    "description": "",
+    "main": "a.js",
+    "scripts": {
+        "dev": "webpack --mode development",
+        "bulid": "webpack --mode production",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "pack": "node_modules/.bin/webpack"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "webpack": "^4.39.1",
+        "webpack-cli": "^3.3.6"
+    }
+}

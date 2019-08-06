@@ -7,8 +7,9 @@
     let defaultConfig = {
         display: 'name', //用于数据显示（灵活）
         onSelect: (it) => {
-                console.log(it)
-            } //选中数据传给使用者
+            console.log(it)
+        }, //选中数据传给使用者
+        onInput: (value) => {}
     };
     let flag = false;
     /**
@@ -84,6 +85,8 @@
     function optionData(container, config) {
         container._input.addEventListener('keyup', e => {
             let keyword = container._input.value
+            if (keyword)
+                config.onInput && config.onInput(keyword)
             let filtered = container.$list.filter(data => {
                 return data[config.display].includes(keyword)
             });

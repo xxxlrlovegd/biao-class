@@ -24,14 +24,28 @@
     <script src="../../project/010-searchInput-component/lrSearch.js"></script>
     <script src="../../project/011-lrRq/lrRq.js"></script>
     <script>
-        ;
+        /*此用户搜索运用了search组件及asyn组件结合但是代码冗余且性能低所以此处为练习！ */ ;
         (function() {
             'use strict'
             let items = []
-            lrRq.get('https://api.github.com/search/users?q=x', data => {
-                items = data.items
+            let inputValue
+            lrSearch.init('#main', items, {
+                onInput: value => {
+                    inputValue = value
+                }
             })
-            lrSearch.init('#main', items)
+            let input = document.querySelector('[type="search"]');
+            input.addEventListener('keyup', e => {
+                lrRq.get(`https://api.github.com/search/users?q=${inputValue}`, data => {
+                    data.items.forEach(e => {
+                        let obj = {}
+                        obj.name = e.login
+                        obj.url = e.url
+                        items.push(obj)
+                    });
+                    lrSearch.init('#main', items)
+                })
+            })
         })();
     </script>
 </body>
