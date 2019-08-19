@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件test</title>
+</head>
+
+<body>
+    <div id="app">
+        <i-button @click="insetAction">插入</i-button>
+        <i-button @click="saveAction">添加</i-button>
+        <as-action></as-action>
+        <as-action :current="item" :selection-data="selectData"></as-action>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vuex/2.5.0/vuex.min.js"></script>
+    <link href="https://cdn.bootcss.com/iview/2.14.3/styles/iview.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/iview/2.14.3/iview.js"></script>
+    <script src="./js/component.js"></script>
+    <script src="./dist/bundle.js"></script>
+    <script>
+        ;
+        (function() {
+            'use strict'
+            var app = new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        mag: '哈哈',
+                        item: [],
+                        selectData: [{
+                            comp: "script-haul",
+                            label: "执行脚本",
+                            operationid: "8667c6ba67134e0a8f7dc4ffce45cs90",
+                            value: "script",
+                        }, {
+                            comp: "deletefile-haul",
+                            label: "删除文件",
+                            operationid: "8667c6ba67134e0a8f7dc497ce35dc00",
+                            value: "deletefile",
+                        }, {
+                            comp: "createdir-haul",
+                            label: "创建目录",
+                            operationid: "8667c6ba67134e0a8f7dc497ce35dc01",
+                            value: "createdir",
+                        }, {
+                            comp: "createfile-haul",
+                            label: "创建文件",
+                            operationid: "8667c6ba67134e0a8f7dc497ce35dc02",
+                            value: "createfile",
+                        }],
+                    }
+                },
+                methods: {
+                    insetAction() {},
+                    saveAction() {},
+                },
+            })
+        })();
+    </script>
+</body>
+
+</html>
