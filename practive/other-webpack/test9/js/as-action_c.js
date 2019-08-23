@@ -10,7 +10,7 @@ Vue.component('as-action', {
                 </i-option>
             </i-select>
         </i-col>
-        <i-col span="18" v-for="(item,index) in selectionData" :key="index"
+        <i-col :lg="10" :md="10" :sm="14" :xs="18" v-for="(item,index) in selectionData" :key="index"
                v-if="selectionRes === item.value">
             <component :is="item.comp" :indexing="indexing" :group="group" :disabled="disabled"
                        :control="control"></component>
