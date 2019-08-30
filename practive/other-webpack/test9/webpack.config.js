@@ -1,4 +1,5 @@
 const path = require('path')
+const uglify = require('uglifyjs-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: './index.js',
@@ -8,5 +9,8 @@ module.exports = {
     },
     resolve: {
         alias: { 'vue': './node_modules/vue/dist/vue.js' }
-    }
+    },
+    plugins: [
+        new uglify()
+    ]
 }

@@ -55,8 +55,65 @@
                     }
                 },
                 methods: {
-                    insetAction() {},
                     saveAction() {},
+                    insetAction(group) {
+                        if (typeof group !== 'string') {
+                            group = 'group0';
+                        }
+                        this.newActionValue(group);
+                    },
+                    newActionValue(group) {
+                        if (typeof group !== 'string') {
+                            group = 'group0';
+                        }
+                        let res = {
+                            step: this.allActionRes[group].length + 1,
+                            run_type: 0,
+                            objectid: '',
+                            operationid: '',
+                            action: {
+                                name: "",
+                            },
+                            objectIsEmpty: false,
+                            runIsEmpty: false
+                        }
+                        this.$store.commit('saveActionRes', {
+                            group: group,
+                            newValue: res
+                        });
+                    },
+                    getActionResData() {
+                        // 获取初始数据方法
+                        this.$store.commit('getActionRes', {
+                            group: 'group0',
+                            data: [{
+                                step: 1,
+                                objectid: "4245e8117a9e4f369ea450751e9d38bf",
+                                operationid: "8667c6ba67134e0a8f7dc4ffce45cs90",
+                                action: {
+                                    content: " ",
+                                    name: "script"
+                                },
+                                run_type: 1
+                            }, {
+                                step: 2,
+                                objectid: "4245e8117a9e4f369ea450751e9d38bf",
+                                operationid: "8667c6ba67134e0a8f7dc4ffce45cs90",
+                                action: {
+                                    content: " ",
+                                    name: "script"
+                                },
+                                run_type: 1
+                            }],
+                        });
+                        this.$store.commit('setUpdateFun', 'group0');
+                        this.$store.commit('setValiateFun', 'group0');
+                    },
+                },
+                computed: {
+                    allActionRes() {
+                        return this.$store.state.allActionRes || {};
+                    },
                 },
             })
         })();

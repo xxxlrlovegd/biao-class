@@ -2,7 +2,7 @@ Vue.component('as-action', {
     template: `
     <div class="as-action-body">
     <row>
-        <i-col span="4" style="padding-right:10px;">
+        <i-col span="2" style="padding-right:10px;">
             <i-select v-model="selectionRes" @on-change="selectionOnChange" :class="{'as-action-error':isEmpty}"
                       :disabled="disabled">
                 <i-option v-for="(item,index) in selectionData" :key="index+indexing" :value="item.value">
@@ -115,6 +115,7 @@ Vue.component('as-action', {
             return this.isEmpty;
         },
         deleteStepAction(index) {
+            this.$store.state.validateFun[this.group].splice(index, 1);
             let temp = JSON.parse(JSON.stringify(this.allActionRes[this.group]));
             this.allActionRes[this.group].splice(0, this.allActionRes[this.group].length);
             temp.map(item => {
@@ -124,14 +125,14 @@ Vue.component('as-action', {
                 return item;
             });
             temp.splice(index, 1);
-            temp.forEach(item => {
-                this.allActionRes[this.group].push(item);
-            });
-            this.$store.state.validateFun[this.group].splice(this.indexing, 1);
-            this.allActionRes[this.group].forEach((item, ind) => {
-                this.$store.commit('updateValue', { group: this.group, index: ind });
-            });
-            this.$store.commit('setValiateFun', this.group);
+            setTimeout(() => {
+                temp.forEach(item => {
+                    this.allActionRes[this.group].push(item);
+                });
+                this.allActionRes[this.group].forEach((item, ind) => {
+                    this.$store.commit('updateValue', { group: this.group, index: ind });
+                });
+            }, 0);
         },
         upStepAction(index) {
             if (index > 0) {
