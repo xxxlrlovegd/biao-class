@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px
+}
+
+.main .header {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 500px;
+    margin: 10px auto;
+}
+
+.container>* {
+    padding: 5px;
+    margin: 8px;
+}
+
+.complete {
+    opacity: .6;
+}
