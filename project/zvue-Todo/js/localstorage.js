@@ -7,27 +7,16 @@
     };
     /**
      * 放值
-     * @param object json转string
      */
-    function set(str) {
-        str = JSON.parse(JSON.stringify(str))
-        for (let i in str) {
-            localStorage.setItem(i, str[i])
-        }
+    function set(key, val) {
+        localStorage.setItem(key, JSON.stringify(val))
     }
     /**
      * 取值
-     * @param string 
      */
     function get(key) {
-        return localStorage.getItem(key)
+        let val = localStorage.getItem(key)
+        if (val)
+            return JSON.parse(val)
     }
-    let str1 = {
-        name: 'hhhh',
-        sex: 'female',
-        age: 12
-    }
-    boot.set(str1)
-    let data = boot.get("name")
-    console.log("data===", data)
 })();

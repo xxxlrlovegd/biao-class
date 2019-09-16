@@ -9,28 +9,29 @@
 </head>
 
 <body>
-    <div class="main">
-        <div class="container">
-            <div class="header">
-                今日清单
+    <div id="main">
+        <div class="navbar">
+            <h1>今日份清单</h1>
+        </div>
+        <div class="header">
+            Do it!
+        </div>
+        <form @submit.prevent="merge" id="task-form">
+            <div class="wrap">
+                <input type="text" v-model="current.title" autocomplete="off">
             </div>
-            <div class="nav">
-                <h4>今日无药</h4>
-            </div>
-            <input type="text" name="" id="">
-            <div class="item">
-                <div class="wrap">
-                    未完成
-                    <p class="list">嘻嘻嘻嘻嘻嘻嘻嘻寻寻寻寻寻寻</p>
+        </form>
+        <div class="task-list">
+            <div class="wrap">
+                <div class="segment-title">未完成</div>
+                <div class="item" v-for="(todo, index) in list">
+                    <span class='title'>{{todo.title}}</span>
                 </div>
             </div>
-            <div class="item">
-                <div class="wrap">
-                    已完成
-                    <p class="complete list">哈哈哈哈哈哈哈哈哈哈或哈哈</p>
-                    <p class="complete list">哈哈哈哈哈哈哈哈哈哈或哈哈</p>
-                    <p class="complete list">哈哈哈哈哈哈哈哈哈哈或哈哈</p>
-                </div>
+        </div>
+        <div class="task-list">
+            <div class="wrap">
+                <div class="segment-title">已完成</div>
             </div>
         </div>
     </div>
@@ -38,6 +39,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
     <script src="./js/localstorage.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
