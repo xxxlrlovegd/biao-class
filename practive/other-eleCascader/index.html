@@ -1,0 +1,69 @@
+<div id="app">
+    <el-cascader-multi v-model="checkList" :data="data"> </el-cascader-multi>
+</div>
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+<script>
+    import elCascaderMulti from "el-cascader-multi";
+    Vue.use(elCascaderMulti);
+</script>
+<script>
+    ;
+    (function() {
+        'use strict'
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    checkList: [
+                        ["zhinan", "shejiyuanze", "fankui"]
+                    ],
+                    data: [{
+                        value: 'zhinan',
+                        label: '指南',
+                        children: [{
+                            value: 'shejiyuanze',
+                            label: '设计原则',
+                            children: [{
+                                value: 'yizhi',
+                                label: '一致'
+                            }, {
+                                value: 'fankui',
+                                label: '反馈'
+                            }, {
+                                value: 'xiaolv',
+                                label: '效率'
+                            }, {
+                                value: 'kekong',
+                                label: '可控'
+                            }]
+                        }, {
+                            value: 'daohang',
+                            label: '导航',
+                            children: [{
+                                value: 'cexiangdaohang',
+                                label: '侧向导航'
+                            }, {
+                                value: 'dingbudaohang',
+                                label: '顶部导航'
+                            }]
+                        }]
+                    }, {
+                        value: 'ziyuan',
+                        label: '资源',
+                        children: [{
+                            value: 'axure',
+                            label: 'Axure Components'
+                        }, {
+                            value: 'sketch',
+                            label: 'Sketch Templates'
+                        }, {
+                            value: 'jiaohu',
+                            label: '组件交互文档'
+                        }]
+                    }],
+                }
+            },
+        })
+    })();
+</script>
