@@ -33,7 +33,7 @@ console.log(Size.M,Size.S)
 三Class类 默认是public;子类可见可用protected;当被标记为private时，不能在它的类的外部访问;
 class Preson{
     name:string;
-    constructor(name string){
+    constructor(name:string){
         this.name=name;
     }//构造函数将name传到greet中
     greet(){
