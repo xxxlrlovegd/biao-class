@@ -1,0 +1,25 @@
+<div id="app"></div>
+
+<script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.10.2/cjs/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+<script type="text/babel">
+    class App extends React.Component { state = { user : { name : '王花花', point : 108, }, }; constructor () { super(); this.onChange = this.onChange.bind(this); } render () { return
+    <div>
+        <input type="text" value={this.state.user.name} onChange={this.onChange}/>
+        <nav>
+            <span>{this.state.user.point}</span>
+            <span>{this.state.user.name}</span>
+        </nav>
+        <main>
+            <Products/>
+        </main>
+    </div>; } onChange (e) { this.setState({ user : { name : e.target.value, }, }); } } function Products () { let products = [ { name : '毛衣', price : 100, }, { name : '毛裤', price : 108, }, ]; return products.map(it => { return (
+    <div key={it.name}>
+        <span>{it.name}</span>
+        <span>{it.price}</span>
+    </div>); }); } ReactDOM.render(
+
+    <App/>, app);
+</script>
