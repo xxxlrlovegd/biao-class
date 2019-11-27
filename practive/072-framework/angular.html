@@ -1,0 +1,39 @@
+<style>
+    [ng-cloak] {
+        display: none;
+    }
+</style>
+<div ng-cloak ng-app="app" ng-controller="Base" id="root">
+    <input type="text" ng-model="user.name">
+    <nav>
+        <span>{{user.point}}</span>
+        <span>{{user.name}}</span>
+    </nav>
+    <main>
+        <div ng-repeat="it in products" classs="card">
+            <span>{{it.name}}</span>
+            <span>{{it.price}}</span>
+        </div>
+    </main>
+</div>
+<script src="https://unpkg.com/angular@1.7.5/angular.js"></script>
+<script>
+    angular
+        .module('app', [])
+        .controller('Base', [
+            '$scope',
+            function($scope) {
+                $scope.user = {
+                    name: 'whh',
+                    point: 100,
+                };
+                $scope.products = [{
+                    name: 'xx',
+                    price: 100,
+                }, {
+                    name: 'yy',
+                    price: 200,
+                }];
+            }
+        ])
+</script>
