@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>V-Todo</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
@@ -29,7 +29,9 @@
         </form>
         <div class="task-list">
             <div class="wrap">
-                <div class="segment-title">未完成</div>
+                <div class="segment-title">未完成
+                    <task v-for="(todo,index) in list" v-if="!todo.completed" :todo="todo"></task>
+                </div>
             </div>
         </div>
         <div class="task-list">
@@ -44,7 +46,8 @@
                 </div>
             </div>
         </div>
-        <template id='task-tpl'>
+    </div>
+    <template id='task-tpl'>
             <div class="item" >
                  <div class="toggle-complete" @click="action('toggle_complete',todo.id)"></div>
                     <span class='title'>{{todo.title}}</span>
@@ -56,7 +59,6 @@
                     </div>
             </div>        
         </template>
-    </div>
     <audio id="alert-sound">
             <source src="./sound/sound.wav"> 
     </audio>

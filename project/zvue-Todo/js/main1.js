@@ -29,11 +29,32 @@
             }
         },
         mounted() {
+            var me = this
             this.list = boot.get('list') || this.list;
             this.last_id = boot.get('last_id') || this.last_id;
             var time = setInterval(() => {
                 app.check_alerts();
             }, 1000);
+            Event.$on('toggle_complete', function(params) {
+                if (params) {
+                    me.toggle_complete(params)
+                }
+            })
+            Event.$on('remove', function(params) {
+                if (params) {
+                    me.remove(params)
+                }
+            })
+            Event.$on('set_current', function(params) {
+                if (params) {
+                    me.set_current(params)
+                }
+            })
+            Event.$on('toggle_detail', function(params) {
+                if (params) {
+                    me.toggle_detail(params)
+                }
+            })
         },
         methods: {
             /**
@@ -41,7 +62,6 @@
              */
             check_alerts() {
                 this.list.forEach((item, i) => {
-                    console.log(item, i)
                     if (!item.alert_at || item.alert_confirmed) return;
                     var alert_at = (new Date(item.alert_at)).getTime();
                     var now = (new Date()).getTime();
@@ -123,7 +143,6 @@
                 deep: true,
                 handler(newval, oldval) {
                     if (newval) {
-                        console.log(newval)
                         boot.set('list', newval);
                     } else {
                         boot.set('list', []);
