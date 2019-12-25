@@ -16,7 +16,7 @@
   export default {
     data () {
       return {
-        postList : [],
+        postList : [{content:'这个冬天有点甜，嘻嘻嘻'},{content:"这是个测试哈哈哈哈哈test"}],
       };
     },
     mounted () {

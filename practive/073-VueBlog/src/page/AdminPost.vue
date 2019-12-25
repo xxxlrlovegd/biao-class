@@ -64,7 +64,10 @@
               this.read();
               this.resetCurrent();
             }
-          });
+          })
+         .catch(function(err) {
+                    console.log(err.message);
+                })
       },
 
       remove () {},
