@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <helloWorld msg="这是一个单页应用！" />
     <nav>
       <router-link to="/">首页</router-link>
       <router-link to="/admin/post">管理</router-link>

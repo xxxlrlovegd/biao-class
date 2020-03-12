@@ -2,10 +2,10 @@
   <div class="container">
     <h1>近期文章</h1>
     <div class="post-list">
-      <div v-for="it in postList" class="post">
-        <a href="#"><h2>{{it.title}}</h2></a>
-        <div class="preview">{{it.content}}</div>
-      </div>
+      <div v-for="it in postList" class="post"> 
+        <router-link :to="'/post/'+it.id"><h2>{{it.title}}</h2></router-link>
+        <div class="post-content">{{it.content}}</div>
+     </div> 
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@
   export default {
     data () {
       return {
-        postList : [{content:'这个冬天有点甜，嘻嘻嘻'},{content:"这是个测试哈哈哈哈哈test"}],
+        postList : [],
       };
     },
     mounted () {
