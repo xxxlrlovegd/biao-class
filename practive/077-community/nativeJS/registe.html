@@ -1,0 +1,72 @@
+<head>
+    <meta charset="utf-8" />
+    <object style="border:0px;height: 10%;" type="text/x-scriptlet" data="nav.html" width=100%>
+    </object>
+    <link rel="stylesheet" href="./css/global.css">
+</head>
+<div class="main">
+    <form id="registeForm">
+        <label>
+        <div class="field">用户名</div>
+        <input type="text" id="username">
+      </label>
+        <label>
+        <div class="field">密码</div>
+        <input type="password" id="password">
+      </label>
+        <label>
+        <div class="field">确认密码</div>
+        <input type="password">
+      </label>
+        <label>
+        <button type="submit">提交</button>
+      </label>
+    </form>
+</div>
+<div class="row footer">
+    <div class="container"></div>
+</div>
+<script src="./js/api.js"></script>
+<script>
+    boot()
+
+    function boot() {
+        registeForm.addEventListener('submit', e => {
+            e.preventDefault();
+            let row = {
+                username: username.value,
+                password: password.value,
+            };
+            isExistUser(row);
+        })
+    };
+
+    function isExistUser(param) {
+        api('user/exists', {
+                where: {
+                    and: {
+                        username: param.username
+                    }
+                }
+            },
+            r => {
+                if (r.data)
+                    alert('用户名已存在');
+                else {
+                    if (!param.username || !param.password)
+                        return;
+                    regist(param);
+                }
+            }
+        )
+    };
+
+    function regist(row) {
+        api('user/create', row, r => {
+            if (r.success) {
+                alert('欢迎您来到lxr');
+                location.href = './home.html';
+            }
+        });
+    }
+</script>

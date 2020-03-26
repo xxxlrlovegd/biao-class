@@ -1,0 +1,63 @@
+<head>
+    <meta charset="utf-8" />
+    <object style="border:0px;height: 10%;" type="text/x-scriptlet" data="nav.html" width=100%>
+    </object>
+    <link rel="stylesheet" href="./css/global.css">
+</head>
+<div class="main">
+    <form id="loginForm">
+        <label>
+        <div class="field">用户名</div>
+        <input type="text" id="username">
+      </label>
+        <label>
+        <div class="field">密码</div>
+        <input type="password" id="password">
+      </label>
+        <label>
+        <button type="submit">提交</button>
+      </label>
+    </form>
+</div>
+<div class="row footer">
+    <div class="container"></div>
+</div>
+<script src="./js/api.js"></script>
+<script>
+    boot()
+
+    function boot() {
+        loginForm.addEventListener('submit', e => {
+            e.preventDefault();
+            let row = {
+                username: username.value,
+                password: password.value,
+            };
+            if (!row.username || !row.password)
+                return;
+            login(row);
+        })
+    }
+
+    function login(row) {
+        let params = {
+            where: {
+                and: row,
+            },
+        };
+        api('user/first', params, r => {
+            let user = r.data;
+            if (!user) {
+                alert('用户名或者密码有误');
+                return;
+            }
+            alert('登录成功');
+            onLoginSuccess(user);
+        });
+    }
+
+    function onLoginSuccess(user) {
+        localStorage.setItem('session', user.id)
+        location.href = './home.html'
+    }
+</script>
