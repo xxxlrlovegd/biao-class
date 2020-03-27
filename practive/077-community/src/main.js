@@ -3,14 +3,25 @@ import VueRouter from 'vue-router';
 import App from './App.vue'
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
+import Home from './page/Home';
+import About from './page/About';
+
+Vue.config.productionTip = false
 Vue.use(VueRouter);
 Vue.use(ViewUI);
-Vue.config.productionTip = false
-    // const RouterConfig = {
-    //     // routes: Routers
-    // };
-    // const router = new VueRouter(RouterConfig);
+const RouterConfig = [{
+        path: '/',
+        component: Home,
+    },
+    {
+        path: '/about',
+        component: About,
+    },
+];
 
 new Vue({
     render: h => h(App),
+    router: new VueRouter({
+        routes: RouterConfig,
+    }),
 }).$mount('#app')

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件代理</title>
+</head>
+
+<body>
+    <!-- 点击a标签弹出几号链接的提示 -->
+    <div id="father">
+        <a href="#">链接1号</a>
+        <a href="#">链接2号</a>
+        <a href="#">链接3号</a>
+        <a href="#">链接4号</a>
+        <a href="#">链接5号</a>
+        <a href="#">链接6号</a>
+    </div>
+</body>
+<script>
+    // 不用代理模式循环监听事件，性能的开销比较大
+    // const aNodes = document.getElementById('father').getElementsByTagName('a')
+    // const aLength = aNodes.length
+    // for (let index = 0; index < aLength; index++) {
+    //     aNodes[index].addEventListener('click', function(e) {
+    //         e.preventDefault()
+    //         alert(`我是${aNodes[index].innerText}`)
+    //     })
+    // }
+    // 用事件代理实现
+    const father = document.getElementById('father')
+    father.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+            e.preventDefault()
+            alert(`我是${e.target.innerText}`)
+        }
+    })
+    array.forEach(element => {
+
+    });
+</script>
+
+</html>
