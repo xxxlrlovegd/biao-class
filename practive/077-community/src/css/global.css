@@ -1,0 +1,19 @@
+.container {
+    overflow: auto;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form {
+    max-width: 35rem !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+
+.error {
+    text-align: left;
+    color: #b10;
+    padding-left: 5rem;
+}

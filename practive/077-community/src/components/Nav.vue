@@ -6,19 +6,39 @@
                 <img src="" alt="">
             </div>
         </i-Col>
-        <i-Col span="16">  
-        <div class="search">
+        <i-Col span="16" class="text-right">  
+        <div class="search" >
                 <input type="search">
             </div>
-            <div id="tourist">
-                <a href="./login.html" class="nav-item">登录</a>
-                <a href="./registe.html" class="nav-item">注册</a>
+            <div v-if="!session.loggedIn()" id="tourist">
+                <router-link  class="nav-item" to="/login">登录</router-link>
+                <router-link  class="nav-item" to="/registe">注册</router-link>
             </div>
-            <div id="loggedIn">
-                <a href="#" class="nav-item" id="navItemName"></a>
-                <a href="#" onclick="logout()">登出</a>
+            <div v-else id="loggedIn">
+                <a href="#" class="nav-item" id="navItemName">{{session.user().username}}</a>
+                <a href="#" @click="session.logout()">登出</a>
             </div>
             </i-Col>
     </Row>
 </div>
 </template>
+<style>
+    .text-right{
+        display: inline-block; 
+        text-align: right;
+    }
+   .text-right>*,  .nav-item{
+        display: inline-block !important;
+        padding:0 2px;
+    }
+</style>
+<script>
+import session from '../lib/session'
+export default {
+    data(){
+        return {
+            session
+        }
+    }
+}
+</script>

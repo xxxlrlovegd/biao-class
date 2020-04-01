@@ -5,6 +5,8 @@ import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import Home from './page/Home';
 import About from './page/About';
+import Login from './page/Login';
+import Registe from './page/Registe';
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
@@ -16,6 +18,14 @@ const RouterConfig = [{
     {
         path: '/about',
         component: About,
+    },
+    {
+        path: '/Login',
+        component: Login,
+    },
+    {
+        path: '/registe',
+        component: Registe,
     },
 ];
 
