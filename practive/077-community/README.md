@@ -33,3 +33,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### 5.设置 setting
 ### 6.管理 admin
 ### nativeJS是此项目初期全都用原生进行设计的；src下是将用vue.js、vue-router及iview进行设计及完成的
+
+### 知识点
+### 1.在某个vue文件下导入 css样式会作用到整个项目上<style scoped></style>可单独作用；<style scoped>@import '.css'</style>在里面引用样式文件依然会作用全局
+### 2.表单禁止默认事件 .prevent
+### 3.跨域发送请求会发送两遍
+### 4.异步请求开销较大
+### 5.表单下防止重复发送请求 可以用fieldset标签加disabled来进行控制<form><fieldset :disabled='false'>...</fieldset></form>

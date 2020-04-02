@@ -7,6 +7,7 @@ import Home from './page/Home';
 import About from './page/About';
 import Login from './page/Login';
 import Registe from './page/Registe';
+import Setting from './page/Setting';
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
@@ -26,6 +27,10 @@ const RouterConfig = [{
     {
         path: '/registe',
         component: Registe,
+    },
+    {
+        path: '/setting',
+        component: Setting,
     },
 ];
 
