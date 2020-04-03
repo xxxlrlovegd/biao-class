@@ -8,6 +8,8 @@ import About from './page/About';
 import Login from './page/Login';
 import Registe from './page/Registe';
 import Setting from './page/Setting';
+import SettingInfo from './page/SettingInfo';
+import SettingSecurity from './page/SettingSecurity';
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
@@ -31,6 +33,15 @@ const RouterConfig = [{
     {
         path: '/setting',
         component: Setting,
+        children: [{
+                path: 'me',
+                component: SettingInfo,
+            },
+            {
+                path: 'security',
+                component: SettingSecurity,
+            }
+        ]
     },
 ];
 
