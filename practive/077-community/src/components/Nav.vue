@@ -15,7 +15,7 @@
                 <router-link  class="nav-item" to="/registe">注册</router-link>
             </div>
             <div v-else id="loggedIn">
-                <a href="#" class="nav-item" id="navItemName">{{session.user().username}}</a>
+                <router-link  class="nav-item" to="/setting/me">{{session.user().username}}</router-link>
                 <a href="#" @click="session.logout()">登出</a>
             </div>
             </i-Col>
