@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #boxes {
+            width: 100%;
+            height: 100%;
+        }
+
+        .head {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 10px;
+            font-size: 16px;
+        }
+
+        .blues {
+            display: inline-block;
+            width: 5px;
+            height: 20px;
+            background: #1f96f2;
+            margin: 0 5px 15px 0;
+        }
+
+        .title {
+            display: inline-block;
+            max-width: 70%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #4d4d4d;
+            height: 50px;
+            line-height: 50px;
+            margin-right: 5px;
+        }
+
+        .dates {
+            display: inline-block;
+            color: #1f96f2;
+            min-width: 50px;
+            height: 50px;
+            line-height: 50px;
+            vertical-align: top;
+        }
+
+        .hang {
+            height: 40px;
+            font-size: 14px;
+            color: #4d4d4d;
+        }
+
+        .footer {
+            width: 100%;
+            height: auto;
+            overflow-y: auto;
+        }
+
+        .lists {
+            width: 100%;
+        }
+
+        .hang td {
+            text-align: center;
+            vertical-align: middle;
+            border: none;
+        }
+
+        .titlecolor {
+            background-color: #62b5f7;
+            color: #ffffff;
+        }
+
+        .odd {
+            background-color: #d3eafc;
+        }
+
+    </style>
+</head>
+<body>
+<div id="boxes">
+    <div style="width: 100%;height:280px;position: relative;background: #f2f7fb;">
+    <div style="width:59%;height:100%;display: inline-block;"  ref="chart"></div>
+    <div style="width:39%;height:100%;display: inline-block;"  ref="chartOther"></div>
+    <div class="another" style="position: absolute;top: 35%; left: 54%;z-index: 999;">
+        <div style="color: #1f96f2;font-size: 12px;margin: 0 0 3px 3px ;">其他</div>
+        <img src="../../images/another.png" alt="">
+    </div>    
+  </div> 
+    <div class="head">
+        <span class="blues"></span><span class="title">本月干线收入分析表</span><span class="dates">({{date}})</span>
+    </div>
+    <div class="footer">
+        <table class="lists" rules=none cellspacing=0 align=center>
+            <tr class="hang" v-for="(item,index) in list"
+                v-bind:class="{'titlecolor': index==0, 'odd': index%2==1&&index!=0 }">
+                <td v-for="(every,name,index4) in  item">{{every}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script src="js/echarts.js"></script>
+<script>
+    Vue.prototype.$echarts = echarts;
+    var vm = new Vue({
+        el: "#boxes",
+        data: {
+            date:'',
+            list: [{
+                direction: '路向',
+                amount: '运量（件）',
+                income: '收入（元）',
+                percent: "收入占比",
+                },
+                {
+                direction: '郑州',
+                amount: '149824',
+                income: '679345',
+                percent: "14.7%",
+                },
+                {
+                direction: '呼市',
+                amount: '102498',
+                income: '511982',
+                percent: "11.1%",
+                },
+                {
+                direction: '大同',
+                amount: '110500',
+                income: '511425',
+                percent: "11.0%",
+                },
+                {
+                direction: '济南',
+                amount: '96392',
+                income: '488436',
+                percent: "10.5%",
+                },
+                {
+                direction: '太原',
+                amount: '420008',
+                income: '480155',
+                percent: "10.4%",
+                },
+                {
+                direction: '临汾',
+                amount: '159085',
+                income: '417520',
+                percent: "9.0%",
+                },
+                {
+                direction: '沈阳',
+                amount: '27836',
+                income: '315936',
+                percent: "6.8%",
+                },
+                {
+                direction: '运城',
+                amount: '70302',
+                income: '307076',
+                percent: "6.6%",
+                },
+            ],
+            echartsData:{
+                importList:[ 
+                {name: '郑州',value: '335'},
+                {name: '呼市',value: '435'},
+                {name: '济南',value: '635' },
+                {name: '大同',value: '435'},
+                {name: '运城',value: '835'},
+                {name: '新疆',value: '235'},
+                {name: '北京',value: '65'},
+                {name: '驻马',value: '435'},
+                {name: '海口',value: '835'},
+                {name: '离石',value: '35'},
+                {name: '其他',value:'333',selected:true,label: {show: true , fontSize: '8',  fontWeight: 'bold'}},
+                ],
+                otherList:[
+                {name: '太原',value:'33'},
+                {name: '临汾',value:'60'},
+                {name: '原平',value:'140'},
+                {name: '长治',value:'100'},
+                ]
+            },
+           colorData:{
+               color:[],
+               colorOther:[],
+           },
+           showTitleData:{
+               title:[],
+               titleOther:[],
+           }
+        },
+        mounted: function () {
+        this.date=this.getDateEvent().date
+        this.colorData.color=this.colorEvent(this.echartsData.importList)
+        this.colorData.colorOther=this.colorEvent(this.echartsData.otherList)
+        this.showTitleData.title=this.echartShowEvent(this.echartsData.importList)
+        this.showTitleData.titleOther=this.echartShowEvent(this.echartsData.otherList)
+        setTimeout(() => {
+        this.initEcharts();
+        this.initEchartsOther();
+        }, 500);
+        
+     },
+     methods: {
+      initEcharts(){
+        let myChart = this.$echarts.init(this.$refs.chart);
+        let option ={
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a}:{b}:({d}%)",
+            backgroundColor:'#ffffff',
+            textStyle:{
+             color:'#333',
+           },
+        },
+        legend: {
+            orient: 'horizontal',
+            x: 'center',
+            bottom: "2%",
+            itemWidth: 8,
+            itemHeight: 8,
+            data:this.showTitleData.title
+        },
+        color:this.colorData.color,
+        series: [
+            {
+                name:'数据',
+                type:'pie',
+                selectedMode: 'single',
+                radius: [0, '70%'],
+                center: ['50%', '40%'],
+                data:this.echartsData.importList,
+                itemStyle: {
+                                normal: {
+                                    borderWidth: 1,
+                                    borderColor: '#ffffff'
+                                }
+                            },
+                label: { 　　　　　　　　　　
+                     normal: {
+                          show: false,
+                          position: 'inside',
+                           formatter: "{b}"
+                        }
+                 },
+                emphasis: {
+                    itemStyle: {
+                            shadowBlur: 2,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+            }
+        ]
+    };
+    myChart.setOption(option);
+    },
+    initEchartsOther(){
+        let myChart = this.$echarts.init(this.$refs.chartOther);
+        let option ={
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a}:{b}:({d}%)",
+            backgroundColor:'#ffffff',
+            textStyle:{
+             color:'#333',
+           },
+        },
+        legend: {
+            orient: 'horizontal',
+            x: 'center',
+            height:'auto',
+            bottom:'3%',
+            itemWidth: 8,
+            itemHeight: 8,
+            data:this.showTitleData.titleOther
+        },
+        color:this.colorData.colorOther,
+        series: [
+            {
+                name:'数据',
+                type:'pie',
+                selectedMode: 'single',
+                radius: [0, '70%'],
+                center: ['50%', '40%'],
+                data:this.echartsData.otherList,
+                itemStyle: {
+                                normal: {
+                                    borderWidth: 1,
+                                    borderColor: '#ffffff'
+                                }
+                            },
+                label: { 　　　　　　　　　　
+                     normal: {
+                          show: true,
+                          position: 'inside',
+                           formatter: "{b}"
+                        }
+                 },
+                emphasis: {
+                    itemStyle: {
+                            shadowBlur: 2,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+            }
+        ]
+    };
+    myChart.setOption(option);
+    },
+    // 颜色生成器
+    getColor(){
+            var colorValue="0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f";
+            var colorArray = colorValue.split(",");
+            var color="#";
+            for(var i=0;i<6;i++){
+              color+=colorArray[Math.floor(Math.random()*16)];
+                }
+           return color;
+        },
+     /**
+     * 根据数据动态生成颜色
+     *  @param  {Array} params 
+     *  @return {Array} 
+     * */
+    colorEvent(params){
+        var array=[]
+        for (let index = 0; index < params.length; index++) {
+            let color= this.getColor()
+            array.push(color)   
+        }
+        return array
+    },  
+    /**
+     * 动态生成图饼label显示
+     *  @param  {Array} params {String} key
+     *  @return {Array} 
+     * */
+    echartShowEvent(params,key='name'){
+       let array= params.map(item=> item[key]) 
+       return array
+    },
+       /**
+        * 获取系统时间
+        *  @return {Object} 
+        * */
+        getDateEvent(){
+            let dateData={
+             date:'',
+             dateTime:'',
+             dateTimes:'',
+            }
+            let yy = new Date().getFullYear();
+            let mm = new Date().getMonth()+1;
+            let dd = new Date().getDate();
+            let hh = new Date().getHours();
+            let mf = new Date().getMinutes()<10 ? '0'+new Date().getMinutes() : new Date().getMinutes();
+            let ss = new Date().getSeconds()<10 ? '0'+new Date().getSeconds() : new Date().getSeconds();
+            dateData.date = yy+'/'+mm+'/'+dd ;
+            dateData.dateTime = yy+'/'+mm+'/'+dd+' '+hh+':'+mf;
+            dateData.dateTimes = yy+'/'+mm+'/'+dd+' '+hh+':'+mf+':'+ss;
+            return dateData
+        },
+}
+})
+
+</script>
+</html>

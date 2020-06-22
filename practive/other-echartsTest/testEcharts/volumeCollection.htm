@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>二级配送业务量收</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            font-size: 16px;
+        }
+
+        .cricleBox {
+            width: 100%;
+            height: 280px;
+            background: #f2f7fb;
+            position: relative;
+        }
+
+        .cricleLeft {
+            display: inline-block;
+            width: 60%;
+            height: 100%;
+        }
+
+        .cricleRight {
+            display: inline-block;
+            width: 40%;
+            height: 100%;
+        }
+
+        .another {
+            position: absolute;
+            top: 35%;
+            left: 54%;
+            z-index: 999;
+        }
+
+        .bottomBox {
+            background-color: #ffffff;
+            width: 100%;
+            height: 100%;
+        }
+
+        .qualifications {
+            box-sizing: border-box;
+            width: 100%;
+            display: flex;
+            background-color: #ffffff;
+            color: #4d4d4d;
+        }
+
+        .title {
+            background-color: #62b5f7;
+        }
+
+        .odd {
+            background-color: #d3eafc;
+        }
+
+        .qualititle {
+            flex: 1;
+            display: flex;
+            min-height: 30px;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 5px;
+        }
+
+        /*#wraper{*/
+        /*display: none;*/
+        /*}*/
+        .shu {
+            display: inline-block;
+            width: 3px;
+            height: 16px;
+            background: #1f96f2;
+            margin: 0 5px 0 10px;
+        }
+
+        .titleBox {
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .titleText {
+            color: #000000;
+        }
+
+        .date {
+            color: #1f96f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <div class="cricleBox" id="wraper">
+            <div id="mainLeft" class="cricleLeft" style="width: 59%;height: 100%;"></div>
+            <div id="mainRight" class="cricleRight" style="width: 39%;height: 100%;"></div>
+            <div class="another">
+                <div style="color: #1f96f2;font-size: 12px;margin: 0 0 3px 3px ;">其他</div>
+                <img src="../../images/another.png" alt="">
+            </div>
+        </div>
+        <div class="bottomBox">
+            <div class="titleBox">
+                <span class="shu"></span>
+                <span class="titleText">本月二级配送收入分析</span>
+                <span class="date">（2020/06/16）</span>
+            </div>
+            <div class="qualifications" v-bind:class="{'title': index==0, 'odd': index%2==1&&index!=0 }"
+                v-for="(item,index) in info">
+                <span class="qualititle" v-for="item2 in  item">{{item2}}</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/echarts.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            mapDateleft: [{
+                    value: 234,
+                    name: '其他'
+                },
+                {
+                    value: 335,
+                    name: '郑州'
+                },
+                {
+                    value: 310,
+                    name: '济南'
+                },
+                {
+                    value: 234,
+                    name: '呼市'
+                },
+                {
+                    value: 135,
+                    name: '西安'
+                },
+                {
+                    value: 123,
+                    name: '乌市1'
+                },
+                {
+                    value: 115,
+                    name: '乌市2'
+                },
+                {
+                    value: 213,
+                    name: '乌市3'
+                },
+                {
+                    value: 435,
+                    name: '乌市4'
+                },
+                {
+                    value: 823,
+                    name: '乌市5'
+                }
+            ],
+            mapDateright: [{
+                    value: 335,
+                    name: '武汉'
+                },
+                {
+                    value: 310,
+                    name: '上海'
+                },
+                {
+                    value: 234,
+                    name: '兰州'
+                },
+                {
+                    value: 135,
+                    name: '驻马店'
+                }
+            ],
+            info: [{
+                    human: '路向',
+                    resource: '运量（件）',
+                    danwei: '收入（元）',
+                    piancha: '收入占比'
+                },
+                {
+                    human: '总计',
+                    resource: '18',
+                    danwei: '15',
+                    piancha: '3'
+                },
+                {
+                    human: '郑州',
+                    resource: '22',
+                    danwei: '20',
+                    piancha: '2'
+                },
+                {
+                    human: '济南',
+                    resource: '15',
+                    danwei: '15',
+                    piancha: '0'
+                },
+                {
+                    human: '呼市',
+                    resource: '20%',
+                    danwei: '20%',
+                    piancha: '0'
+                },
+                {
+                    human: '西安',
+                    resource: '90%',
+                    danwei: '100%',
+                    piancha: '10%'
+                },
+                {
+                    human: '乌市',
+                    resource: '20%',
+                    danwei: '20%',
+                    piancha: '0'
+                },
+                {
+                    human: '武汉',
+                    resource: '20%',
+                    danwei: '20%',
+                    piancha: '0'
+                },
+                {
+                    human: '上海',
+                    resource: '20%',
+                    danwei: '20%',
+                    piancha: '0'
+                }, {
+                    human: '兰州',
+                    resource: '20%',
+                    danwei: '20%',
+                    piancha: '0'
+                }, {
+                    human: '驻马店',
+                    resource: '20%',
+                    danwei: '20%',
+                    piancha: '0'
+                }
+
+            ]
+
+        },
+        methods: {
+            initLeft: function () {
+                var dataa = this.mapDateleft;
+                var myecharts = echarts.init(document.getElementById('mainLeft'));
+                var optionLeft = {
+                    backgroundColor: '#f2f7fb', //背景色
+                    title: {
+                        text: '',
+                        subtext: '',
+                        left: 'center'
+                    },
+                    legend: {
+                        orient: 'horizontal',
+                        x: 'center',
+                        bottom: 0,
+                        itemWidth: 8,
+                        itemHeight: 8,
+                        data: ['郑州', '济南', '呼市', '西安', '乌市', '其他', '乌市5', '乌市2', '乌市3', '乌市1', '乌市4',
+                            '乌市54'
+                        ]
+                    },
+                    color: ["#8cc169", "#3ebefd", "#4473c5", "#ffc000", "#5b9cd6", "#ed7d31"],
+                    series: [{
+                        name: '数据',
+                        type: 'pie',
+                        radius: '75%',
+                        center: ['50%', '40%'],
+                        data: dataa,
+                        itemStyle: {
+                            normal: {
+                                borderWidth: 2,
+                                borderColor: '#ffffff'
+                            }
+                        },
+                        label: { //去除饼图的指示折线label
+                            normal: {
+                                show: true,
+                                position: 'inside',
+                                formatter: "{b}"
+                            }
+                        },
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }]
+                };
+                myecharts.setOption(optionLeft);
+            },
+            initRight: function () {
+                var datab = this.mapDateright;
+                var myechartRight = echarts.init(document.getElementById('mainRight'));
+                var optionRight = {
+                    backgroundColor: '#f2f7fb', //背景色
+                    title: {
+                        text: '',
+                        subtext: '',
+                        left: 'center'
+                    },
+                    legend: {
+                        orient: 'horizontal',
+                        x: 'center',
+                        bottom: 0,
+                        itemWidth: 8,
+                        itemHeight: 8,
+                        data: ['武汉', '上海', '兰州', '驻马店']
+                    },
+                    color: ["#ee5d31", "#70ad46", "#ffce3b", "#698fd0"],
+                    series: [{
+                        name: '数据',
+                        type: 'pie',
+                        radius: '75%',
+                        center: ['47%', '40%'],
+                        data: datab,
+                        itemStyle: {
+                            normal: {
+                                borderWidth: 2,
+                                borderColor: '#ffffff'
+                            }
+                        },
+                        label: { //去除饼图的指示折线label
+                            normal: {
+                                show: false,
+                                position: 'inside',
+                                formatter: "{b}:{d}%"
+                            }
+                        },
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }]
+                };
+                myechartRight.setOption(optionRight);
+            }
+        },
+        mounted: function () {
+            // $("#wraper").show();
+            this.initLeft();
+            this.initRight();
+
+        }
+    });
+</script>
+
+</html>

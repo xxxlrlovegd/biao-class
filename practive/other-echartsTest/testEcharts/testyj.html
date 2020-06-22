@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="app" style="font-size: 12px;" v-cloak>
+        <div class="title" style="text-indent:2em">
+            3月15日干线运输发运68车，<span style="color: #4eabf4;">7.6万件</span>,本月累计发运<span
+                style="color: #4eabf4;">92.6万件</span>。各承运商今日运输量：
+        </div>
+        <div v-for="item in List" :key="item.name"
+            style="margin-left: 10%;margin-right: 10%;margin-top: 2%;margin-bottom: 2%;">
+            {{item.name}}: <span style="color: #4eabf4;margin-left: 2%;">{{item.num}}万件</span>
+        </div>
+        <a href="" style="text-decoration:none;margin-left: 10%;color:black;">详情查阅生产作业系统报表。</a>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                List: [{
+                        name: '自有车队',
+                        num: '2.2',
+                    },
+                    {
+                        name: '喜旺物理',
+                        num: '1.4',
+                    },
+                    {
+                        name: '金骏物理',
+                        num: '0.36',
+                    },
+                    {
+                        name: '盛豪源',
+                        num: '0.4',
+                    },
+                    {
+                        name: '旺盛鑫',
+                        num: '0.8',
+                    },
+                    {
+                        name: '海日顺',
+                        num: '0.8',
+                    },
+                    {
+                        name: '速鑫物流',
+                        num: '0.68',
+                    },
+                    {
+                        name: '天津中邮',
+                        num: '0',
+                    },
+                    {
+                        name: '山东中邮',
+                        num: '0.5',
+                    },
+                    {
+                        name: '内蒙中邮',
+                        num: '0.9',
+                    },
+                ]
+            }
+        },
+        created() {
+
+        },
+        methods: {
+
+        },
+    });
+</script>
+
+</html>

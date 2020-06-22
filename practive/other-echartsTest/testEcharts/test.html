@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <div width="100%" height="100%" layout="VBox" backgroundColor="#f2f7fb">
+        <div id="topDiv" width="100%" height="50" layout="VBox">
+            <tab id="myTab" width="100%" height="100%" itemHeight="50" background="#1f96f2" selectedBackground="#1f96f2"
+                enableScroll="false" selectedIndex="0" position="relative">
+                <tabitem text="首页" textColor="#FFFFFF" textSelectedColor="#27dd86" textSize="20" url=""> </tabitem>
+                <tabitem text="一级干线运输" textColor="#FFFFFF" textSize="20"></tabitem>
+                <tabitem text="二级配送管理" textColor="#FFFFFF" textSize="20"></tabitem>
+                <tabitem text="质量管理" textColor="#FFFFFF" textSize="20"></tabitem>
+            </tab>
+        </div>
+        <div id="middleDiv" width="100%" height="100%" layout="VBox">
+            <div width="100%" height="50" layout="VBox" backgroundColor="#f2f7fb">
+                <div width="100%" height="100%" layout="HBox" vAlign="middle" hAlign="center">
+                    <img src="/images/news@2x.png" width="10" height="10" marginLeft="10" marginRight="3" />
+                    <div width="100%" height="50" layout="HBox">
+                        <slide id="slide" width="100%" height="50" enableLoop="false" selectedIndex="0"
+                            tipVisible="false">
+                            <slidepage>
+                                <label width="100%" height="50" vAlign="middle" fontSize="14" marginLeft="10"
+                                    value="某某仓库wdefrgthy盘点严重超时预警11111" color="#4d4d4d"></label>
+                            </slidepage>
+                            <slidepage>
+                                <label width="100%" height="50" vAlign="middle" fontSize="14" marginLeft="10"
+                                    value="某某仓库dasfsdsfhd盘点严重超时预警22" color="#4d4d4d"></label>
+                            </slidepage>
+                            <slidepage>
+                                <label width="100%" height="50" vAlign="middle" fontSize="14" marginLeft="10"
+                                    value="某wertyu仓库盘点严ereqhjgdfadq重超时预警33" color="#4d4d4d"></label>
+                            </slidepage>
+                        </slide>
+                    </div>
+                    <div width="80" height="50" layout="HBox" vAlign="middle">
+                        <input type="label" value="2020-13-21 12:00" fontSize="12" width="100%" height="30"
+                            color="#b5b6b8" />
+                    </div>
+                </div>
+            </div>
+            <div width="100%" height="100%" layout="VBox" borderWidth="5" borderColor="#ffffff"
+                backgroundColor="#ffffff" cornerRadius="4">
+                <div width="100%" height="100%" layout="VBox">
+                    <div id="toptDiv" width="100%" height="40" layout="HBox" vAlign="middle" marginLeft="20">
+                        <label width="2" height="10" backgroundColor="#1e97f2"></label>
+                        <label fontSize="14" marginLeft="3" value="一二级配送收入概况" width="100%" color="#000000"></label>
+                    </div>
+                    <div width="100%" height="190" layout="HBox" hAlign="center" marginTop="-14">
+                        <div width="100%" height="200" layout="VBox" backgroundImage="/images/index-back@2x.png"
+                            backgroundRepeat="no-repeat" backgroundSize="90% 100%">
+                            <div width="100%" height="100%" layout="VBox" marginTop="40">
+                                <label fontSize="16" marginLeft="38" value="本月累计" width="100%" color="#ffffff"></label>
+                                <div width="100%" height="50" layout="HBox">
+                                    <input id="year_income" type="label" value="" height="50" width="100%"
+                                        color="#ffffff" fontSize="35" marginLeft="33" />
+                                    <input type="label" value="收入（万元）" fontSize="16" marginRight="20" height="50"
+                                        width="80" color="#ffffff" />
+                                </div>
+                                <div width="100%" height="100%" layout="HBox" marginTop="10">
+                                    <div layout="VBox" hAlign="center" width="100%" height="100%">
+                                        <input type="label" value="本月累计收入" fontSize="16" height="20" width="100%"
+                                            color="#ffffff" vAlign="middle" hAlign="center" />
+                                        <input id="month_income" type="label" value="" fontSize="16" height="20"
+                                            width="100%" color="#ffffff" vAlign="middle" hAlign="center" />
+                                    </div>
+                                    <div height="15" width="1" backgroundColor="#ffffff" marginTop="7"></div>
+                                    <div layout="VBox" hAlign="center" width="100%" height="100%">
+                                        <input type="label" value="当天收入" fontSize="16" height="20" width="100%"
+                                            color="#ffffff" vAlign="middle" hAlign="center" />
+                                        <input id="day_income" type="label" value="" fontSize="16" height="20"
+                                            width="100%" color="#ffffff" vAlign="middle" hAlign="center" />
+                                    </div>
+                                    <div height="15" width="1" backgroundColor="#ffffff" marginTop="7"></div>
+                                    <div layout="VBox" hAlign="center" width="100%" height="100%">
+                                        <input type="label" value="当日运量" fontSize="16" height="20" width="100%"
+                                            color="#ffffff" vAlign="middle" hAlign="center" />
+                                        <input id="day_trans" type="label" value="" fontSize="16" height="20"
+                                            width="100%" color="#ffffff" vAlign="middle" hAlign="center" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div width="100%" height="100%" layout="HBox" vAlign="middle" marginLeft="20">
+                    <label width="2" height="10" backgroundColor="#1e97f2"></label>
+                    <label fontSize="14" marginLeft="3" value="总体成本收入概况" width="100%" color="#000000"></label>
+                </div>
+                <!--  <webview id="webview" width="100%" height="100%" url="local://cwEchart.htm"/>  -->
+            </div>
+        </div>
+        <div id="bottomDiv" width="100%" height="65" layout="VBox">
+            <tab id="myTab" height="50" itemHeight="50" background="#FFFFFF" enableScroll="false" selectedIndex="1">
+                <tabitem text="首页" textSelectedColor="#1e97f2" selectedBackground="#FFFFFA"
+                    icon="/images/nav-icon1-after@2x.png">
+                </tabitem>
+                <tabitem text="预警" icon="/images/yujing.png" textSize="10">
+                </tabitem>
+                <tabitem text="功能" icon="/images/yujing.png">
+                </tabitem>
+                <tabitem text="个人">
+                </tabitem>
+            </tab>
+        </div>
+    </div>
+</body>
+<script>
+    var res = {
+        'warning': '',
+        'year_income': "1000.00",
+        'month_income': '2000.00',
+        'day_income': '100.00',
+        'day_trans': '4000',
+    };
+    year_income.setValue(res.year_income);
+    month_income.setValue(res.month_income);
+    day_income.setValue(res.day_income);
+    day_trans.setValue(res.day_trans + "件");
+    //通过定时器和求余操作实现轮播效果
+    var index = 0;
+    var timerID = setInterval(function () {
+        index++;
+        var i = index % 3;
+        slide.setSelectedIndex(i);
+    }, 1000);
+</script>
+
+</html>

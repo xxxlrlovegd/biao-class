@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一级配送管理（公司领导）</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #f2f7fb;
+        }
+
+        /*top*/
+        #gsldbox {
+            width: 100%;
+            height: 100%;
+        }
+
+        .top {
+            padding-top: "2%";
+            background: #ffffff;
+        }
+
+        .head {
+            flex: 1;
+            /* height: 50px;
+            line-height: 50px; */
+            padding-left: 10px;
+            font-size: 16px;
+        }
+
+        .blues {
+            display: inline-block;
+            width: 5px;
+            height: 20px;
+            background: #1f96f2;
+            margin: 0 5px 15px 0;
+        }
+
+        .title {
+            display: inline-block;
+            max-width: 70%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #000000;
+            height: 50px;
+            line-height: 50px;
+            margin-right: 5px;
+        }
+
+        .numberTJ {
+            display: flex;
+        }
+
+        .num {
+            flex: 1;
+            text-align: center;
+            height: 60px;
+        }
+
+        .numberleft {
+            color: #fda51f;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 25px;
+        }
+
+        .numberright {
+            color: #1f96f2;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 25px;
+
+        }
+
+        .jian1 {
+            font-size: 12px;
+            color: #fda51f;
+
+        }
+
+        .jian2 {
+            font-size: 14px;
+            color: #1f96f2;
+
+        }
+
+        .state {
+            color: #4d4d4d;
+            font-size: 14px;
+        }
+
+        .listLB {
+            margin-top: 4%;
+            display: flex;
+            height: 80px;
+        }
+
+        .implement {
+            flex: 1;
+            text-align: center;
+            color: #4d4d4d;
+            font-size: 14px;
+        }
+
+        .implement img {
+            margin-bottom: 10px;
+        }
+
+        /*center部分*/
+        .centerpart {
+            width: 100%;
+            height: 100%;
+            margin-top: 15px;
+            background: #ffffff;
+        }
+        .centerpart button{
+          background-color: #ffffff;
+          border-width:1px;
+          border-color: #d5d5d5;
+          border-radius: 3px;
+          padding: 2px 6px;
+        }
+        /*下半部分*/
+        .bottompart {
+            width: 100%;
+            background: #ffffff;
+        }
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+<div id="gsldbox" v-cloak>
+    <div class="top">
+        <div class="head">
+            <span class="blues"></span><span class="title">本月累计收支情况</span>
+        </div>
+        <ul class="numberTJ">
+            <li class="num">
+                <div><span class="numberleft">{{resultData.finance}}</span><span class="jian1">件</span></div>
+                <div class="state">累计收入</div>
+            </li>
+            <li style="width: 1px;height: 35px;background: #e3e4e6"></li>
+            <li class="num">
+                <div><span class="numberright">{{resultData.cost}}</span><span class="jian2">万元</span></div>
+                <div class="state">本月成本</div>
+            </li>
+        </ul>
+        <ul class="listLB">
+            <li class="implement"><img src="images/first_icon1@2x.png" height="32" width="28" @click='yjxqClickEvent("yzxdd")'/>
+                <div>已执行订单</div>
+            </li>
+            <li class="implement"><img src="images/first_icon2@2x.png" height="32" width="28" @click='yjxqClickEvent("wzxdd")'/>
+                <div>未执行订单</div>
+            </li>
+            <li class="implement"><img src="images/first_icon3@2x.png" height="32" width="28" @click='yjxqClickEvent("ywls")'/>
+                <div>业务量收</div>
+            </li>
+            <li class="implement"><img src="images/first_icon4@2x.png" height="32" width="28" @click='yjxqClickEvent("jghfx")'/>
+                <div>结构化分析</div>
+            </li>
+        </ul>
+    </div>
+    <div class="centerpart" style="background-color: #ffffff;">
+        <div class="head">
+            <span class="blues"></span><span class="title">截止今日一级配送返单情况</span> 
+        </div>
+        <div ref="echarts" style="width: 100%;height: 350px;margin-top: -10%;margin-bottom: 10%;"></div>
+    </div>
+</div>
+</body>
+<script src="js/echarts.js"></script>
+<script src="js/vue.js"></script>
+<script>
+   Vue.prototype.$echarts = echarts; 
+   var app=new Vue({
+     el:'#gsldbox',
+     data(){
+         return {
+         resultData:{
+            time:'',
+            finance:'1000',
+            cost:'1000',
+            today:{
+                yqlistData:[
+                  {value: 30, name: '及时返单'},
+                  {value: 80, name: '实际返单'},
+                  {value: 100, name: '应返单量'}
+                 ],
+                sjlistData:[
+                  {value: 30, name: '及时返单'},
+                  {value: 60, name: '实际返单'},
+                  {value: 90, name: '应返单量'}
+                ],
+            }
+       
+         },
+         }
+     },
+     mounted () {
+     this.initEcharts()
+     },
+     methods: {
+        /**
+        * 一级点击跳转页面事件
+        * @params {string}
+        **/
+        yjxqClickEvent(params){
+        console.log(params)
+        },
+        initEcharts(){
+            let myChart = this.$echarts.init(this.$refs.echarts);
+            let option={
+                tooltip: {
+                trigger: 'item',
+                backgroundColor:'#ffffff',
+                borderWidth:'1',
+                borderColor:'#f5f9fd',
+                boxShadow:'0 0 9px 3px #f5f9fd',
+                formatter: function(datas) 
+                        {
+                            var  res ='<span style="color:'+datas.color+';font-size:12px;">' +datas.name+':' +'</span>' + '<br/>'; 
+                             res+='<span style="color:'+datas.color+';font-size:10px">'+'1000单' +"("+datas.value+"%)" +'</span>' + '<br/>'; 
+                            return res;
+                            
+                        }
+                },
+                color:['#fcc848','#37bd7e',"#5cbafa"],
+                series: [
+                    {
+                        name: '预期',
+                        type: 'funnel',
+                        left: '20%',
+                        width: '60%',
+                        label: {
+                            position:'left',
+                            formatter: '{b}',
+                            color:'#777777',
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        itemStyle: {
+                            opacity: 0.6
+                        },
+                        emphasis: {
+                            label: {
+                                align:'right',
+                                position: 'inside',
+                                fontSize:'12',
+                                formatter: '{b}\n预期{c}%'
+                            }
+                        },
+                        data:this.resultData.today.yqlistData,
+                    },
+                    {
+                        name: '实际',
+                        type: 'funnel',
+                        left: '20%',
+                        width: '60%',
+                        label: {
+                            position: 'inside',
+                            formatter: '{c}%',
+                            color: '#fff'
+                        },
+                        data:this.resultData.today.sjlistData,
+                    }
+                ]
+            };
+        myChart.setOption(option);
+        },
+        /**
+        * 数据处理转换成echarts
+        *  @param  {Array} params {String} key
+        *  @return {Array} 
+        * */
+        echartDataEvent(params,key='name'){
+        let array= params.map(item=> item[key]) 
+        return array
+        },
+     }
+   });
+
+</script>
+</html>

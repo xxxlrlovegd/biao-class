@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旭日图加油整！！！</title>
+</head>
+
+<body>
+    <div id="app">
+        <div ref="echart" style="width: 120%;height: 350px;"></div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/echarts.js"></script>
+    <script>
+        Vue.prototype.$echarts = echarts;
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    data: {
+                        parent: [{
+                                name: '省内',
+                                value: 1510312,
+                            },
+                            {
+                                name: '省外',
+                                value: 1375827,
+                            },
+                            {
+                                name: '太原',
+                                value: 480155,
+                            },
+                        ],
+                        children: [{
+                                name: '大同',
+                                value: 511425,
+                            },
+                            {
+                                name: '阳泉',
+                                value: 40520,
+                            },
+                            {
+                                name: '长治',
+                                value: 92303,
+                            },
+                            {
+                                name: '晋城',
+                                value: 11007,
+                            },
+                            {
+                                name: '朔州',
+                                value: 69990,
+                            },
+                            {
+                                name: '原平',
+                                value: 106223,
+                            }, {
+                                name: '离石',
+                                value: 49899,
+                            }, {
+                                name: '临汾',
+                                value: 417520,
+                            }, {
+                                name: '运城',
+                                value: 211425,
+                            },
+                            {
+                                name: '新疆',
+                                value: 11425,
+                            },
+                            {
+                                name: '驻马店',
+                                value: 140520,
+                            },
+                            {
+                                name: '海口',
+                                value: 99303,
+                            },
+                            {
+                                name: '广州',
+                                value: 43007,
+                            },
+                            {
+                                name: '济南',
+                                value: 49990,
+                            },
+                            {
+                                name: '郑州',
+                                value: 96223,
+                            }, {
+                                name: '呼市',
+                                value: 54989,
+                            }, {
+                                name: '天津',
+                                value: 87520,
+                            }, {
+                                name: '北京',
+                                value: 711425,
+                            }, {
+                                name: '沈阳',
+                                value: 81425,
+                            },
+                            {
+                                name: '太原',
+                                value: 480155,
+                            }
+                        ]
+                    },
+                }
+            },
+            mounted() {
+                let myChart = this.$echarts.init(this.$refs.echart);
+                let option = {
+                    animation: false,
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{b}: {c} ({d}%)',
+                        backgroundColor: '#ffffff',
+                        borderWidth: '1',
+                        borderColor: '#f5f9fd',
+                        boxShadow: '0 0 9px 3px #f5f9fd',
+                        textStyle: {
+                            color: '#333',
+                        },
+                    },
+                    series: [{
+                            name: '',
+                            type: 'pie',
+                            radius: [0, '25%'],
+                            label: {
+                                position: 'inner'
+                            },
+                            labelLine: {
+                                show: false
+                            },
+                            data: this.data.parent
+                        },
+                        {
+                            name: '',
+                            type: 'pie',
+                            radius: ['25%', '55%'],
+                            label: {
+                                formatter: '{b|{b}：}{c}  ',
+                                rich: {
+                                    b: {
+                                        fontSize: 14,
+                                        lineHeight: 33
+                                    },
+                                }
+                            },
+                            data: this.data.children,
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+            },
+            methods: {}
+        })
+    </script>
+</body>
+
+</html>

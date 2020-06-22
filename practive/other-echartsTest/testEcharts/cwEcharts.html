@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="js/jquery.min.js"></script>
+<script src="js/echarts.js"></script>
+
+<body>
+    <div id="_top" style="width:500px;height: 300px;"></div>
+</body>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('_top'));
+    var option = option = {
+        textStyle: {
+            color: '#808080'
+        },
+        backgroundColor: '#ffffff',
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'none'
+            },
+            backgroundColor: '#ffffff',
+            borderWidth: '1',
+            borderColor: '#f5f9fd',
+            boxShadow: '0 0 9px 3px #f5f9fd',
+            formatter: function (datas) {
+                console.log(datas[1])
+                var res = '<span style="color:' + '#353535' + ';">' + datas[0].name + '</span>' + '<br/>',
+                    val;
+                val = (datas[0].value - datas[1].value)
+                res += '<span style="color:' + '#4fa8f4' + ';">' + datas[0].seriesName + '：' + val + '</span>' +
+                    '<br/>';
+                val1 = (datas[1].value)
+                res += '<span style="color:' + '#9c9c9c' + ';">' + datas[1].seriesName + '：' + val1 + '</span>';
+                return res;
+
+            }
+        },
+        grid: {
+            show: false,
+            width: 'auto',
+            height: 'auto',
+            left: '10%',
+            right: '40%',
+            bottom: '2%',
+            containLabel: true,
+            tooltip: {
+                show: true,
+                trigger: 'axis',
+                textStyle: {
+                    color: '#333',
+                },
+                backgroundColor: '#333',
+            },
+        },
+        xAxis: {
+            type: 'value',
+            name: '/万元',
+            nameLocation: 'end',
+            nameTextStyle: {
+                color: "#808080",
+                padding: [25, 0, 0, 25],
+            },
+            axisLine: {
+                show: false,
+            },
+            axisTick: {
+                show: false,
+            },
+            splitLine: {
+                show: false,
+            },
+        },
+        yAxis: {
+            type: 'category',
+            data: ['一月', '二月', '三月', '四月', '五月'],
+            axisLine: {
+                show: false,
+            },
+            axisTick: {
+                show: false,
+            },
+            inverse: true,
+        },
+        series: [{
+                name: '收入',
+                type: 'bar',
+                data: [800, 500, 700, 400, 680],
+                barWidth: '15',
+                barCategoryGap: '80',
+                itemStyle: {
+                    normal: {
+                        color: '#5dbbfb',
+                    },
+                    emphasis: {
+                        color: '#5dbbfb',
+                    }
+                },
+                label: {
+                    show: true,
+                    position: 'right',
+                    color: '#5dbbfb',
+                },
+            },
+            {
+                name: '成本',
+                type: 'bar',
+                data: [700, 600, 300, 500, 600],
+                barWidth: '15',
+                barCategoryGap: '80',
+                itemStyle: {
+                    normal: {
+                        color: '#ebebeb',
+                    },
+                    emphasis: {
+                        color: '#ebebeb',
+                    }
+                },
+                label: {
+                    show: true,
+                    position: 'right',
+                    color: '#9c9c9c',
+                },
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+
+</html>
