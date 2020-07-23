@@ -38,6 +38,7 @@ export default new Vuex.Store({
       let aTotalNum = 0;
       state.goods.goodsData.forEach((value, index) => {
         console.log(index)
+        if (value.num < 0) value.num = 0
         aTotalNum += value.num;
       })
       return aTotalNum;
@@ -46,6 +47,7 @@ export default new Vuex.Store({
       let aTotalPrice = 0;
       state.goods.goodsData.forEach((value, index) => {
         console.log(index)
+        if (value.num < 0) value.num = 0
         aTotalPrice += value.num * value.price
       })
       return aTotalPrice.toFixed(2);
@@ -57,7 +59,7 @@ export default new Vuex.Store({
     reselt(state, msg) {
       console.log(msg)
       state.goods.totalPrice = this.getters.totalPrice;
-      state.goods.aTotalNum = this.getters.aTotalNum;
+      state.goods.totalNum = this.getters.totalNum;
     },
     reduceGoods(state, index) {
       state.goods.goodsData[index].num -= 1;

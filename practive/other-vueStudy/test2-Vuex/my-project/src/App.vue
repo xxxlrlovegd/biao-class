@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <Goods msg="购物车"/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Goods from './components/Goods.vue'
-
 export default {
   name: 'App',
-  components: {
-    Goods
-  }
 }
 </script>
 
