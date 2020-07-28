@@ -1,3 +1,7 @@
 <template>
-  <h2>购物车页面跳转到订单详情页面 ！！</h2>
+  <view>
+    <view class="uni-padding-wrap uni-common-mt">
+        <button class="mini-btn" type="primary" size="mini">按钮</button>
+    </view>
+  </view>
 </template>

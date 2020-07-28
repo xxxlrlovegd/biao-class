@@ -1,16 +1,20 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import createPersistedState from 'vuex-persistedstate' //第三方存储化工具
+import createPersistedState from 'vuex-persistedstate' //第三方持续化存储工具
 Vue.use(Vuex)
 const vuexPersisted = new createPersistedState({
   storage: {
     getItem: key => uni.getStorageSync(key),
-      setItem: (key, value) => uni.setStorageSync(key, value),
-      removeItem: key => uni.clearStorageSync(key)
+    setItem: (key, value) => uni.setStorageSync(key, value),
+    removeItem: key => uni.clearStorageSync(key)
   }
 })
 
-const shop={
+const shop = {
+
+  namespaced: true,
+}
+export default new Vuex.Store({
   state: {
     //类似于data
     //这里写入数据
@@ -31,7 +35,7 @@ const shop={
           title: '大苹果',
           price: 5.00,
           image: {
-  
+
           },
           num: 0
         },
@@ -88,12 +92,6 @@ const shop={
   actions: {
     //类似methods
     //写方法对数据做出更改(异步操作)
-  }
-}
-export default new Vuex.Store({
-  modules: {
-    homm,
-    shop,
-    plugins:[vuexPersisted]
-  }
+  },
+  plugins: [vuexPersisted],
 })
