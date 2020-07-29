@@ -1,0 +1,1 @@
+<view><view class="uni-padding-wrap uni-common-mt"><button type="primary" hidden="{{isshow}}">页面主操作 Normal</button><input class="uni-input" type="number" placeholder="这是一个数字输入框"/></view></view>

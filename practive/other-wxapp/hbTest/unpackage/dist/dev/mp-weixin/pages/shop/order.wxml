@@ -1,0 +1,1 @@
+<view><view class="uni-padding-wrap uni-common-mt"><button class="mini-btn" type="primary" size="mini" data-event-opts="{{[['tap',[['tz']]]]}}" bindtap="__e">按钮</button></view></view>
