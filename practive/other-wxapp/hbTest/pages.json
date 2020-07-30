@@ -6,6 +6,11 @@
 					"navigationBarTitleText": "首页"
 				}
 			}, {
+				"path": "pages/shop/shopDetail",
+				"style": {
+					"navigationBarTitleText": "商品详情"
+				}
+			},  {
 				"path": "pages/shop/shop",
 				"style": {
 					"navigationBarTitleText": "购物车"
@@ -20,8 +25,14 @@
 				"style": {
 					"navigationBarTitleText": "个人中心"
 				}
+			},
+		    {
+            "path" : "pages/mine/userInfo",
+            "style" : {
+				"navigationBarTitleText": "个人中心1"
 			}
-		],
+        }
+    ],
 		"tabBar": {
 			"color": "#7a7e83",
 			"selectedColor": "#0faeff",

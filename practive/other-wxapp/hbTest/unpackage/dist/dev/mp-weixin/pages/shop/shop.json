@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "购物车",
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-card": "/components/uni-card/uni-card"
+  }
 }

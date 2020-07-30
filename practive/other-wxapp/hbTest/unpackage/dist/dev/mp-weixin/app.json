@@ -1,9 +1,11 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/shop/shopDetail",
     "pages/shop/shop",
     "pages/shop/order",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/mine/userInfo"
   ],
   "subPackages": [],
   "window": {
@@ -36,6 +38,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }
