@@ -49,7 +49,8 @@ export default new Vuex.Store({
 					num: 0
 				},
 			]
-		}
+		},
+		uersData:{}
 	},
 	getters: {
 		//类似computed
@@ -57,7 +58,6 @@ export default new Vuex.Store({
 		totalNum(state) {
 			let aTotalNum = 0;
 			state.goods.goodsData.forEach((value, index) => {
-				console.log(index)
 				if (value.num < 0) value.num = 0
 				aTotalNum += value.num;
 			})
@@ -66,7 +66,6 @@ export default new Vuex.Store({
 		totalPrice(state) {
 			let aTotalPrice = 0;
 			state.goods.goodsData.forEach((value, index) => {
-				console.log(index)
 				if (value.num < 0) value.num = 0
 				aTotalPrice += value.num * value.price
 			})
@@ -77,7 +76,6 @@ export default new Vuex.Store({
 		//类似methods
 		//写方法对数据做出更改(同步操作)
 		reselt(state, msg) {
-			console.log(msg)
 			state.goods.totalPrice = this.getters.totalPrice;
 			state.goods.totalNum = this.getters.totalNum;
 		},
@@ -85,19 +83,32 @@ export default new Vuex.Store({
 			state.goods.goodsData[index].num -= 1;
 			let msg = '减执行了一次'
 			this.commit('reselt', msg);
-			uni.setTabBarBadge({
+			if (state.goods.totalNum != 0) {
+				uni.setTabBarBadge({
 					index: 1,
-					text: state.goods.totalNum+''
+					text: state.goods.totalNum + ''
 				})
+			}else{
+				uni.removeTabBarBadge({
+					index: 1,
+				})
+			}
 		},
 		addGoods(state, index) {
 			state.goods.goodsData[index].num += 1;
 			let msg = '加执行了一次'
 			this.commit('reselt', msg)
-			uni.setTabBarBadge({
+			if (state.goods.totalNum != 0) {
+				uni.setTabBarBadge({
 					index: 1,
-					text: state.goods.totalNum+''
+					text: state.goods.totalNum + ''
 				})
+			}else{
+				uni.removeTabBarBadge({
+					index: 1,
+				})
+			}
+			
 			/**
 			 *重新渲染store中的方法，一律用commit方法
 			 *commit('reselt',{state:state}) 

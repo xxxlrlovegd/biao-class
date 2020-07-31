@@ -1,73 +1,54 @@
 <template>
-
 	<view>
-		<view class="example-body" v-for="(list,index) in goods.goodsData" :key="list.id" v-if="list.num!=0">
-			<uni-card isShadow>
-				<view class="uni-flex uni-column">
-					<view class="flex-item flex-item-V">
-						<view class="text" style="-webkit-flex: 1;flex: 1;">
-							店铺{{index+1}}</view>
-						<view class="text" style="-webkit-flex: 1;flex: 1;">
-							去凑单></view>
+		<view class="example-body">
+			<uni-card isShadow v-for="(list,index) in goods.goodsData" :key="list.id" v-if="list.num!=0">
+				<view class="flex">
+					<view class="left">
+						<image :src="list.url" mode=""></image>
 					</view>
-					<view class="flex-item flex-item-V">
-						<view class="text uni-flex" style="width: 200rpx;height: 220rpx;-webkit-justify-content: center;justify-content: center;-webkit-align-items: center;align-items: center;">
-							<image :src="list.url" style="width: 50rpx;height: 150rpx;"></image>
-						</view>
-						<view class="uni-flex uni-column" style="-webkit-flex: 1;flex: 1;-webkit-justify-content: space-between;justify-content: space-between;">
-							<view class="text" style="height: 120rpx;text-align: left;padding-left: 20rpx;padding-top: 10rpx;">
-								<view class="uni-flex uni-row">
-								{{list.title}}
-								</view>
-								<view class="uni-flex uni-row">
-								<view class="text" style="width: 40rpx;">
-									<button type="primary" plain="true" @click="reduceGoods(index)">-</button>
-								</view>
-								<view class="text" style="-webkit-flex: 1;flex: 1;">{{list.num}}</view>
-								<view class="text" style="width: 40rpx;">
-									<button type="primary" plain="true" @click="addGoods(index)">+</button>
-								</view>
-								</view>
+					<view class="right">
+						<text style="font-size: 38rpx;margin: 10rpx 0;">{{list.title}}</text>
+						<view class="flex flex-item-V">
+							<view class="item item2 text-small">
+								售价:{{list.price}}
+							</view>
+							<view class="item"></view>
+							<view class="item item3">
+								<button type="primary" plain="true" @click="reduceGoods(index)">-</button>
+							</view>
+							<view class="item item3 text-small">{{list.num}}</view>
+							<view class="item item3">
+								<button type="primary" plain="true" @click="addGoods(index)">+</button>
 							</view>
 						</view>
-						<view class="uni-flex uni-row">
-							<view class="text" style="-webkit-flex: 1;flex: 1;">购买一件即可享受优惠！</view>
-							<view class="text" style="-webkit-flex: 1;flex: 1;">去选择></view>
-						</view>
 					</view>
+				</view>
+				<view class="flex">
+					<view class="item item1">购买一件，即可享受换购优惠~</view>
+					<view class="item text-right">去选择></view>
 				</view>
 			</uni-card>
-		</view>
-<!-- 		<view class="uni-flex uni-row">
-			<view class="text" style="width: 120rpx;">
-				<view>店铺{{index+1}}></view>
-				<view></view>
+			<view  v-if="goods.totalPrice==0">
+				<image src="../../static/shopPackeg.png" mode="" style="width: 100px;height: 100px;margin: 100rpx 250rpx 60rpx 250rpx;
+"></image>
+				<view class="text text-center">
+						空空如也，去逛逛可好
+				</view>
+			    <button type="warn" size="mini" style="border-radius: 50px;margin: 20rpx 278rpx;" @click="tzHome">逛一逛</button>
 			</view>
-			<view class="text" style="-webkit-flex: 1;flex: 1;">
-				<view>{{list.title}}</view>
-				<view>{{list.title}}+{{index}}</view>
-				<view style="display:flex">
-					<view class="text" style="width: 20rpx;margin-right: 20rpx;">售价：{{list.price}}</view>
-					<view class="text" style="-webkit-flex: 1;flex: 1;">
-						<view class="text" style="width: 40rpx;">
-							<button type="primary" plain="true" @click="reduceGoods(index)">-</button>
+			<view v-else>
+				<view class="flex" style="margin: 5px 15px;">
+					<view class="item">
+						<view class="text">
+							合计：¥ {{ goods.totalPrice }}
 						</view>
-						<view class="text" style="-webkit-flex: 1;flex: 1;">{{list.num}}</view>
-						<view class="text" style="width: 40rpx;">
-							<button type="primary" plain="true" @click="addGoods(index)">+</button>
-						</view>
+					</view>
+					<view class="item">
+						<button type="warn" @click="tzShopDetail()">去结账({{ goods.totalNum }})</button>
 					</view>
 				</view>
 			</view>
-		</view> -->
-		<view v-if="goods.totalPrice==0">
-			空空如也，去逛逛可好
 		</view>
-		<view v-else>
-			<div>合计：¥ {{ goods.totalPrice }}</div>
-			<Button :class="{activeChecke: goods.totalNum <= 0}" @click="tz()">去结账({{ goods.totalNum }})</Button>
-		</view>
-
 	</view>
 </template>
 <script>
@@ -81,45 +62,91 @@
 		props: {
 			msg: String,
 		},
+		data() {
+			return {
+				isRadio: false
+			}
+		},
 		computed: {
 			...mapState(['goods']),
 			...mapGetters(['totalPrice', 'totalNum']),
 		},
 		methods: {
 			...mapMutations(['reduceGoods', 'addGoods']),
-			tz() {
+			tzShopDetail() {
 				uni.navigateTo({
 					url: 'order',
 				})
 			},
+			tzHome(){
+			uni.switchTab({
+			    url: '/pages/home/home'
+			});
+			}
 		},
 	}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-	.flex-item {
-		width: 33.3%;
-		height: 200rpx;
-		text-align: center;
-		line-height: 200rpx;
-	}
-
 	.flex-item-V {
+		max-width: 160px;
+	}
+
+	.flex {
+		display: flex;
+		justify-content: left;
+		align-items: center;
+	}
+     
+	.left {
+		flex: none;
+		width: 40%;
+		height: 120px;
+	}
+
+	.right {
+		flex: none;
+		width: 70%
+	}
+
+	.item {
+		flex: 1;
+	}
+
+	.item1 {
+		flex: 0 0 60%;
+
+	}
+	.item2{
+		flex: 0 0 30%;
+	}
+	.item3{
+		flex: 0 0 10%;
+		text-align: center;
+	}
+	button{
+		line-height: 1.5;
+		padding: 0 10px;
+	}
+
+	image {
 		width: 100%;
-		height: 150rpx;
-		text-align: center;
-		line-height: 150rpx;
+		height: 100%;
 	}
-
-	.text {
-		margin: 15rpx 10rpx;
-		padding: 0 20rpx;
-		height: 70rpx;
-		line-height: 70rpx;
+	.text{
+		font-size: 36rpx;
+		
+	}
+	.text-center{
 		text-align: center;
+	}
+	.text-small{
+		font-size: 30rpx;
+		
+	}
+	.text-right {
+		text-align: right;
 		color: #777;
-		font-size: 26rpx;
 	}
-
 </style>

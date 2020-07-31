@@ -760,7 +760,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1776,10 +1776,11 @@ new _vuex.default.Store({
         title: '西瓜',
         price: 2.00,
         url: '/static/c5.png',
-        num: 0 }] } },
+        num: 0 }] },
 
 
 
+    uersData: {} },
 
   getters: {
     //类似computed
@@ -1787,7 +1788,6 @@ new _vuex.default.Store({
     totalNum: function totalNum(state) {
       var aTotalNum = 0;
       state.goods.goodsData.forEach(function (value, index) {
-        console.log(index);
         if (value.num < 0) value.num = 0;
         aTotalNum += value.num;
       });
@@ -1796,7 +1796,6 @@ new _vuex.default.Store({
     totalPrice: function totalPrice(state) {
       var aTotalPrice = 0;
       state.goods.goodsData.forEach(function (value, index) {
-        console.log(index);
         if (value.num < 0) value.num = 0;
         aTotalPrice += value.num * value.price;
       });
@@ -1807,7 +1806,6 @@ new _vuex.default.Store({
     //类似methods
     //写方法对数据做出更改(同步操作)
     reselt: function reselt(state, msg) {
-      console.log(msg);
       state.goods.totalPrice = this.getters.totalPrice;
       state.goods.totalNum = this.getters.totalNum;
     },
@@ -1815,24 +1813,37 @@ new _vuex.default.Store({
       state.goods.goodsData[index].num -= 1;
       var msg = '减执行了一次';
       this.commit('reselt', msg);
-      uni.setTabBarBadge({
-        index: 1,
-        text: state.goods.totalNum + '' });
+      if (state.goods.totalNum != 0) {
+        uni.setTabBarBadge({
+          index: 1,
+          text: state.goods.totalNum + '' });
 
+      } else {
+        uni.removeTabBarBadge({
+          index: 1 });
+
+      }
     },
     addGoods: function addGoods(state, index) {
       state.goods.goodsData[index].num += 1;
       var msg = '加执行了一次';
       this.commit('reselt', msg);
-      uni.setTabBarBadge({
-        index: 1,
-        text: state.goods.totalNum + '' });
+      if (state.goods.totalNum != 0) {
+        uni.setTabBarBadge({
+          index: 1,
+          text: state.goods.totalNum + '' });
+
+      } else {
+        uni.removeTabBarBadge({
+          index: 1 });
+
+      }
 
       /**
-                                             *重新渲染store中的方法，一律用commit方法
-                                             *commit('reselt',{state:state}) 
-                                             * 也可commit({type:'reselt',state:state})
-                                             **/
+         *重新渲染store中的方法，一律用commit方法
+         *commit('reselt',{state:state}) 
+         * 也可commit({type:'reselt',state:state})
+         **/
 
     } },
 
@@ -8319,7 +8330,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8340,14 +8351,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8432,7 +8443,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));

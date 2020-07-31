@@ -13,31 +13,23 @@
 </template>
 
 <script>
+	import {
+		mapState,
+	} from 'vuex'
 	export default {
 		data() {
 			return {
-				yonghuwx: []
+				yonghuwx: {}
 			}
 		},
+		computed: {
+			...mapState(['uersData']),
+		},
 		onLoad(){
-			console.log("4444444444")
-			let that = this;
-			uni.login({
-				provider: 'weixin',
-				success: function(loginRes) {
-					// 获取用户信息				
-					uni.getUserInfo({
-						provider: 'weixin',
-						success: function(infoRes) {				
-							that.yonghuwx = infoRes.userInfo
-							console.log(that.yonghuwx)
-						}
-					});
-				}
-			});
+			console.log(this.usersData)
+		this.yonghuwx=this.usersData
 		},
 		methods: {
-			
 		}
 	}
 </script>

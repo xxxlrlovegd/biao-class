@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="uni-padding-wrap uni-common-mt">
-			<uni-search-bar :radius="100" @confirm="search"></uni-search-bar>
+			<uni-search-bar :radius="100" bgColor="#FFFFFF" @confirm="search" @cancel="deleteSearch"></uni-search-bar>
 			<view class="uni-margin-wrap">
 				<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
 					<swiper-item v-for="(item ,index) in info" :key="index">
@@ -14,9 +14,9 @@
 					<uni-notice-bar background-color="#d5ffda" color="#27aa19" :single="true" :show-icon="true" :text="text" />
 				</view>
 				<!-- <text class="example-info">商品展示</text> -->
-				<view class="grid-body">
+				<view v-if="homeList.length!=0" class="grid-body">
 					<uni-grid :column="2" :show-border="false" :square="false" @change="change">
-						<uni-grid-item v-for="(item ,index) in goods.goodsData" :index="index" :key="index">
+						<uni-grid-item v-for="(item ,index) in homeList" :index="index" :key="index">
 							<view class="grid-item-box">
 								<image class="image" :src="item.url" mode="aspectFill" />
 								<text class="grid-text">{{item.title}}</text>
@@ -32,6 +32,11 @@
 						</uni-grid-item>
 					</uni-grid>
 				</view>
+				<uni-card v-else :is-shadow="true" is-full mode="style" thumbnail="https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg">
+					<text class="content-box-text" style="text-align: center;">该商品正在补货中，请您耐心等待~</text>
+				</uni-card>
+
+
 			</view>
 		</view>
 	</view>
@@ -68,22 +73,27 @@
 				],
 				text: '商品均已严格消毒 请放心选购',
 				tzShow: true,
+				homeList: []
 			}
 		},
 		computed: {
 			...mapState(['goods']),
 		},
-		mounted() {},
+		mounted() {
+			this.homeList = this.goods.goodsData
+		},
 		methods: {
 			...mapMutations(['addGoods']),
 			search(e) {
-				console.log("999", e)
+				this.homeList = this.searchDataEvent(e.value)
+			},
+			deleteSearch() {
+				this.homeList = this.goods.goodsData
 			},
 			change(e) {
 				let {
 					index
 				} = e.detail
-				console.log(index)
 				if (this.tzShow) {
 					uni.navigateTo({
 						url: `../shop/shopDetail?id=${index+1}`
@@ -98,9 +108,14 @@
 				uni.showToast({
 					title: `添加成功，在购物车等亲~`,
 					icon: 'none',
-					position:'center',
+					position: 'center',
 				})
 			},
+			searchDataEvent(str) {
+				return this.goods.goodsData.filter((item) => {
+					return item.title.indexOf(str) > -1
+				})
+			}
 		}
 	}
 </script>
@@ -142,9 +157,11 @@
 		flex-direction: column;
 		padding: 15px;
 		background-color: #ffffff;
-        .grid-text{
-			font-size:36rpx;
+
+		.grid-text {
+			font-size: 36rpx;
 		}
+
 		.grid-item-box {
 			flex: 1;
 			/* position: relative;

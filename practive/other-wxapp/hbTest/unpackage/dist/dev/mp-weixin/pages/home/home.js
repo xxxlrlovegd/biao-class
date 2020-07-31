@@ -116,6 +116,9 @@ var components = {
   },
   uniIcons: function() {
     return Promise.all(/*! import() | components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/components/uni-icons/uni-icons.vue */ 83))
+  },
+  uniCard: function() {
+    return __webpack_require__.e(/*! import() | components/uni-card/uni-card */ "components/uni-card/uni-card").then(__webpack_require__.bind(null, /*! @/components/uni-card/uni-card.vue */ 124))
   }
 }
 var render = function() {
@@ -192,6 +195,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 
 
@@ -222,23 +230,28 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumera
 
 
       text: '商品均已严格消毒 请放心选购',
-      tzShow: true };
+      tzShow: true,
+      homeList: [] };
 
   },
   computed: _objectSpread({},
   (0, _vuex.mapState)(['goods'])),
 
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.homeList = this.goods.goodsData;
+  },
   methods: _objectSpread({},
   (0, _vuex.mapMutations)(['addGoods']), {
     search: function search(e) {
-      console.log("999", e);
+      this.homeList = this.searchDataEvent(e.value);
+    },
+    deleteSearch: function deleteSearch() {
+      this.homeList = this.goods.goodsData;
     },
     change: function change(e) {var
 
       index =
       e.detail.index;
-      console.log(index);
       if (this.tzShow) {
         uni.navigateTo({
           url: "../shop/shopDetail?id=".concat(index + 1) });
@@ -255,6 +268,11 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumera
         icon: 'none',
         position: 'center' });
 
+    },
+    searchDataEvent: function searchDataEvent(str) {
+      return this.goods.goodsData.filter(function (item) {
+        return item.title.indexOf(str) > -1;
+      });
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
