@@ -50,6 +50,20 @@
   background: #f5f7f9;
   padding: 18px 50px;
 }
+.ivu-input,.ivu-input:hover,.ivu-input:focus{
+   outline:none;
+    border:none;
+    border-radius: 0px;
+    box-shadow: 0 0 0 2px transparent; 
+    border-bottom: 1px solid #dcdee2;
+}
+.ivu-form-item-error .ivu-input,.ivu-form-item-error .ivu-input:hover,.ivu-form-item-error .ivu-input:focus{
+  outline:none;
+    border:none;
+    border-radius: 0px;
+    box-shadow: 0 0 0 2px transparent; 
+    border-bottom: 1px solid #ed4014;
+}
 </style>
   <template>
   <div class="layout">
@@ -83,11 +97,19 @@
               <span style="color:#999;">没有账户？</span>
               <span style="color:#4EA477;">去注册>></span>
             </a>
-            <Form ref="formInline" :model="form" :rules="ruleInline">
-              <Input prefix="ios-contact" placeholder="请输入手机号/邮箱" style="width: auto" />
-              <Input prefix="ios-lock" placeholder="请输入登录密码" style="width: auto" />
-              <Button type="primary" size="large" long>登录</Button>
-            </Form>
+              <Form ref="formInline" :model="formInline" :rules="ruleInline" >
+        <FormItem prop="user">
+            <i-Input  prefix="ios-contact" type="text" v-model="formInline.user" placeholder="请输入账号/邮箱">
+            </i-Input>
+        </FormItem>
+        <FormItem prop="password">
+            <i-Input  prefix="ios-lock" type="password" v-model="formInline.password" placeholder="请输入登录密码">
+            </i-Input>
+        </FormItem>
+        <FormItem>
+            <Button type="primary" size="large" long  @click="handleSubmit('formInline')">登录</Button>
+        </FormItem>
+    </Form>
           </Card>
         </div>
       </Content>
@@ -106,9 +128,32 @@ export default {
         { id: 4, name: '农产品系统' },
         { id: 5, name: '高考录取通知书系统' },
       ],
+        formInline: {
+                    user: '',
+                    password: ''
+                },
+                ruleInline: {
+                    user: [
+                        { required: true, message: '账号不能为空', trigger: 'blur' }
+                    ],
+                    password: [
+                        { required: true, message: '密码不能为空', trigger: 'blur' },
+                        { type: 'string', min: 6, message: 'The password length cannot be less than 6 bits', trigger: 'blur' }
+                    ]
+                }
     }
   },
   mounted() {},
-  methods: {},
+  methods: {
+     handleSubmit(name) {
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        this.$Message.success('Success!');
+                    } else {
+                        this.$Message.error('Fail!');
+                    }
+                })
+     }
+  },
 }
 </script>
