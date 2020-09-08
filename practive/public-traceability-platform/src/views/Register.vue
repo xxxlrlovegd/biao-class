@@ -1,9 +1,10 @@
 <style  lang="less" scoped>
-.layout {
+
+.register {
   background: #fff;
   position: relative;
   overflow: hidden;
-}
+
 .ivu-layout-header {
   background: #fff;
   padding: 0 10px;
@@ -15,11 +16,7 @@
   height: 32px;
   line-height: 32px;
 }
-.ivu-card-extra {
-  position: absolute;
-  right: 18px;
-  top: 32px;
-}
+
 .ivu-layout-content {
   flex: auto;
 }
@@ -31,48 +28,30 @@
   background: #f5f7f9;
   padding: 18px 50px;
 }
-.ivu-card-head {
+/deep/.ivu-card-head {
     border-bottom: 1px solid #e8eaec;
     padding: 0px 16px;
     line-height: 1;
+    margin: 0px 110px;
 }
 .ivu-card-body {
     padding: 0px 16px;
 }
-.ivu-input,
-.ivu-input:hover,
-.ivu-input:focus {
-  outline: none;
-  border: none;
-  border-radius: 0px;
-  box-shadow: 0 0 0 2px transparent;
-  border-bottom: 1px solid #dcdee2;
+.formStyle{
+   margin: 0px 100px;
 }
-.ivu-form-item-error .ivu-input,
-.ivu-form-item-error .ivu-input:hover,
-.ivu-form-item-error .ivu-input:focus {
-  outline: none;
-  border: none;
-  border-radius: 0px;
-  box-shadow: 0 0 0 2px transparent;
-  border-bottom: 1px solid #ed4014;
-}
-.imgStyle {
-  width: 12%;
-  position: relative;
-  top: 4px;
 }
 </style>
   <template>
-  <div class="layout">
+  <div class="register">
     <Layout :style="{background:'#F1F6FC'}">
       <Header>
        <authHeader/>
       </Header>
       <Content :style="{padding: '0 50px'}">
-        <div style="min-height: 568px;margin:20px 0px; background: url(../assets/img/login/back.png) 100% 100%; no-repeat;">
+        <div style="min-height: 568px;margin:20px 0px;">
           <Card style="width:700px;position: relative;top: 70px;left: 25%;">
-            <Menu slot="title" mode="horizontal" :theme="theme1" active-name="1">
+            <Menu slot="title" mode="horizontal" :theme="light" active-name="1">
         <MenuItem name="1">
             企业注册
         </MenuItem>
@@ -84,7 +63,7 @@
               <span style="font-size:26px;color:#2CA987;font-weight: bold;">注册</span>
             </p> -->
            
-            <Form ref="formInline" :model="formInline" :rules="ruleInline">
+            <Form ref="formInline" :model="formInline" :rules="ruleInline" class="formStyle">
               <FormItem prop="user">
                 <i-Input
                   prefix="ios-contact"

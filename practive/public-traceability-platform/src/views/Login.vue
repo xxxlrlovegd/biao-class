@@ -4,28 +4,28 @@
   position: relative;
   overflow: hidden;
 }
-.ivu-layout-header {
+/deep/.ivu-layout-header {
   background: #fff;
   padding: 0 10px;
   height: 64px;
   line-height: 64px;
 }
-.ivu-card-head {
+/deep/.ivu-card-head {
   border: none;
   padding: 26px 20px 20px 20px;
   line-height: 1;
 }
-.ivu-card-head p,
-.ivu-card-head-inner {
+/deep/.ivu-card-head p,
+/deep/.ivu-card-head-inner {
   height: 32px;
   line-height: 32px;
 }
-.ivu-card-extra {
+/deep/.ivu-card-extra {
   position: absolute;
   right: 18px;
   top: 32px;
 }
-.ivu-layout-content {
+/deep/.ivu-layout-content {
   flex: auto;
   background: url(../assets/img/login/back.png) no-repeat;
   background-size: 100% 100%;
@@ -34,35 +34,30 @@
   background: #f1f6fc;
   text-align: center;
 }
-.ivu-layout-footer {
+/deep/.ivu-layout-footer {
   background: #f5f7f9;
   padding: 18px 50px;
 }
-.ivu-card-body {
+/deep/.ivu-card-body {
     padding: 0px 16px;
 }
-.ivu-input,
-.ivu-input:hover,
-.ivu-input:focus {
+/deep/.ivu-input,
+/deep/.ivu-input:hover,
+/deep/.ivu-input:focus {
   outline: none;
   border: none;
   border-radius: 0px;
   box-shadow: 0 0 0 2px transparent;
   border-bottom: 1px solid #dcdee2;
 }
-.ivu-form-item-error .ivu-input,
-.ivu-form-item-error .ivu-input:hover,
-.ivu-form-item-error .ivu-input:focus {
+/deep/.ivu-form-item-error .ivu-input,
+/deep/.ivu-form-item-error .ivu-input:hover,
+/deep/.ivu-form-item-error .ivu-input:focus {
   outline: none;
   border: none;
   border-radius: 0px;
   box-shadow: 0 0 0 2px transparent;
   border-bottom: 1px solid #ed4014;
-}
-.imgStyle {
-  width: 12%;
-  position: relative;
-  top: 4px;
 }
 </style>
   <template>
@@ -72,8 +67,8 @@
        <authHeader/>
       </Header>
       <Content :style="{padding: '0 50px'}">
-        <div style="min-height: 568px;margin:20px 0px; background: url(../assets/img/login/back.png) 100% 100%; no-repeat;">
-          <Card style="width:400px;position: relative;top: 70px;left: 58%;">
+        <div style="min-height: 568px;margin:20px 0px;">
+          <Card style="width:400px;position: relative;top: 35px;left: 58%;">
             <p slot="title">
               <span style="font-size:26px;color:#2CA987;font-weight: bold;">欢迎登录</span>
             </p>
