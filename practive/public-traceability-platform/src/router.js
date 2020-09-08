@@ -5,6 +5,17 @@ Router.prototype.goBack = function goBack(backStep) {
     this.isBack = true
     window.history.go(backStep || -1)
 }
+//push 
+const VueRouterPush = Router.prototype.push
+Router.prototype.push = function push(to) {
+    return VueRouterPush.call(this, to).catch(err => err)
+}
+
+//replace
+const VueRouterReplace = Router.prototype.replace
+Router.prototype.replace = function replace(to) {
+    return VueRouterReplace.call(this, to).catch(err => err)
+}
 Vue.use(Router)
 export default new Router({
     mode: 'hash',
@@ -21,13 +32,15 @@ export default new Router({
             meta: {
                 needLogin: false
             }
-        }, {
+        },
+        {
             path: '/register',
             component: resolve => require(['./views/Register'], resolve),
             meta: {
                 needLogin: false
             }
-        }, {
+        },
+        {
             path: '/home',
             component: resolve => require(['./Home'], resolve),
             meta: {
