@@ -104,7 +104,7 @@
 // import axios from 'axios'
 import * as CryptoJS from 'crypto-js'
 import authHeader from '../views/authHeader'
-const reg = /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)(?!([^(0-9a-zA-Z)])+$)([^(0-9a-zA-Z)]||[a-z]|[A-Z]|[0-9])$/
+const reg = /^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_!@#%^&`~()-+=]+$)(?![a-z0-9]+$)(?![a-z\W_!@#%^&`~()-+=]+$)(?![0-9\W_!@#%^&`~()-+=]+$)[a-zA-Z0-9\W_!@#%^&`~()-+=]{8,16}$/
 export default {
   components: {
     authHeader,
@@ -115,9 +115,9 @@ export default {
       if (value === '') {
         callback(new Error('密码不能为空'))
       } else {
-        if (value.length < 8 || value.length > 16 || reg.test(value)) {
+        if (!reg.test(value)) {
           callback(
-            new Error('字母、数字或者特殊字符组成，长度为8到16位，区分大小写')
+            new Error('长度至少8位且由大小写字母、数字、特殊字符任意三种构成')
           )
         }
         if (this.formInline.passwdCheck !== '') {
