@@ -41,6 +41,13 @@ export default new Router({
             }
         },
         {
+            path: '/developer',
+            component: resolve => require(['./views/developerManager/developerInfo'], resolve),
+            meta: {
+                needLogin: false
+            }
+        },
+        {
             path: '/home',
             component: resolve => require(['./Home'], resolve),
             meta: {

@@ -39,7 +39,7 @@
   padding: 18px 50px;
 }
 /deep/.ivu-card-body {
-    padding: 0px 16px;
+  padding: 0px 16px;
 }
 /deep/.ivu-input,
 /deep/.ivu-input:hover,
@@ -64,7 +64,7 @@
   <div class="layout">
     <Layout :style="{background:'#F1F6FC'}">
       <Header>
-       <authHeader/>
+        <authHeader />
       </Header>
       <Content :style="{padding: '0 50px'}">
         <div style="min-height: 568px;margin:20px 0px;">
@@ -94,7 +94,20 @@
                 ></i-Input>
               </FormItem>
               <FormItem>
-                <slide-verify  ref="slideblock" :l="42" :r="10" :w="360" :h="155" slider-text="向右滑动滑块填充拼图" :accuracy="verify.accuracy" @success="onSuccess" @fail="onFail" @refresh="onRefresh"  @again="onAgain" :imgs="verify.imgs"></slide-verify>
+                <slide-verify
+                  ref="slideblock"
+                  :l="42"
+                  :r="10"
+                  :w="360"
+                  :h="155"
+                  slider-text="向右滑动滑块填充拼图"
+                  :accuracy="verify.accuracy"
+                  @success="onSuccess"
+                  @fail="onFail"
+                  @refresh="onRefresh"
+                  @again="onAgain"
+                  :imgs="verify.imgs"
+                ></slide-verify>
               </FormItem>
               <FormItem>
                 <Button type="primary" size="large" long @click="handleSubmit('formInline')">登录</Button>
@@ -112,11 +125,12 @@
 import * as CryptoJS from 'crypto-js'
 import yz1Img from '../assets/img/login/yz1.jpg'
 import yz2Img from '../assets/img/login/yz2.jpg'
+import yz3Img from '../assets/img/login/yz3.jpg'
 import yz4Img from '../assets/img/login/yz4.jpg'
 import authHeader from '../views/authHeader'
 export default {
-   components: {
-    authHeader
+  components: {
+    authHeader,
   },
   data() {
     return {
@@ -143,18 +157,15 @@ export default {
           },
         ],
       },
-      verify:{
+      verify: {
         accuracy: 1,
-        imgs:[
-          yz1Img,yz4Img,yz2Img
-        ],
-        flag:false,
-      }
-        
+        imgs: [yz1Img, yz2Img, yz3Img, yz4Img],
+        flag: false,
+      },
     }
   },
   mounted() {
-    this.verify.flag=false;
+    this.verify.flag = false
   },
   methods: {
     // 加密方法
@@ -164,37 +175,37 @@ export default {
       const encrypted = CryptoJS.AES.encrypt(password, key, {
         iv,
         mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.ZeroPadding
+        padding: CryptoJS.pad.ZeroPadding,
       })
       return encrypted.toString()
     },
     handleSubmit(name) {
       this.$refs[name].validate((valid) => {
-        if (valid&&this.verify.flag) {
-          console.log("--------",this.formInline)
-          this.formInline.password=this.encrypt(this.formInline.password)
+        if (valid && this.verify.flag) {
+          console.log('--------', this.formInline)
+          this.formInline.password = this.encrypt(this.formInline.password)
           this.$router.push('/Register')
         } else {
-            this.$Message.error('Fail!')
+          this.$Message.error('Fail!')
         }
       })
     },
-     onSuccess(times){
-                console.log('验证通过，耗时 '+times+ '毫秒');
-                this.verify.flag=true;
-            },
-     onFail(){
-                this.$Message.error('验证不通过,请重新验证!')
-                this.verify.flag=false;
-            },
-     onRefresh(){
-                console.log('点击了刷新小图标');
-            },
-     onAgain() {
-            console.log('检测到非人为操作的哦！');
-            // 刷新
-            this.$refs.slideblock.reset();
-        },
+    onSuccess(times) {
+      console.log('验证通过，耗时 ' + times + '毫秒')
+      this.verify.flag = true
+    },
+    onFail() {
+      this.$Message.error('验证不通过,请重新验证!')
+      this.verify.flag = false
+    },
+    onRefresh() {
+      console.log('点击了刷新小图标')
+    },
+    onAgain() {
+      console.log('检测到非人为操作的哦！')
+      // 刷新
+      this.$refs.slideblock.reset()
+    },
   },
 }
 </script>

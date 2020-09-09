@@ -33,7 +33,7 @@
           </i-Col>
           <i-Col span="1"></i-Col>
           <i-Col span="10" class="layout-nav">
-            <Menu mode="horizontal" theme="light" active-name="0">
+            <Menu mode="horizontal" theme="light" active-name="0" @on-select="selectMenu">
               <MenuItem
                 v-for="(item,index) in menuItem"
                 :key="index"
@@ -70,6 +70,15 @@ export default {
   mounted() {
   },
   methods: {
+    selectMenu(name){
+      console.log(name)
+      if(name==3){
+        console.log("444444444444")
+        //路由跳转有问题呢！！
+        this.$router.push({path:'/developer'})
+          console.log("555555555555")
+      }
+    }
   },
 }
 </script>
