@@ -184,7 +184,8 @@ export default {
         if (valid && this.verify.flag) {
           console.log('--------', this.formInline)
           this.formInline.password = this.encrypt(this.formInline.password)
-          this.$router.push('/Register')
+          sessionStorage.setItem('UserInfo', this.formInline)
+          this.$router.push('/home')
         } else {
           this.$Message.error('Fail!')
         }
