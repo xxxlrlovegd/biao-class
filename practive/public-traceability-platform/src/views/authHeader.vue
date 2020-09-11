@@ -33,12 +33,7 @@
       <i-Col span="1"></i-Col>
       <i-Col span="10" class="layout-nav">
         <Menu mode="horizontal" theme="light" active-name="0" @on-select="selectMenu">
-          <MenuItem
-            v-for="(item,index) in menuItem"
-            :key="index"
-            :name="item.id"
-            to="/Login"
-          >{{item.name}}</MenuItem>
+          <MenuItem v-for="(item,index) in menuItem" :key="index" :name="item.id">{{item.name}}</MenuItem>
         </Menu>
       </i-Col>
       <i-Col span="3">

@@ -6,6 +6,7 @@ import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import './my-theme/index.less';
 import SlideVerify from 'vue-monoplasty-slide-verify';
+import store from './store/index'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
@@ -36,5 +37,6 @@ router.beforeEach((to, from, next) => {
 
 new Vue({
     router,
+    store,
     render: h => h(App),
 }).$mount('#app')

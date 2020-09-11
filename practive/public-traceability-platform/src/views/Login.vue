@@ -77,11 +77,11 @@
               <span style="color:#4EA477;">去注册>></span>
             </a>
             <Form ref="formInline" :model="formInline" :rules="ruleInline">
-              <FormItem prop="user">
+              <FormItem prop="name">
                 <i-Input
                   prefix="ios-contact"
                   type="text"
-                  v-model="formInline.user"
+                  v-model="formInline.name"
                   placeholder="请输入账号/邮箱"
                 ></i-Input>
               </FormItem>
@@ -142,11 +142,11 @@ export default {
         { id: 5, name: '高考录取通知书系统' },
       ],
       formInline: {
-        user: '',
+        name: '',
         password: '',
       },
       ruleInline: {
-        user: [{ required: true, message: '账号不能为空', trigger: 'blur' }],
+        name: [{ required: true, message: '账号不能为空', trigger: 'blur' }],
         password: [
           { required: true, message: '密码不能为空', trigger: 'blur' },
           {
