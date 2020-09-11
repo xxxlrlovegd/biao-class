@@ -1,21 +1,21 @@
 <template>
   <div class="content">
-    <Article></Article>
+    <router-view></router-view>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
-import Article from './content/Article.vue'
+// import { mapState } from 'vuex'
+// import Article from './content/Article.vue'
 
 export default {
   components: {
-    Article,
+    // Article,
   },
   data() {
     return {}
   },
   computed: {
-    ...mapState(['dir']),
+    // ...mapState(['dir']),
   },
   mounted() {},
 }

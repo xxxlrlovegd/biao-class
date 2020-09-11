@@ -82,18 +82,7 @@ export default {
   methods: {
     selectMenu(name) {
       console.log(name)
-      if (name == 1) {
-        this.$router.push({ path: '/home/homePage' })
-      }
-      if (name == 2) {
-        this.$router.push({ path: '/developer' })
-      }
-      if (name == 3) {
-        console.log('444444444444')
-        //路由跳转有问题呢！！
-        this.$router.push({ path: '/developer' })
-        console.log('555555555555')
-      }
+    
     },
   },
 }
