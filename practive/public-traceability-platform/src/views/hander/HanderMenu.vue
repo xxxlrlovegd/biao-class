@@ -35,7 +35,7 @@
           style="position: absolute;top: 10%;left: 54%;font-size: 12px;font-weight: bold;"
         >Blockchain&nbsp;Platform&nbsp;of&nbsp;China&nbsp;Post</span>
       </i-Col>
-     
+
       <i-Col span="10" class="layout-nav">
         <div
           v-for="(item,index) in menuItem"
@@ -82,7 +82,12 @@ export default {
   methods: {
     selectMenu(name) {
       console.log(name)
-    
+      if (name == '1') {
+        this.$router.push('/home/homePage')
+      }
+      if (name == '2') {
+        this.$router.push('/developer')
+      }
     },
   },
 }

@@ -48,6 +48,13 @@ export default new Router({
             }
         },
         {
+            path: '/saveData',
+            component: resolve => require(['./views/content/HomeSearch/SaveDataDetail'], resolve),
+            meta: {
+                needLogin: false
+            }
+        },
+        {
             path: '/home',
             component: resolve => require(['./Home'], resolve),
             meta: {
