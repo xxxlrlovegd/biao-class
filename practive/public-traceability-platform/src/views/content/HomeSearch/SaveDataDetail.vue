@@ -32,8 +32,8 @@
 <template>
   <Card style="width:50%;margin:8% 26%">
     <p slot="title" class="cardTitle fontSizeBig">存证数据详情查询结果</p>
-    <div v-if="czData">
-      <div v-if="search=='sssqk11'">
+    <div v-if="!flag">
+      <div v-if="search &&czData">
         <p class="cardTitle fontSizeSamll">区块结构详情</p>
         <Row style="margin:25px 10px;">
           <i-col span="18">
@@ -164,7 +164,8 @@
 export default {
   data() {
     return {
-      search: '',
+      flag: false,
+      search: false,
       czData: {
         qk: {
           qk: 'sdfjdks2433dsfsdfwfd4353dsfsfdfdgfdgfddsgdss',
@@ -190,8 +191,8 @@ export default {
     }
   },
   mounted() {
-    this.search = 'qk1111'
-    this.czData = {}
+    console.log('------', Object.keys(this.czData).length === 0)
+    this.flag = Object.keys(this.czData).length === 0
   },
   methods: {},
 }
