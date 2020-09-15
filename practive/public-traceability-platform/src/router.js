@@ -55,6 +55,27 @@ export default new Router({
             }
         },
         {
+            path: '/information',
+            component: resolve => require(['./views/content/UserInfo/Information'], resolve),
+            meta: {
+                needLogin: false
+            }
+        },
+        {
+            path: '/resetPassword',
+            component: resolve => require(['./views/content/UserInfo/ResetPossword'], resolve),
+            meta: {
+                needLogin: false
+            }
+        },
+        {
+            path: '/personInfo',
+            component: resolve => require(['./views/content/UserInfo/PersonInfo'], resolve),
+            meta: {
+                needLogin: false
+            }
+        },
+        {
             path: '/home',
             component: resolve => require(['./Home'], resolve),
             meta: {
