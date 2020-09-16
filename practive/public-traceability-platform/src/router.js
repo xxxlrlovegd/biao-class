@@ -1,21 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-Router.prototype.goBack = function goBack(backStep) {
-    this.isBack = true
-    window.history.go(backStep || -1)
-}
-//push 
-const VueRouterPush = Router.prototype.push
-Router.prototype.push = function push(to) {
-    return VueRouterPush.call(this, to).catch(err => err)
-}
+// Router.prototype.goBack = function goBack(backStep) {
+//     this.isBack = true
+//     window.history.go(backStep || -1)
+// }
+// //push 
+// const VueRouterPush = Router.prototype.push
+// Router.prototype.push = function push(to) {
+//     return VueRouterPush.call(this, to).catch(err => err)
+// }
 
-//replace
-const VueRouterReplace = Router.prototype.replace
-Router.prototype.replace = function replace(to) {
-    return VueRouterReplace.call(this, to).catch(err => err)
-}
+// //replace
+// const VueRouterReplace = Router.prototype.replace
+// Router.prototype.replace = function replace(to) {
+//     return VueRouterReplace.call(this, to).catch(err => err)
+// }
 Vue.use(Router)
 export default new Router({
     mode: 'hash',
@@ -54,20 +54,20 @@ export default new Router({
                 needLogin: false
             }
         },
-        {
-            path: '/information',
-            component: resolve => require(['./views/content/UserInfo/Information'], resolve),
-            meta: {
-                needLogin: false
-            }
-        },
-        {
-            path: '/resetPassword',
-            component: resolve => require(['./views/content/UserInfo/ResetPossword'], resolve),
-            meta: {
-                needLogin: false
-            }
-        },
+        // {
+        //     path: '/information',
+        //     component: resolve => require(['./views/content/UserInfo/Information'], resolve),
+        //     meta: {
+        //         needLogin: false
+        //     }
+        // },
+        // {
+        //     path: '/resetPassword',
+        //     component: resolve => require(['./views/content/UserInfo/ResetPossword'], resolve),
+        //     meta: {
+        //         needLogin: false
+        //     }
+        // },
         {
             path: '/personInfo',
             component: resolve => require(['./views/content/UserInfo/PersonInfo'], resolve),
@@ -84,6 +84,20 @@ export default new Router({
             children: [{
                     path: '/homePage',
                     component: resolve => require(['./views/homePage'], resolve)
+                },
+                {
+                    path: '/information',
+                    component: resolve => require(['./views/content/UserInfo/Information'], resolve),
+                    meta: {
+                        needLogin: false
+                    }
+                },
+                {
+                    path: '/resetPassword',
+                    component: resolve => require(['./views/content/UserInfo/ResetPossword'], resolve),
+                    meta: {
+                        needLogin: false
+                    }
                 },
                 // 接口管理模块
                 // {

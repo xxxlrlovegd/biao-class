@@ -72,7 +72,7 @@
             <p slot="title">
               <span style="font-size:26px;color:#2CA987;font-weight: bold;">欢迎登录</span>
             </p>
-            <a type="primary" href="/#/Register" slot="extra">
+            <a type="primary" href="/#/register" slot="extra">
               <span style="color:#999;">没有账户？</span>
               <span style="color:#4EA477;">去注册>></span>
             </a>

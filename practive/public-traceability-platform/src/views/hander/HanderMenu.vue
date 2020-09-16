@@ -21,7 +21,7 @@
 </style>
   <template>
   <div>
-    <Row type="flex" align="top">
+    <Row align="top">
       <i-Col span="8" class="layout-logo">
         <img src="../../assets/img/login/logo.png" alt style="width: 32%;margin: 3px 0px;" />
         <span
@@ -30,12 +30,10 @@
         <span
           style="position: relative;top: -22px;left: 3%;font-size: 21px;font-weight: bold;"
         >公&nbsp;共&nbsp;溯&nbsp;源&nbsp;平&nbsp;台</span>
-
         <span
           style="position: absolute;top: 10%;left: 54%;font-size: 12px;font-weight: bold;"
         >Blockchain&nbsp;Platform&nbsp;of&nbsp;China&nbsp;Post</span>
       </i-Col>
-
       <i-Col span="10" class="layout-nav">
         <div
           v-for="(item,index) in menuItem"

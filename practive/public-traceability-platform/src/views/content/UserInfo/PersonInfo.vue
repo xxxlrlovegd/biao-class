@@ -80,9 +80,14 @@
                   <i-Input v-model="formInline.shfcard" placeholder="请输入"></i-Input>
                 </FormItem>
                 <FormItem label="证件图片">
-                    <Upload :before-upload="fjUpload" action="http" accept=".png,.jpg,.jpeg">
-                      <Button tyspe="primary">点击上传图片</Button>
-                  </Upload> 
+                  <Upload
+                    :before-upload="fjUpload"
+                    action="http"
+                    accept=".png, .jpg, .jpeg"
+                    show-upload-list="true"
+                  >
+                    <Button tyspe="primary">点击上传图片</Button>
+                  </Upload>
                 </FormItem>
                 <FormItem>
                   <Button type="primary" size="large" long @click="handleSubmit('formInline')">提交</Button>
@@ -168,9 +173,9 @@
 // import axios from 'axios'
 import authHeader from '../../../views/authHeader'
 //身份证验证
-const reg = /( ^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/
+//const reg = /( ^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/
 //电话验证
-const isPhone = /^(1[3,4,5,6,7,8,9][0-9])\d{8}$/;
+//const isPhone = /^(1[3,4,5,6,7,8,9][0-9])\d{8}$/;
 export default {
   components: {
     authHeader,
@@ -233,11 +238,12 @@ export default {
           value: 'dx',
         },
       ],
-        file: null,
+      file: null,
     }
   },
   mounted() {
-    this.isLoginType = 'gr111'
+    this.isLoginType = 'g22r'
+
     this.formInline = {
       name: '',
       tel: '',
@@ -245,6 +251,12 @@ export default {
       shfcard: '',
       userFlag: 1,
     }
+  },
+  created() {
+    this.$nextTick(() => {
+      this.handleReset('formInline')
+      this.handleReset('formShInline')
+    })
   },
   methods: {
     handleSubmit(name) {
@@ -273,10 +285,14 @@ export default {
         },
       })
     },
-    fjUpload(file){
-       this.file = file;
-       return false;
-    }
+    handleReset(name) {
+      this.$refs[name].resetFields()
+    },
+    fjUpload(file) {
+      this.file = file
+      console.log(this.file)
+      return false
+    },
   },
 }
 </script>

@@ -6,7 +6,7 @@
   width: 2%;
 }
 .ivu-layout-header {
-  background: #27a1b8;
+  background: url(./assets/img/icon/headBg.png);
   padding: 0 25px;
 }
 .userInfoStyle {

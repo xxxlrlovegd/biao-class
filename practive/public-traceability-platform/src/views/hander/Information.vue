@@ -28,7 +28,9 @@ export default {
     }
   },
   methods: {
-    readInfo() {},
+    readInfo() {
+      this.$router.push('/information')
+    },
     logout() {},
   },
 }
