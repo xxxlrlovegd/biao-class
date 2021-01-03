@@ -1,0 +1,13 @@
+body,
+html,
+#app{
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+}
+.menu {
+    height: 100px;
+}
+em {
+    font-style: normal;
+}
