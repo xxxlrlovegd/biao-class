@@ -23,6 +23,11 @@
 export default {};
 </script>
 <style lang="less" scoped>
+/deep/.ivu-tabs-nav .ivu-tabs-tab-active {
+    color: #19be6b;
+    padding: 20px 16px;
+    font-weight: bold;
+}
 .aboutus {
   font-size: 14px;
   text-align: left;

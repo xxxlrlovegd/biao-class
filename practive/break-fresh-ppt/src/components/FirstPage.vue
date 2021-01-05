@@ -1,29 +1,47 @@
 <template>
   <div class="banner">
-    <div class="title" @click="gotolink">基于OCR技术<br>
+    <img
+      src="../assets/仓库存货.png"
+      alt=""
+      style="width: 55%;height: 90%;margin-top: 4%;margin-left: 22%;"
+    >
+    <div
+      class="title"
+      @click="gotolink"
+    >基于OCR技术<br>
       <div class="smtitle">实现面单信息极速采集</div>
     </div>
   </div>
 </template>
 <script>
 export default {
-    methods: {
-         gotolink(){ 
-          //指定跳转地址
-          this.$router.replace('/achievement')
-        }
-
-    }
+  methods: {
+    gotolink() {
+      //指定跳转地址
+      this.$router.replace("/achievement");
+    },
+  },
 };
 </script>
 <style lang="less" scoped>
 .banner {
   width: 100vw;
   height: 100vh;
-  background:url(../assets/仓库存货.png) no-repeat 55% 35px;
-  background-size:50% 88%;
-  background-color :#19be6b;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #19be6b);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   color: #fff;
+  @keyframes gradientBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
   .title {
     position: absolute;
     top: 48%;
@@ -59,7 +77,7 @@ export default {
     line-height: 100px;
     text-align: center;
     font-size: 28px;
-    letter-spacing: 1em;
+    letter-spacing: .5em;
     text-shadow: 2px 5px 5px #eee;
   }
   img {

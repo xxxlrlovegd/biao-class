@@ -12,13 +12,16 @@
     <Row>
       <i-Col span="12">
         <div class="skill">
-          <span class='kdmd'>面单识别</span>
+          <span
+            class='kdmd'
+            @click="getModel()"
+          >面单识别</span>
           <span class='kdcs'>快递超市</span>
           <span class='PDA'>PDA红外扫描</span>
           <span class='phone'>手机端识别</span>
           <span class='yzyz'>邮政驿站App</span>
           <!-- <span class='echarts'>Echarts</span>
-      <span class='linux'>linux</span> -->
+          <span class='linux'>linux</span> -->
         </div>
       </i-Col>
       <i-Col span="12">
@@ -35,6 +38,61 @@
         </div>
       </i-Col>
     </Row>
+    <Modal
+      v-model="isShow"
+      draggable
+      scrollable
+      title="快递面单在邮政驿站项目中的应用详情"
+    >
+      <div slot="footer">
+      </div>
+      <Carousel
+        v-model="value1"
+        loop
+        v-if="isShow"
+      >
+        <CarouselItem>
+          <div class="demo-carousel">
+            <span class="text">逻辑层面在PDA端的极速入库模块应用展示：</span>
+            <img
+              src="../assets/jsrk.png"
+              alt=""
+              class="imgStyle"
+            >
+          </div>
+        </CarouselItem>
+        <CarouselItem>
+          <div class="demo-carousel">
+            <span class="text">表示层面在PDA端的极速入库模块应用展示：</span>
+            <img
+              src="../assets/jsrky.png"
+              alt=""
+              class="imgStyle"
+            >
+          </div>
+        </CarouselItem>
+        <CarouselItem>
+          <div class="demo-carousel">
+            <span class="text">逻辑层面在扫描入库模块应用展示：</span>
+            <img
+              src="../assets/rksm.png"
+              alt=""
+              class="imgStyle"
+            >
+          </div>
+        </CarouselItem>
+        <CarouselItem>
+          <div class="demo-carousel">
+            <span class="text">表示层面在扫描入库模块应用展示：</span>
+            <img
+              src="../assets/rksmy.png"
+              alt=""
+              class="imgStyle"
+            >
+          </div>
+        </CarouselItem>
+      </Carousel>
+    </Modal>
   </div>
 </template>
 <style scoped>
@@ -75,6 +133,7 @@ span.kdmd {
   font-size: 28px;
   z-index: 100;
   padding-left: 10%;
+  cursor: pointer;
 }
 span.kdcs {
   background-color: rgba(255, 153, 102, 0.5);
@@ -146,6 +205,10 @@ span.linux {
   top: -50px;
   z-index: 0;
 }
+.imgStyle {
+  width: 100%;
+  height: 100%;
+}
 </style>
 <script>
 export default {
@@ -153,8 +216,8 @@ export default {
   data() {
     return {
       video: {
-        url: "http://47.105.206.28/videos/wangkun.mp4",
-        cover: "https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png",
+        url: require("../assets/proVedio.mp4"),
+        cover: "",
         muted: false,
         loop: false,
         preload: "auto",
@@ -162,6 +225,8 @@ export default {
         volume: 1,
         autoplay: false,
       },
+      isShow: false,
+      value1: 0,
     };
   },
   computed: {
@@ -171,6 +236,9 @@ export default {
   },
   methods: {
     handleFullscreen() {},
+    getModel() {
+      this.isShow = true;
+    },
   },
 };
 </script>
