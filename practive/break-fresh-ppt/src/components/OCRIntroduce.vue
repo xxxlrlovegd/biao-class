@@ -29,12 +29,12 @@ export default {};
     font-weight: bold;
 }
 .aboutus {
-  font-size: 14px;
+  font-size: 16px;
   text-align: left;
   padding: 0px 100px;
 }
 .text {
-  font-size: 14px;
+  font-size: 16px;
   text-align: left;
   line-height: 30px;
   text-indent: 2em;

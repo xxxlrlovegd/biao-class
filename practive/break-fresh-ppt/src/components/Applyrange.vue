@@ -58,6 +58,7 @@
               src="../assets/jsrk.png"
               alt=""
               class="imgStyle"
+              style="width: 124%;margin-left: -11%;margin-top: 6%;"
             >
           </div>
         </CarouselItem>
@@ -78,6 +79,7 @@
               src="../assets/rksm.png"
               alt=""
               class="imgStyle"
+              style="margin-top: 6%;"
             >
           </div>
         </CarouselItem>

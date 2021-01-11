@@ -7,7 +7,7 @@
             <Content :style="{margin: '90px 66px 0 ', background: '#fff', minHeight: '520px'}">
                  <router-view></router-view>
             </Content>
-            <Footer class="layout-footer-center">技术创新<br> 参与人：谢春明&nbsp;李刚&nbsp;马广力&nbsp;路锐&nbsp;刘淳&nbsp;顾瑞&nbsp;梁悦</Footer>
+            <Footer class="layout-footer-center">技术创新<br> 参与人：谢春明&nbsp;李刚&nbsp;路锐&nbsp;刘淳&nbsp;顾瑞&nbsp;梁悦</Footer>
         </Layout>
     </div>
 </template>
