@@ -1,6 +1,6 @@
 <template>
     <div>
-        系统首页
+     xxxx
     </div>
 </template>
 <script>
