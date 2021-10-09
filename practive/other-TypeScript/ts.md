@@ -10,6 +10,7 @@ tsc -w test.ts监听ts文件的变化方便使用
 但是每次运行ts文件都需要先编译成js文件之后再node编译js文件 效率很低 可以用下面得插件提高效率报两步变成一步
 npm install -g ts-node
 npm install -g tslib @types/node    //若console报错可以用这个插件来解决console引发的问题
+ts-node -T XXX.ts //ts-node编译ts文件
 一.原型类型
 boolean布尔类型
 语法：let isAdmin: boolean =true;

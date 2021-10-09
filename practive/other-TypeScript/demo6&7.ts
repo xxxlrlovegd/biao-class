@@ -25,8 +25,8 @@ console.log("type 关键字", person1)
 
 //同样 用 class 来定义对象也是可以的
 class obj1 {
-    name: string;
-    age: number;
+    name: string | undefined;
+    age: number | undefined;
 }
 const person2: obj1[] = [
     { name: '111', age: 111 },

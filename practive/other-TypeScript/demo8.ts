@@ -15,13 +15,20 @@ interface person {
 }
 function getReumse1(per: person) {
     per.age > 20 && (per.xueli == '211' || per.xueli == '985') && console.log(per.name + 'pass');
-    per.age < 20 && (!per.xueli && per.xueli != '211' && per.xueli != '985') && console.log(per.name + 'no');
+    per.age < 20 || ((!per.xueli && per.xueli != '211' && per.xueli != '985') && console.log(per.name + 'no'));
 }
 
 function getInfo1(info: person) {
-    console.log(info.name + + '年龄：' + info.age + ',学历' + info.xueli)
+    console.log(info.name + '年龄：' + info.age + ',学历' + info.xueli)
 }
 
 getReumse('绿绿', 18, '211')
-getReumse('红红', 20, '')
+getReumse('红红', 16, '')
 getReumse('晃晃', 24, '985')
+let girl = {
+    name: 'Amy',
+    age: 18,
+    xueli:''
+}
+getReumse1(girl)
+getInfo1(girl)

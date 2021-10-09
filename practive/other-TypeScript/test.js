@@ -1,3 +1,4 @@
+"use strict";
 console.log("1");
 var Preson = /** @class */ (function () {
     function Preson(name) {
