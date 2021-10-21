@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  //方法一：巧妙且笨拙的方法
+  let str = "foorfoorfoor";
+  let newstr = str.split("foor").join("abcd");
+  console.log(newstr);
+  //方法二：string 特性
+  let newStr1 = str.replaceAll("foor", "boor");
+  console.log("str", newStr1);
+</script>

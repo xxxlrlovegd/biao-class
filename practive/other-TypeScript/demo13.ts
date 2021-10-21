@@ -13,5 +13,5 @@ class xiaojiejie {
 }
 console.log(xiaojiejie.sayHello()) //static 关键可以直接在类中调用方法
 let mv = new xiaojiejie(36)
-mv.setAge = 15
+mv.setAge = 25
 console.log(mv.getAge)

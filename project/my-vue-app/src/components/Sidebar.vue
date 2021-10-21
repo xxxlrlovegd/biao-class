@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <el-menu
-      default-active="1-4-1"
+      default-active="onRoutes"
       @open="handleOpen"
       @close="handleClose"
       :collapse="isCollapse"
@@ -39,6 +39,12 @@
     </el-menu>
   </div>
 </template>
+<script>
+import { computed } from 'vue'
+export default {
+    
+}
+</script>
 <style lang="less" scoped>
 .sidebar {
    display: block;
