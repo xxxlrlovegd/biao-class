@@ -13,6 +13,7 @@
 
   function pAll(_promise) {
     return new Promise((resolve, reject) => {
+      // Array.from() 方法从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。
       const promise = Array.from(_promise);
       const r = [];
       const len = promise.length;
