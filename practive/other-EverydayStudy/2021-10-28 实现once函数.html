@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  //实现once函数，传入函数只执行一次
+  //原理主要利用闭包定义标识进行共用
+  function once(fn) {
+    let result;
+    let flag = false;
+    return (...arg) => {
+      if (flag) return result;
+      const r = fn(...arg);
+      flag = true;
+      result = r;
+      return r;
+    };
+  }
+
+  function fn() {
+    console.log("test");
+    return 2;
+  }
+  let once_fn = once(fn);
+  once_fn();
+  once_fn();
+  once_fn();
+  once_fn();
+</script>
