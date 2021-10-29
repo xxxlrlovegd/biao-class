@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="rere">
+      fdfdf
+      <span>333</span>
+      <span>444</span>
+      <span>2346</span>
+      <span>2346</span>
+    </div>
+  </body>
+</html>
+<script>
+  //获取当前页面出现次数最多的标签数
+  //主要用 document.querySelectorAll('*') 或者 标签递归
+  //开发者工具 $$('*') 
+  //使用document.querySelectorAll实现如下：
+  const maxBy = (list, keyBy) =>
+    list.reduce((x, y) => (keyBy(x) > keyBy(y) ? x : y));
+  function getFrequentTag() {
+    const tags = [...document.querySelectorAll("*")]
+      .map((x) => x.tagName)
+      .reduce((o, tag) => {
+        o[tag] = o[tag] ? o[tag] + 1 : 1;
+        return o;
+      }, {});
+    return maxBy(Object.entries(tags), (tag) => tag[1]);
+  }
+  getFrequentTag();
+  //使用element.children 递归完成
+  function getAllTags(el = document) {
+    const children = Array.from(el.children).reduce(
+      (x, y) => [...x, ...getAllTags(y)],
+      []
+    );
+    return children;
+  }
+  // 或者通过 flatMap 实现
+function getAllTags1(el = document) {
+  const children = Array.prototype.flatMap.call(el.children, x => getAllTags(x))
+  return [el, ...children]
+}
+</script>
