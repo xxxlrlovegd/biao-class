@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  //reduce高级用法
+  //arr.reduce(callback,[initialValue])
+  //callback (执行数组中每个值的函数，包含4个参数)
+  //1、previousValue(上一次调用回调返回的值，或者是提供的初始值（initialValue）)
+  //2、currentValue(数组中当前被处理的元素)
+  //3. index(当前元素在数组中的索引)
+  //4.array(调用reduce数组)
+
+  //initialValue 作为第一次调用callback的第一个参数
+  //如果没有提供initialValue，reduce 会从索引1的地方开始执行 callback 方法，跳过第一个索引。如果提供initialValue，从索引0开始。
+  //数组为空并且没有初始值的话，会报错！ 建议设置初始值更安全可靠
+
+  //reduce简单用法
+  let arr = [1, 2, 3, 4, 4];
+  var sum = arr.reduce((x, y) => x + y); //省略大括号就是有返回值
+  var mul = arr.reduce((x, y) => x * y);
+  console.log(sum); //14
+  console.log(mul); //96
+
+  //reduce高级用法
+  //计算每个元素出现的次数
+  let names = ["Aref", "Bod", "Zahnf", "Lily", "Lily"];
+  let nameNum = names.reduce((pre, cur) => {
+    if (cur in pre) {
+      pre[cur]++;
+    } else {
+      pre[cur] = 1;
+    }
+    return pre;
+  }, {});
+  console.log(nameNum);
+  //数组去重
+  let newArr = arr.reduce((pre, cur) => {
+    if (!pre.includes(cur)) {
+      //includes 检测数组是否有某个值
+      return pre.concat(cur);
+    } else {
+      return pre;
+    }
+  }, []);
+  console.log("数组去重", newArr); //new Set() 去重  [...new Set(arr)]
+
+  //二位数组转换成一维数组
+  let arr1 = [
+    [1, 2],
+    [3, 4],
+    [5, 6],
+  ];
+  let ywArr = arr1.reduce((pre, cur) => {
+    return pre.concat(cur);
+  }, []);
+  console.log("二维转一维", ywArr);
+  //多维数组 array.flat(Infinity)
+  //对象中属性求和
+  let res = [
+    { subject: "math", score: 10 },
+    { subject: "chinese", score: 20 },
+    { subject: "english", score: 30 },
+  ];
+  let scoreNum = res.reduce((pre, cur) => {
+    return cur.score + pre;
+  }, 0);
+  console.log("对象中属性求和", scoreNum);
+</script>

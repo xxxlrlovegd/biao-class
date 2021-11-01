@@ -40,22 +40,35 @@
   </div>
 </template>
 <script>
-import { computed } from 'vue'
+import { computed, ref } from "vue";
 export default {
-    
-}
+  setup() {
+    const isCollapse = ref(true);
+      const handleOpen = (key, keyPath) => {
+      console.log(key, keyPath)
+    }
+    const handleClose = (key, keyPath) => {
+      console.log(key, keyPath)
+    }
+     return {
+      isCollapse,
+      handleOpen,
+      handleClose,
+    }
+  },
+};
 </script>
 <style lang="less" scoped>
 .sidebar {
-   display: block;
-    position: absolute;
-    left: 0;
-    top: 58px;
-    bottom: 0;
-    overflow-y: scroll;
-    width: 200px;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 58px;
+  bottom: 0;
+  overflow-y: scroll;
+  width: 200px;
 }
 .sidebar::-webkit-scrollbar {
-    width: 0;
+  width: 0;
 }
 </style>

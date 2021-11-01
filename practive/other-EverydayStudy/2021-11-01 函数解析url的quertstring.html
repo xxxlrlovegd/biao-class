@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // 函数去解析url的querystring
+  function parse(url) {
+    //通过decodeURIComponent来转移字符
+    //夹在？#之间的字符及时用qs,使用正则来匹配提起/\?([^/?#:]+)#?/
+    //使用正则从url中解析出来querytString
+    //通过 optional chain 来避免空值错误  （可选链调用 ?.）
+    const querytString = decodeURIComponent(url).match(/\?([^/?#:]+)#?/)?.[1];
+    console.log("querystring", querytString);
+    if (!querytString) return {};
+    console.log(querytString.split("&"))
+    queryObj = querytString.split("&").reduce((params, block) => {
+      console.log(params, block);
+      //若未赋值，则默认值为空字符串
+      const [k, v = ""] = block.split("=");
+      console.log("key", k, "value", v);
+      if (params[k] !== undefined) {
+        console.log("key", k, params[k]);
+        //处理key出现多次的情况，设置为数组
+        params[k] = [].concat(params[k], v);
+      } else {
+        params[k] = v;
+      }
+      return params;
+    }, {});
+    return queryObj;
+  }
+  const turl = "https://baidu.tech?name=&a=3&a=4";
+  let res = parse(turl);
+  console.log("res", res);
+</script>
