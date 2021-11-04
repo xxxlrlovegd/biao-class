@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  //字节压缩编码
+  //->aaaabbbccd
+  //a4b3c2d1
+  function encode(str) {
+    let l = [];
+    for (let s of str) {
+      let len = l.length;
+      let lastChar = len > 0 ? l[len - 1][0] : undefined;
+      if (lastChar == s) {
+        l[len - 1][1]++;
+      } else {
+        l.push([s, 1]);
+      }
+    }
+    console.log("arr", l);
+    return l.map((x) => x.join("")).join("");
+  }
+  let res = encode("aabb");
+  console.log(res);
+</script>
