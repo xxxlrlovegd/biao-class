@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  //随机取数组里面的一个元素
+  Array.prototype.sample = function () {
+    console.log("this", this);
+    return this[Math.floor(Math.random() * this.length)];
+  };
+
+  let arr = ["张三", "李四", "王二麻子", "今天天气好鸭~~"];
+  console.log("111", arr.slice(0));
+  let res = arr[Math.floor(Math.random() * arr.length)];
+  console.log(res);
+  //随机取数组里面多个元素
+  function getArrayRandomElements(arr, count) {
+    var shuffled = arr.slice(0),
+      i = arr.length,
+      min = i - count,
+      temp,
+      index;
+    while (i-- > min) {
+      //i从 (3,2)
+      //随机生成数
+      index = Math.floor((i + 1) * Math.random());
+      temp = shuffled[index];
+      console.log(temp, index, i);
+      shuffled[index] = shuffled[i];
+      shuffled[i] = temp;
+      console.log("shuffled", shuffled);
+    }
+    return shuffled.slice(min); //截取min之后的数组
+  }
+  console.log(getArrayRandomElements(arr, 2));
+</script>
