@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 实现大屏幕三等分中屏幕两等分小屏幕一等分 -->
+    <div class="container">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </body>
+</html>
+<script></script>
+<style>
+  /* grid-template-colums 控制等分 */
+  /* gap 控制间隙 */
+  /* 也可以用tailwindCss class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" */
+  @media (min-width: 1024px) {
+    .container {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 768px) {
+    .container {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .container {
+    display: grid;
+    gap: 1rem;
+  }
+</style>

@@ -4,7 +4,7 @@
       default-active="onRoutes"
       @open="handleOpen"
       @close="handleClose"
-      :collapse="isCollapse"
+      :collapse="collapse"
     >
       <el-sub-menu index="1">
         <template #title>
@@ -41,20 +41,24 @@
 </template>
 <script>
 import { computed, ref } from "vue";
+import { useStore } from "vuex";
 export default {
   setup() {
-    const isCollapse = ref(true);
+    const store = useStore();
+    const collapse = () => {
+      return store.state.collapse;
+    };
       const handleOpen = (key, keyPath) => {
       console.log(key, keyPath)
     }
     const handleClose = (key, keyPath) => {
       console.log(key, keyPath)
     }
-     return {
-      isCollapse,
+    return {
+      collapse,
       handleOpen,
       handleClose,
-    }
+    };
   },
 };
 </script>

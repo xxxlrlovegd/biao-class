@@ -25,20 +25,20 @@
         <!-- 用户头像 -->
         <div class="user-avator">
           <el-avatar
-            :size="30"
+            :size="28"
             src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
           ></el-avatar>
         </div>
         <!-- 用户功能下拉 -->
-        <el-dropdown class="user-name" trigger="click">
+        <el-dropdown class="user-name" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
-            admin<i class="el-icon-arrow-down el-icon--right"></i>
+            {{ username }}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>项目仓库</el-dropdown-item>
-              <el-dropdown-item>个人中心</el-dropdown-item>
-              <el-dropdown-item>退出登录</el-dropdown-item>
+              <el-dropdown-item command="user">个人中心</el-dropdown-item>
+              <el-dropdown-item command="loginout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -48,9 +48,42 @@
 </template>
 <script>
 import { computed, onMounted } from "vue";
-
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 export default {
-  setup() {},
+  setup() {
+    const username = "adminx"; //正常登录是会有姓名存入系统的
+    const message = 2;
+    //调用store前需要声明store对象才能获取到里面的对象和方法
+    const store = useStore();
+    const collapse = computed(() => {
+      return store.state.collapse; //return回来 collapse就不是动态获取值 不加{}就是默认返回了这个值
+      console.log(store.state.collapse);
+    });
+    //侧边栏折叠事件
+    const collapseChange = () => {
+      store.commit("handleCollapse", !collapse.value);
+    };
+    //用户下拉选择事件
+    const router = useRouter();
+    const handleCommand = (command) => {
+      if (command == "loginout") {
+        router.push("/login");
+      } else if (command == "user") {
+        router.push("/user");
+      }
+    };
+    onMounted(() => {
+      collapseChange();
+    });
+    return {
+      username,
+      message,
+      collapse,
+      collapseChange,
+      handleCommand,
+    };
+  },
 };
 </script>
 <style lang="less" scoped>
