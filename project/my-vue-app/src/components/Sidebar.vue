@@ -5,37 +5,42 @@
       @open="handleOpen"
       @close="handleClose"
       :collapse="collapse"
+      unique-opened
+      router
+      background-color="#242f42"
+      text-color="#bfcbd9"
     >
-      <el-sub-menu index="1">
-        <template #title>
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
+      <template v-for="item in menuList">
+        <template v-if="item.subs">
+          <el-sub-menu :index="item.index" :key="item.title">
+            <template #title>
+              <i :class="item.icon"></i>
+              <span>{{ item.title }}</span>
+            </template>
+            <template v-for="subItem in item.subs">
+              <el-sub-menu v-if="subItem.subs" :key="subItem.title">
+                <template #title> {{ subItem.title }}</template>
+                <el-menu-item
+                  v-for="(threeItem, i) in subItem.subs"
+                  :index="threeItem.index"
+                  :key="i"
+                >
+                  {{ threeItem.title }}
+                </el-menu-item>
+              </el-sub-menu>
+              <el-menu-item v-else :index="subItem.index" :key="subItem.title">
+                {{ subItem.title }}
+              </el-menu-item>
+            </template>
+          </el-sub-menu>
         </template>
-        <el-menu-item-group>
-          <template #title>分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-sub-menu index="1-4">
-          <template #title>选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-sub-menu>
-      </el-sub-menu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <template #title>导航二</template>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <template #title>导航三</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <template #title>导航四</template>
-      </el-menu-item>
+        <template v-else>
+          <el-menu-item :index="item.index" :key="item.index">
+            <i :class="item.icon"></i>
+            <template #title>{{ item.title }}</template>
+          </el-menu-item>
+        </template>
+      </template>
     </el-menu>
   </div>
 </template>
@@ -45,17 +50,19 @@ import { useStore } from "vuex";
 export default {
   setup() {
     const store = useStore();
-    const collapse = () => {
+    const collapse = computed(() => {
       return store.state.collapse;
+    });
+    const menuList = store.state.menuList;
+    const handleOpen = (key, keyPath) => {
+      console.log(key, keyPath);
     };
-      const handleOpen = (key, keyPath) => {
-      console.log(key, keyPath)
-    }
     const handleClose = (key, keyPath) => {
-      console.log(key, keyPath)
-    }
+      console.log(key, keyPath);
+    };
     return {
       collapse,
+      menuList,
       handleOpen,
       handleClose,
     };
@@ -69,10 +76,16 @@ export default {
   left: 0;
   top: 58px;
   bottom: 0;
+  width: 250px;
   overflow-y: scroll;
-  width: 200px;
 }
 .sidebar::-webkit-scrollbar {
   width: 0;
+}
+.sidebar-el-menu:not(.el-menu--collapse) {
+  width: 250px;
+}
+.sidebar > ul {
+  height: 100%;
 }
 </style>

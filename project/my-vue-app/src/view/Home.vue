@@ -5,12 +5,14 @@
         <vHeader />
       </el-header>
       <el-container>
-        <el-aside width="200px">
+        <el-aside width="250px">
           <vSidebar />
         </el-aside>
-        <el-main>
-          <router-view></router-view>
-        </el-main>
+        <el-container>
+          <el-main>
+            <router-view></router-view>
+          </el-main>
+        </el-container>
       </el-container>
     </el-container>
   </div>
@@ -32,13 +34,6 @@ export default {
   margin: 0;
   padding: 0;
   height: 58px;
-}
-
-.el-aside {
-  background-color: #d3dce6;
-  text-align: center;
-  line-height: 200px;
- 
 }
 
 </style>

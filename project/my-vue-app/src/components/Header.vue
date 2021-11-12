@@ -15,8 +15,8 @@
             :content="message ? `有${message}条未读消息` : `消息中心`"
             placement="bottom"
           >
-            <router-link to="/login">
-              <el-badge :is-dot="message" class="item">
+            <router-link to="/message">
+              <el-badge :isDot="message != 0" class="item">
                 <i style="color: #fff" class="el-icon-bell"></i>
               </el-badge>
             </router-link>
@@ -36,7 +36,14 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>项目仓库</el-dropdown-item>
+              <el-dropdown-item>
+                <a
+                  href="https://gitee.com/xxxlgloverd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >项目仓库</a
+                >
+              </el-dropdown-item>
               <el-dropdown-item command="user">个人中心</el-dropdown-item>
               <el-dropdown-item command="loginout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
@@ -74,7 +81,7 @@ export default {
       }
     };
     onMounted(() => {
-      collapseChange();
+      // collapseChange();
     });
     return {
       username,

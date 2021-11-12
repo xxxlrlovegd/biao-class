@@ -1,35 +1,78 @@
-import {
-    createRouter,
-    createWebHistory
-} from "vue-router";
-const routes = [{
-    path: '/',
-    redirect: '/dashboard'
-}, {
+import { createRouter, createWebHistory } from "vue-router";
+const routes = [
+  {
+    path: "/",
+    redirect: "/dashboard",
+  },
+  {
     path: "/",
     name: "Home",
     component: () => import("../view/Home.vue"),
-    children: [{
+    children: [
+      {
         path: "/dashboard",
         name: "dashbooard",
         meta: {
-            title: '系统首页',
+          title: "系统首页",
         },
-        component: () => import("../view/dashboard.vue")
-    }]
-}, {
-    path: '/login',
-    name: 'Login',
+        component: () => import("../view/Dashboard.vue"),
+      },
+      {
+        path: "/table",
+        name: "basetable",
+        meta: {
+          title: "表格",
+        },
+        component: () => import("../view/BaseTable.vue"),
+      },
+      {
+        path: "/form",
+        name: "baseform",
+        meta: {
+          title: "表单",
+        },
+        component: () => import("../view/BaseForm.vue"),
+      },
+      {
+        path: "/editor",
+        name: "editor",
+        meta: {
+          title: "富文本编辑器",
+        },
+        component: () => import("../view/Editor.vue"),
+      },
+      {
+        path: "/user",
+        name: "user",
+        meta: {
+          title: "个人中心",
+        },
+        component: () => import("../view/User.vue"),
+      },
+      {
+        path: "/message",
+        name: "message",
+        meta: {
+          title: "消息列表",
+        },
+        component: () => import("../view/Message.vue"),
+      },
+    ],
+  },
+  {
+    path: "/login",
+    name: "Login",
     meta: {
-        title: "登录"
+      title: "登录",
     },
-    component: () => import("../view/Login.vue")
-}]
+    component: () => import("../view/Login.vue"),
+  },
+];
 //vue3.router——createWebHash/History 带#的hash路由模式；createWebHistory 历史模式
 const router = createRouter({
-    history: createWebHistory(),
-    routes
-})
+  history: createWebHistory(),
+  routes,
+});
 
 // router.beforeEach((to, from, next) => {
 //     document.title = `${to.meta.title}`
