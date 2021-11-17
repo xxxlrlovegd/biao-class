@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  (function () {
+    // 如何实现一个flatMap函数
+    // es6扁平化嵌套方法flatMap()和flat()
+    //Array.prototype.flatMap()
+    console.log([1, 2, [3], 4].flatMap((x) => x + 1)); // [2, 3, '31', 5]
+    //想要的效果应该是  [2, 3, 4, 5]
+    //方法一： flat+map
+    Array.prototype.flatMap1 = function (mapper) {
+      console.log(this.map(mapper));
+      return this.flat().map(mapper);
+    };
+    //方法二：reduce+concat
+    const flat1 = (list) =>
+      list.reduce((a, b) => a.concat(b), []).map((x) => x + 2);
+    console.log([1, 2, [3], 4].flatMap1((x) => x + 1)); // [2, 3, 4, 5]
+    console.log(flat1([1, 2, [3], 4]));
+  })();
+</script>

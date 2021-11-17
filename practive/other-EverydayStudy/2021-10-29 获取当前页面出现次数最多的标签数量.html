@@ -45,7 +45,7 @@
   // // 或者通过 flatMap 实现
   function getAllTags1(el = document) {
     const children = Array.prototype.flatMap.call(el.children, (x) =>
-      getAllTags(x)
+      getAllTags1(x)
     );
     return [el, ...children];
   }
