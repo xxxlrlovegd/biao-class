@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  (function () {
+    function promiseAjax(url) {
+      return new Promise((resole, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState !== 4) return;
+          const { response, status } = xhr;
+          if (xhr.status > 200 && xhr.status < 300) {
+            resole("获取到成功的数据=", response);
+          } else {
+            reject("失败", status);
+          }
+        };
+        xhr.open("GET", url);
+        xhr.send();
+      });
+    }
+    promiseAjax(
+      "https://api.apiopen.top2/getJoke?page=1&count=2&type=video"
+    ).then(
+      (res) => {
+        console.log(value);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  })();
+</script>
