@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // 1.  Promise 执行同步代码
+  let promise1 = new Promise((resolve, reject) => {
+    if (Math.floor(Math.random() * 10) % 2 === 1) {
+      resolve("success");
+    } else {
+      reject("error");
+    }
+  });
+  promise1
+    .then((value) => {
+      console.log(value);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    console.log(promise1)
+    //2.
+</script>
