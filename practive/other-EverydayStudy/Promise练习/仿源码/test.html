@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./promise.js"></script>
+  </head>
+  <body>
+    <script>
+    //   let p = new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //       reject("No");
+    //     }, 1000);
+    //   });
+    //   p.then(
+    //     (value) => {
+    //       console.log(value);
+    //     },
+    //     (reason) => {
+    //       console.log(reason);
+    //     }
+    //   );
+    //   console.log(p);
+      const p1 = new Promise((resolve, reject) => {
+        resolve("成功~~");
+      });
+      p1.then(
+        (value) => {
+          throw "fail";
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+      console.log(p1);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  //Generator 函数管理，遇到异步操作时候，通常返回一个Promise对象
+  function getFoo() {
+    return new Promise((resolve, reject) => {
+      resolve("This is Generator!!");
+    });
+  }
+  const g = function* () {
+    try {
+      const foo = yield getFoo();
+      console.log(foo);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  function run(generator) {
+    const it = generator();
+    function go(result) {
+      if (result.done) return result.value;
+      return result.value.then(
+        (value) => {
+          return go(it.next(value));
+        },
+        (error) => {
+          return go(it.throw(error));
+        }
+      );
+    }
+    go(it.next());
+  }
+  run(g);
+</script>
