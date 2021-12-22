@@ -9,24 +9,24 @@
   </head>
   <body>
     <script>
-    //   let p = new Promise((resolve, reject) => {
-    //     setTimeout(() => {
-    //       reject("No");
-    //     }, 1000);
-    //   });
-    //   p.then(
-    //     (value) => {
-    //       console.log(value);
-    //     },
-    //     (reason) => {
-    //       console.log(reason);
-    //     }
-    //   );
-    //   console.log(p);
+      //   let p = new Promise((resolve, reject) => {
+      //     setTimeout(() => {
+      //       reject("No");
+      //     }, 1000);
+      //   });
+      //   p.then(
+      //     (value) => {
+      //       console.log(value);
+      //     },
+      //     (reason) => {
+      //       console.log(reason);
+      //     }
+      //   );
+      //   console.log(p);
       const p1 = new Promise((resolve, reject) => {
         resolve("成功~~");
       });
-      p1.then(
+      let res = p1.then(
         (value) => {
           throw "fail";
         },
@@ -34,7 +34,24 @@
           console.log(err);
         }
       );
-      console.log(p1);
+      console.log(res);
+      let p2 = Promise.reject("error!!");
+      let p3 = Promise.resolve("success!!");
+      let pp3 = Promise.resolve("222!!");
+      console.log("race",Promise.race([p3, pp3]));
+      let p4 = Promise.resolve(
+        new Promise((resolve, reject) => {
+          resolve("成功的Promise");
+        })
+      );
+      //   let p5 = Promise.resolve(
+      //     new Promise((resolve, reject) => {
+      //       reject("error");
+      //     })
+      //   );
+      //   console.log("P3", p3);
+      console.log("P4", p4);
+      //   console.log("P5", p5);
     </script>
   </body>
 </html>
