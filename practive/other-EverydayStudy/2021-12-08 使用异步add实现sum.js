@@ -40,10 +40,45 @@
     const promises = chunk(arr, 2).map(([x, y]) =>
       y === undefined ? x : add1(x, y)
     );
+    console.log("promises", promises);
     return Promise.all(promises).then((list) => sum1(list));
   }
   sum1([1, 2, 3, 4, 5, 6]); //21
 
   //如何实现 promise.map，限制 promise 并发数[2]
   //妈呀 这题好难啊 不做了 今天不做了明天做明天做
+  let list = [10, 7, 5, 4];
+  let lsx = ["A", "B", "C", "D"];
+  function getPower(arr, year) {
+    for (var i = 0; i < year * 12; i++) {
+      let aim = Math.max(...arr);
+      let aimIndex = arr.indexOf(aim);
+      arr[aimIndex] -= arr.length;
+      arr.forEach((item, index) => {
+        arr[index]++;
+      });
+    }
+    let maxIndex = arr.indexOf(Math.max(...arr));
+    let result = "最大流水线为" + lsx[maxIndex] + "每月产值" + list[maxIndex];
+    return result;
+  }
+  console.log(getPower(list, 5));
+
+  let ar = [15, 2, 8, 13];
+  for (let i = 0; i < ar.length; i++) {
+    let maxCount = 0;
+    for (let j = i; j < ar.length; j++) {
+      if (ar[i] < ar[j + 1] && i != ar.length - 1) {
+        maxCount = ar[j];
+        break;
+      } else {
+        maxCount = -1;
+        break;
+      }
+    }
+    console.log(ar[i] + "->" + maxCount);
+  }
+
+  // O(2n)
+  //最坏情况就是从大到小的一个列表加最后一个数值是最大的
 })();
