@@ -1,4 +1,4 @@
-import "$css/index";
+
 (function () {
   "use static";
   let test = "test~~";

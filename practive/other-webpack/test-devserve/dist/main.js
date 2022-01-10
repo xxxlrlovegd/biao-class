@@ -15,7 +15,7 @@
   \*************************/
 /***/ (() => {
 
-eval("\r\n(function () {\r\n  \"use static\";\r\n  let test = \"test~~\";\r\n  const temp = \"test!!!\";\r\n  console.log(\"test的值：\", test);\r\n})();\r\n\n\n//# sourceURL=webpack://test-resolve/./src/js/index.js?");
+eval("(function () {\r\n  const test = \"xxx~~\";\r\n  console.log(\"测试一下好好：\", test);\r\n})();\r\n\n\n//# sourceURL=webpack://test-devserve/./src/js/index.js?");
 
 /***/ })
 
