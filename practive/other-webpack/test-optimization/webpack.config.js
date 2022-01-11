@@ -1,7 +1,8 @@
 //优化有哪些————splitchunk开启代码分割；runtimechunk只重新编译变化的部分；terser-webpack-plugin代码压缩 优化压缩速度
 //理解不太全，此处配置为照葫芦画瓢
-const { resolve } = require("path/posix");
+const { resolve } = require("path");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
   entry: "./src/js/index.js",
   output: {
@@ -25,6 +26,7 @@ module.exports = {
     extensions: [".js", ".json", ".jsx", ".css"],
     modules: [resolve(__dirname, "../../node_modules"), "node_modules"],
   },
+  plugins: [new CleanWebpackPlugin()],
   optimization: {
     splitChunks: {
       chunks: "all",
@@ -33,16 +35,18 @@ module.exports = {
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
-      name: true,
     },
     runtimeChunk: {
       name: (entrypoint) => `runtime-${entrypoint.name}`,
     },
     minimizer: [
       new TerserWebpackPlugin({
-        cache: true,
+        terserOptions: {
+          format: {
+            comments: false,
+          },
+        },
         parallel: true,
-        sourceMap: true,
       }),
     ],
   },
