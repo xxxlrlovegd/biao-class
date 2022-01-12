@@ -1,0 +1,1 @@
+!function(){var e=document.getElementById("root"),t=document.createElement("p");t.innerText="tesst hhh",e.appendChild(t),console.log("Listen to beibei~~")}();

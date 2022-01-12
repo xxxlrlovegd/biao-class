@@ -3,10 +3,12 @@
 const { resolve } = require("path");
 //引入plugin插件
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin }=require("clean-webpack-plugin")
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+//引入离线插件
+// const WorkboxPlugin = require("workbox-webpack-plugin");
 module.exports = {
   //入口
-  entry: ["webpack/hot/dev-server", "./src/js/index.js"],
+  entry: ["webpack/hot/dev-server", "./src/index.html"],
   //出口
   output: {
     //输出文件名
@@ -79,7 +81,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    // new WorkboxPlugin.GenerateSW({
+    //   // 这些选项帮助快速启用 ServiceWorkers
+    //   // 不允许遗留任何“旧的” ServiceWorkers
+    //   clientsClaim: true,
+    //   skipWaiting: true,
+    // }),
   ],
   mode: "development", //开发模式
   //开发环境服务器 devServe:用来自动化（自动编译，自动打开浏览器，自动刷新浏览器）
@@ -91,8 +99,10 @@ module.exports = {
     //启动gzip压缩
     compress: true,
     //端口号
-    port: 3000,
+    port: 8080,
     //自动打开浏览器
     open: true,
   },
+  //设置内联还是外部 选择映射模式
+  devtool: "source-map",
 };
