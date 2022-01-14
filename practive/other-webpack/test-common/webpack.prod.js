@@ -62,36 +62,46 @@ module.exports = {
             test: /\.less$/,
             use: [...commonCssLoader, "less-loader"],
           },
-
           {
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: "babel-loader",
-            options: {
-              presets: [
-                [
-                  //注意 这里两个【】
-                  "@babel/preset-env",
-                  {
-                    //使用内置对象：按需加载
-                    useBuiltIns: "usage",
-                    corejs: {
-                      //指定core-js版本
-                      version: 3,
-                    },
-                    targets: {
-                      //指定babel转换js兼容到哪个版本浏览器兼容
-                      chrome: "60",
-                      firefox: "60",
-                      ie: "9",
-                    },
-                  },
-                ],
-              ],
-              //开启babel缓存
-              //第二次构建时，会读取之前的缓存
-              cacheDirectory: true,
-            },
+            use: [
+              //开启多线程打包，进程启动大概600ms,进程通信需要开销；只有工作消耗时间比较长才需要进程打包
+              {
+                loader: "thread-loader",
+                options: {
+                  Workers: 2, //进程设置为2个
+                },
+              },
+              {
+                loader: "babel-loader",
+                options: {
+                  presets: [
+                    [
+                      //注意 这里两个【】
+                      "@babel/preset-env",
+                      {
+                        //使用内置对象：按需加载
+                        useBuiltIns: "usage",
+                        corejs: {
+                          //指定core-js版本
+                          version: 3,
+                        },
+                        targets: {
+                          //指定babel转换js兼容到哪个版本浏览器兼容
+                          chrome: "60",
+                          firefox: "60",
+                          ie: "9",
+                        },
+                      },
+                    ],
+                  ],
+                  //开启babel缓存
+                  //第二次构建时，会读取之前的缓存
+                  cacheDirectory: true,
+                },
+              },
+            ],
           },
           //图片压缩
           {
@@ -142,18 +152,18 @@ module.exports = {
     }),
     //css压缩插件，默认配置即可达到正常打包要求
     new OptimizeCssAssetsWebpackPlugin(),
-    ],
+  ],
   //可以将node_modules中代码单独打包一个chunk最终输出
   //自动分析多入口chunk中，有没有公共的文件。如果有会打包成单独的一个chunk
   optimization: {
     splitChunks: {
       chunks: "all",
-      },
-      //将当前模块的记录其他模块的hash单独打包成一个文件 runtime
-      //解决：修改a文件导致b文件的contenthash变化
-      runtimeChunk: {
-          name:entrypoint=>`runtime-${entrypoint.name}`
-      }
+    },
+    //将当前模块的记录其他模块的hash单独打包成一个文件 runtime
+    //解决：修改a文件导致b文件的contenthash变化
+    runtimeChunk: {
+      name: (entrypoint) => `runtime-${entrypoint.name}`,
+    },
   },
   mode: "production", //指定为生产模式后js将会默认压缩
 };
