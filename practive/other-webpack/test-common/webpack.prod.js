@@ -156,6 +156,7 @@ module.exports = {
   //可以将node_modules中代码单独打包一个chunk最终输出
   //自动分析多入口chunk中，有没有公共的文件。如果有会打包成单独的一个chunk
   optimization: {
+    //分离页面公共的部分
     splitChunks: {
       chunks: "all",
     },

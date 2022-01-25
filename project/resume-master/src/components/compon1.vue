@@ -1,6 +1,6 @@
 <template>
   <div class="info">
-    <h1>基本资料/info</h1>
+    <h1>基本资料/info{{num}}</h1>
     <transition
       :duration="{ enter: 2500, leave: 1500 }"
       enter-active-class="animated fadeInUp">
@@ -26,9 +26,11 @@
   </div>
 </template>
 <script>
+import largeNumberAdd from 'large-number-lr'
 export default {
   data () {
     return {
+      num: '',
       show: false,
       states: [
         {icon: 'icon-nianling', val: '年龄/30'},
@@ -46,6 +48,7 @@ export default {
     }
   },
   mounted () {
+    this.num = largeNumberAdd('33', '33')
     this.timeout()
   }
 }
