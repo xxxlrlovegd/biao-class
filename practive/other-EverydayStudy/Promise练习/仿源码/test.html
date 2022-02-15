@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./promise.js"></script>
+    <script src="./promise1.js"></script>
   </head>
   <body>
     <script>
@@ -38,10 +38,13 @@
       let p2 = Promise.reject("error!!");
       let p3 = Promise.resolve("success!!");
       let pp3 = Promise.resolve("222!!");
-      console.log("race",Promise.race([p3, pp3]));
+      console.log("all", Promise.all([p2, p3, pp3]));
+      console.log("all", Promise.all([p3, pp3]));
+      console.log("race", Promise.race([p2, p3, pp3]));
+      console.log("race", Promise.race([p3, pp3]));
       let p4 = Promise.resolve(
         new Promise((resolve, reject) => {
-          resolve("成功的Promise");
+          reject("成功的Promise");
         })
       );
       //   let p5 = Promise.resolve(
