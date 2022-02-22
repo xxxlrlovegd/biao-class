@@ -1,48 +1,48 @@
-class MyPromise2 {
+class MyPromise5 {
     constructor(executor) {
         this.PromiseState = "pending";
         this.PromiseResult = null;
-        this.callbacks = [];
-        let resolve = (data) => {
+        this.callBacks = [];
+        let reject = (data) => {
             if (this.PromiseState !== "pending") return;
             this.PromiseState = "fulfilled";
             this.PromiseResult = data;
             setTimeout(() => {
-                this.callbacks.forEach((item) => {
+                this.callBacks.forEach((item) => {
                     item.onResolved(data);
                 });
             });
         };
-        let reject = (data) => {
+        let resolve = (data) => {
             if (this.PromiseState !== "pending") return;
             this.PromiseState = "rejected";
-            this.PromiseResult = data;
+            this.PromsieResult = data;
             setTimeout(() => {
-                this.callbacks.forEach((item) => {
+                this.callBacks.forEach((item) => {
                     item.onRejected(data);
                 });
             });
         };
         try {
             executor(resolve, reject);
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     }
-    then(onResolved, onRejected) {
-        if (typeof onResolved !== "function") {
-            onResolved = (value) => value;
+    then(onResolve, onReject) {
+        if (typeof onResolve !== "function") {
+            onResolve = (value) => value;
         }
-        if (typeof onRejected !== "function") {
-            onRejected = (reason) => {
+        if (typeof onReject !== "function") {
+            onReject = (reason) => {
                 throw reason;
             };
         }
-        return new MyPromise2((resolve, reject) => {
+        return new MyPromise5((resolve, reject) => {
             let callback = (type) => {
                 try {
                     let result = type(this.PromiseResult);
-                    if (result instanceof MyPromise2) {
+                    if (result instanceof MyPromise5) {
                         result.then(
                             (v) => {
                                 resolve(v);
@@ -54,38 +54,38 @@ class MyPromise2 {
                     } else {
                         resolve(result);
                     }
-                } catch (e) {
-                    reject(e);
+                } catch (error) {
+                    reject(error);
                 }
             };
             if (this.PromiseState === "fulfilled") {
                 setTimeout(() => {
-                    callback(onResolved);
+                    callback(onResolve);
                 });
             }
             if (this.PromiseState === "rejected") {
                 setTimeout(() => {
-                    callback(onRejected);
+                    callback(onReject);
                 });
             }
-            if (this.PromiseState == "pending") {
-                this.callbacks.push({
-                    onResolved: function () {
-                        callback(onResolved);
+            if (this.PromiseState === "pending") {
+                this.callBacks.push({
+                    onResolve: function () {
+                        callback(onResolve);
                     },
-                    onRejected: function () {
-                        callback(onRejected);
+                    onReject: function () {
+                        callback(onReject);
                     },
                 });
             }
         });
     }
-    catch (onRejected) {
-        return this.then(undefined, onRejected);
+    catch (reject) {
+        return this.then(undefined, reject);
     }
     static resolve(value) {
-        return new MyPromise2((resolve, reject) => {
-            if (value instanceof MyPromise2) {
+        return new MyPromise5((resolve, reject) => {
+            if (value instanceof MyPromise5) {
                 value.then(
                     (v) => {
                         resolve(v);
@@ -100,21 +100,21 @@ class MyPromise2 {
         });
     }
     static reject(reason) {
-        return new MyPromise2((resolve, reject) => {
+        return new MyPromise5((resolve, reject) => {
             reject(reason);
         });
     }
     static all(promises) {
-        return new MyPromise2((resolve, reject) => {
-            let count = 0;
-            let arr = [];
-            let len = promises.length;
-            for (let index = 0; index < len; index++) {
-                promises[index].then(
+        return new MyPromise5((resolve, reject) => {
+            let count = 0,
+                arr = [],
+                len = promises.len;
+            for (let i = 0; i < len; i++) {
+                promises[i].then(
                     (v) => {
+                        arr[i] = v;
                         count++;
-                        arr[index] = v;
-                        if (count === len) {
+                        if (count == len) {
                             resolve(arr);
                         }
                     },
@@ -126,7 +126,7 @@ class MyPromise2 {
         });
     }
     static race(promises) {
-        return new MyPromise2((resolve, reject) => {
+        return new MyPromise5((resolve, reject) => {
             promises.forEach((item) => {
                 item.then(
                     (v) => {
