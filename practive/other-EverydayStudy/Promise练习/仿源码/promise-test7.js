@@ -1,10 +1,10 @@
-class MyPromise1 {
+class MyPromise7 {
     constructor(executor) {
         this.PromiseState = "pending";
         this.PromiseResult = null;
         this.callbacks = [];
         let resolve = (data) => {
-            if (this.PromiseState != "pending") return;
+            if (this.PromiseState !== "pending") return;
             this.PromiseState = "fulfilled";
             this.PromiseResult = data;
             setTimeout(() => {
@@ -14,7 +14,7 @@ class MyPromise1 {
             });
         };
         let reject = (data) => {
-            if (this.PromiseState != "pending") return;
+            if (this.PromiseState !== "pending") return;
             this.PromiseState = "rejected";
             this.PromiseResult = data;
             setTimeout(() => {
@@ -25,24 +25,24 @@ class MyPromise1 {
         };
         try {
             executor(resolve, reject);
-        } catch (error) {
-            reject(error);
+        } catch (e) {
+            reject(e);
         }
     }
     then(onResolved, onRejected) {
+        if (typeof onResolved !== "function") {
+            onResolved = (value) => value;
+        }
         if (typeof onRejected !== "function") {
             onRejected = (reason) => {
                 throw reason;
             };
         }
-        if (typeof onResolved !== "function") {
-            onResolved = (value) => value;
-        }
-        return new MyPromise1((resolve, reject) => {
+        return new MyPromise7((resolve, reject) => {
             let callback = (type) => {
+                let result = type(this.PromiseResult);
                 try {
-                    let result = type(this.PromiseResult);
-                    if (result instanceof MyPromise) {
+                    if (result instanceof MyPromise7) {
                         result.then(
                             (v) => {
                                 resolve(v);
@@ -54,21 +54,21 @@ class MyPromise1 {
                     } else {
                         resolve(result);
                     }
-                } catch (error) {
-                    reject(error);
+                } catch (r) {
+                    reject(r);
                 }
             };
-            if (this.PromiseState === "fulfilled") {
+            if (this.PromiseState == "fulfilled") {
                 setTimeout(() => {
                     callback(onResolved);
                 });
             }
-            if (this.PromiseState === "rejected") {
+            if (this.PromiseState == "rejected") {
                 setTimeout(() => {
                     callback(onRejected);
                 });
             }
-            if (this.PromiseState === "pending") {
+            if (this.PromiseState == "pending") {
                 this.callbacks.push({
                     onResolved: function () {
                         callback(onResolved);
@@ -84,8 +84,8 @@ class MyPromise1 {
         return this.then(undefined, onRejected);
     }
     static resolve(value) {
-        return new MyPromise((resolve, reject) => {
-            if (value instanceof MyPromise) {
+        return new MyPromise7((resolve, reject) => {
+            if (value instanceof MyPromise7) {
                 value.then(
                     (v) => {
                         resolve(v);
@@ -100,20 +100,21 @@ class MyPromise1 {
         });
     }
     static reject(reason) {
-        return new MyPromise1((resolve, reject) => {
+        return new MyPromise7((resolve, reject) => {
             reject(reason);
         });
     }
     static all(promises) {
-        return new MyPromise1((resolve, reject) => {
-            let count = 0;
-            let arr = [];
-            for (let i = 0; i < promises.length; i++) {
-                promises[i].then(
+        return new MyPromise7((resolve, reject) => {
+            let len = promises.length,
+                count = 0,
+                arr = [];
+            for (let index = 0; index < len; index++) {
+                promises[index].then(
                     (v) => {
+                        arr[index] = v;
                         count++;
-                        arr[i] = v;
-                        if (count === promises.length) {
+                        if (count == len) {
                             resolve(arr);
                         }
                     },
@@ -125,14 +126,17 @@ class MyPromise1 {
         });
     }
     static race(promises) {
-        return new MyPromise((resolve, reject) => { 
-            for (let i = 0; i < promises.length; i++) { 
-                promises[i].then(v => { 
-                    resolve(v)
-                }, r => { 
-                    reject(r)
-                })
-            }
-        })
+        return new MyPromise7((resolve, reject) => {
+            promises.forEach((item) => {
+                item.then(
+                    (v) => {
+                        resolve(v);
+                    },
+                    (r) => {
+                        reject(r);
+                    }
+                );
+            });
+        });
     }
 }
